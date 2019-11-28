@@ -26,6 +26,8 @@ public abstract class Ball
     { get { return value; } }
     public string Type
     { get { return type; } }
+    public float SpeedValue   //得到速度的大小
+    { get { return moveSpeed.magnitude; } }
     public Vector3 MoveSpeed
     {
         set { moveSpeed = value; }
