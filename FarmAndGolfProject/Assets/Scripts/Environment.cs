@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class Environment
 {
-    protected float windPower;  //环境风力
-    protected Vector3 windPowerDirection;  //环境风向
+    [SerializeField] protected float windPower;  //环境风力
+    [SerializeField] protected Vector3 windPowerDirection;  //环境风向
+    [SerializeField] protected float windSpAngle;  //风向标旋转角度
     private Sprite windSp;  //风向标图标
-    protected float windSpAngle;  //风向标旋转角度
-
+    
     public float WindPower  //环境风力
     { get { return windPower; } }
     public Vector3 WindPowerDirection  //环境风向

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class Floor
 {
-    protected string groundType;  //地皮的类型，如草地，雪地
-    protected float groundFrictionFactor;  //不同地皮摩擦力因数不同
-    protected float groundBounceFactor;  //不同地皮弹力影响因子不同
+    [SerializeField] protected string groundType;  //地皮的类型，如草地，雪地
+    [SerializeField] protected float groundFrictionFactor;  //不同地皮摩擦力因数不同
+    [SerializeField] protected float groundBounceFactor;  //不同地皮弹力影响因子不同
     private Sprite groundSp;  //地皮贴图
     protected Collider cd;  //碰撞器
 
