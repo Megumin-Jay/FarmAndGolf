@@ -6,21 +6,32 @@ using UnityEngine.UI;
 public class UISetting : MonoBehaviour
 {
     //单例模式
-    private static UISetting _instance = new UISetting();
+    private static UISetting _instance;
     public static UISetting Instance
-    { get { return _instance; } }
+    { get
+        {
+            if(_instance==null)
+            {
+                GameObject uiSetting = new GameObject("UISetting");
+                _instance = uiSetting.AddComponent<UISetting>();
+                DontDestroyOnLoad(uiSetting);
+            }
+            return _instance;
+        }
+    }
+    //让它在场景切换的时候不被摧毁
     //按键设置
     public Dictionary<string, KeyCode> btn_code = new Dictionary<string, KeyCode>();
     //屏幕分辨率
     private bool isFullScreen = false;
     //音量设置方面
-    private float mainMusicValue = 1.0f;  //主音量的值
-    private float bgMusicValue = 1.0f;    //背景音量的值
-    private float effectMusicValue = 1.0f; //音效音量的值
+    [SerializeField] private float mainMusicValue = 1.0f;  //主音量的值
+    [SerializeField] private float bgMusicValue = 1.0f;    //背景音量的值
+    [SerializeField] private float effectMusicValue = 1.0f; //音效音量的值
     public float MainMusicValue
     { set { mainMusicValue = value;} get { return mainMusicValue; } }
     public float BgMusicValue
-    { set { bgMusicValue = value;} get { return bgMusicValue; } }
+    { set { bgMusicValue = value; } get { return bgMusicValue; } }
     public float EffectMusicValue
     { set { effectMusicValue = value;} get { return effectMusicValue; } }
     //屏幕分辨率设置
