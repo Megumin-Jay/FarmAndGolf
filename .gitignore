@@ -89,3 +89,12 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.xml
+*.xml
+*.iml
+*.xml
+*.xml
+*.json
+*.xml
+*.meta
+*.asset
