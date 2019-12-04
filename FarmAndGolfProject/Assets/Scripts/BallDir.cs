@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,24 @@ public class BallDir : MonoBehaviour
     #region private
     /*射线检测*/
     //private RaycastHit _hit;
+    /*鼠标所点击的点 即击球终点*/
     private Vector3 pos;
+    /*起点终点方向虚线uv的移动速度*/
+    private float speed; 
+    /*击球次数*/
+    private int hitTimes;
+    /*是否击球*/
+    private bool isHit;
+    /*真球*/
+    private GameObject ball;
+    /*摄像机*/
+    private GameObject camera;
+    /*摄像机初始位置*/
+    private Vector3 cameraFirstPos;
+    /*是否复位*/
+    private bool isReset;
+    /*复位速度*/
+    private float resetSpeed;
     #endregion
     
     #region public
@@ -17,21 +35,69 @@ public class BallDir : MonoBehaviour
         get => pos;
         set => pos = value;
     }
+    /*击球次数*/
+    public int HitTimes
+    {
+        get => hitTimes;
+        set => hitTimes = value;
+    }
+
+    public bool IsHit
+    {
+        get => isHit;
+        set => isHit = value;
+    }
+
     /*画线组件*/
     public LineRenderer lineRenderer;
     /*起点终点方向虚线所用的材质*/
     public Material material;
     /*要实例化的球*/
     public GameObject ballObj;
-    /*起点终点方向虚线uv的移动速度*/
-    public float speed;
+
+    //public delegate void myDelegate(int _hitTimes, Vector3 pos);
+
+    //public myDelegate publisher; 
     #endregion
     
+    public static BallDir Instance
+    {
+        private set;
+        get;
+    }
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    void OnDestroy()
+    {
+        if (Instance != null)
+        {
+            Instance = null;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-//        if(lineRenderer != null)
-//            material = lineRenderer.gameObject    
+        //初始化起点终点方向虚线uv的移动速度
+        speed = 0.05f;
+
+        //初始化击打次数
+        hitTimes = 0;
+        
+        //初始化击打状态
+        isHit = false;
+
+        //记录相机初始位置
+        camera = GameObject.FindWithTag("MainCamera");
+        cameraFirstPos = camera.transform.position;
+
+        isReset = false;
+
+        resetSpeed = 3;
     }
 
     // Update is called once per frame
@@ -40,8 +106,8 @@ public class BallDir : MonoBehaviour
         float offset = Time.time * speed;
         material.mainTextureOffset = new Vector2(offset, 0);
         
-        //点击
-        if (Input.GetMouseButtonDown(0))
+        //选终点
+        if(Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit _hit;
@@ -49,17 +115,50 @@ public class BallDir : MonoBehaviour
             if (isHit)
             {
                 pos = _hit.point;
-                Debug.Log(pos);
+                //Debug.Log(pos);
+                //选终点时启用虚线
                 lineRenderer.enabled = true;
-                //GameObject bal    l = Instantiate(ballObj, new Vector3(0, 0, -1.15f), Quaternion.identity);
-                lineRenderer.SetPosition(0, new Vector3(0, 0 , -1.15f));
+                
+                //绘制起点终点方向虚线
+                if(ball)
+                    lineRenderer.SetPosition(0, new Vector3(ball.transform.position.x, ball.transform.position.y, -1.15f));
+                else 
+                    lineRenderer.SetPosition(0, new Vector3(0, 1, -1.15f));
                 lineRenderer.SetPosition(1, new Vector3(pos.x, pos.y,-1.15f));
             }
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        //打球
+        if(Input.GetKeyDown(KeyCode.Z))
         {
+            isReset = false;
+            //击球次数加1
+            hitTimes++;
+            //将球打出后关闭虚线
             lineRenderer.enabled = false;
-            GameObject ball = Instantiate(ballObj, new Vector3(0, 0, -1.15f), Quaternion.identity);
+            //实例化球
+            if (hitTimes <= 1)
+            {
+                ball = Instantiate(ballObj, new Vector3(0, 0, -1.15f), Quaternion.identity);
+            }
+            else
+            {
+                isHit = true;
+            }
+            //Debug.Log(publisher);
+            //publisher(hitTimes, pos);
+        }
+        //复位
+        if (Input.GetKey(KeyCode.R))
+        {
+            //击球次数归零
+            hitTimes = 0;
+            
+            isReset = true;
+        }
+
+        if (isReset)
+        {
+            camera.transform.position = Vector3.Lerp(camera.transform.position, cameraFirstPos, resetSpeed * Time.deltaTime); 
         }
     }
 }

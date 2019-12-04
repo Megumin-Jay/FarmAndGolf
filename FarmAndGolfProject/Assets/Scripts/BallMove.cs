@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//由于3d高尔夫的抛物线在2d下，看到的轨迹并不符合常理，所以在2d平面根据映射关系绘制一条假抛物线，用一个假球沿着假抛物线轨迹运动
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +36,7 @@ public class BallMove : MonoBehaviour
     /*弧度*/
     public float radius;
     public Rigidbody rb;
-    /*球停止运动*/
+    /*球高度方向停止运动*/
     public bool canStop = false;
     /*球升力系数*/
     public float liftForceRatio = 0.1f;
@@ -46,12 +48,27 @@ public class BallMove : MonoBehaviour
     public float movespeedX;
     public float movespeedY;
     public float movespeedZ;
+    /*模拟抛物线上的假球*/
+    public GameObject fakeBallObj;
+    private GameObject fakeBall;
+    /*球最大的时候的大小*/
+    public float MaxScale;
+    /*球最小的时候的大小*/
+    public float MinScale;
+    /*假球的摧毁时间*/
+    public float fakeBallRuinTime;
+    /*真球的摧毁时间*/
+    public float ballRuinTime;
+    /*假球的透明化速度 用透明代表进洞*/
+    public float fakeBallBleachSpeed;
 
     /// BallArm
     /*击打的方向和力*/
     public Vector3 hitDirection;
     /*击打的力*/
     //public float hitForce;
+    /*击球次数*/
+    public int hitTimes;
     
     /// Environment
     /*地面弹力*/
@@ -67,8 +84,16 @@ public class BallMove : MonoBehaviour
     public Vector3 airForceDirection;
     /*风力(跟球有关)*/
     public Vector3 windDirection;
-    
-    
+    /*地面高度*/
+    public float groundHeight;
+
+    /// camera
+    private GameObject _camera;
+    /*相机与球的偏移*/
+    private Vector3 offset;
+    /*相机移动速度*/
+    private float cameraSpeed;
+
     /// 画线相关
     /*画线组件*/
     private LineRenderer lineRenderer;
@@ -76,26 +101,46 @@ public class BallMove : MonoBehaviour
     private int index;
     //点的数目
     private int dotCount;
+
+    private BallDir _ballDir;
 //    //修正后的轨迹的点的位置
 //    private Vector3 dotPos;
     
     // Start is called before the first frame update
     void Start()
     {
-        hitDirection = (GameObject.FindWithTag("GameController").GetComponent<BallDir>().Pos - transform.position);
-        moveSpeed.x = hitDirection.x / movespeedX;
-        moveSpeed.y = hitDirection.y / movespeedY;
-        moveSpeed.z = movespeedZ;
+        //_ballDir = GameObject.FindWithTag("GameController").GetComponent<BallDir>();
+//        //注册
+//        BallDir.Instance.publisher += HitBall;
+
+        HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos);
+
+        //初始速度
+        cameraSpeed = 3;
         
+        //击球次数
+        hitTimes = BallDir.Instance.HitTimes;
+
         canStop = false;
+        
+        //一些组件
         lineRenderer = GameObject.FindWithTag("GameController").GetComponent<LineRenderer>();
+        //初始 假抛物线绘画组件启用
+        lineRenderer.enabled = true;
         rb = this.GetComponent<Rigidbody>();
+        _camera = GameObject.FindWithTag("MainCamera").gameObject;
+        
+        //计算相机与球的初始偏移
+        offset = transform.position - _camera.transform.position;
+        
+        //为了绘制假抛物线绘制的点个数清零
         dotCount = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Debug.Log(_camera);
         //阻力
         airForceDirection = 0.5f * AirDensity * shapeParameter * crossArea * moveSpeed.magnitude * (-moveSpeed);
         
@@ -107,8 +152,12 @@ public class BallMove : MonoBehaviour
         //风力
         windDirection = ballMass * windRatio * windDirection.normalized;
         
+        //当球无法在弹跳 只能在地上摩擦时
         if (canStop)
         {
+            //关闭假抛物线绘画组件
+            //lineRenderer.enabled = false;
+                
             //速度
             moveSpeed.z = 0;
             //f/m=a
@@ -118,7 +167,18 @@ public class BallMove : MonoBehaviour
             moveSpeed.x = (Mathf.Abs(moveSpeed.x) <= speedThresholdX) ? 0 : moveSpeed.x - 
                                                                             moveSpeed.x / Mathf.Abs(moveSpeed.x) 
                                                                             * groundFrictionX / ballMass * Time.fixedDeltaTime;
-            
+            if (moveSpeed.x == 0 && moveSpeed.y == 0 && moveSpeed.z == 0)
+            {
+                //一次击球结束后 会将fakeball销毁 所以这里用来判断一次击球是否结束
+                if(fakeBall)
+                    CameraMove(transform.position - offset);
+                fakeBallBleach();
+                if (BallDir.Instance.IsHit)
+                {
+                    HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos);
+                    BallDir.Instance.IsHit = false;
+                }
+            }
         }
         if (!canStop)
         {
@@ -133,8 +193,16 @@ public class BallMove : MonoBehaviour
         ///绘制红色的轨迹
         //点数加一
         dotCount++;
-        Vector3 dotPos = new Vector3(transform.position.x + Mathf.Abs(transform.position.z - (-1.15f)), transform.position.y,-1.15f);
+        Vector3 dotPos = new Vector3(transform.position.x + Mathf.Abs(transform.position.z - (groundHeight)), transform.position.y,groundHeight);
         lineRenderer.SetVertexCount(dotCount);
+        //让假球沿着假抛物线的轨迹运动 大小根据真球离地面的高度进行模拟
+        if (fakeBall)
+        {
+            fakeBall.transform.position = dotPos;
+            fakeBall.transform.localScale = new Vector3(
+                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight)) * 5, MinScale, MaxScale),
+                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight)) * 5, MinScale, MaxScale), 1);
+        }
 
         while (index < dotCount)
         {
@@ -149,20 +217,51 @@ public class BallMove : MonoBehaviour
 //            transform.eulerAngles.y,angle);
 
     }
-
+    
+    /// <summary>
+    /// 打球
+    /// </summary>
+    /// <param name="_hitTimes">挥棒次数</param>
+    /// <param name="pos">球的终点</param>
+    void HitBall(int _hitTimes, Vector3 pos)
+    {
+        //Debug.Log(1);
+        //挥棒的力
+        hitDirection = (pos - transform.position);
+        
+        //初始速度
+        moveSpeed.x = hitDirection.x / movespeedX;
+        moveSpeed.y = hitDirection.y / movespeedY;
+        moveSpeed.z = movespeedZ;
+        
+        //假球
+        fakeBall = Instantiate(fakeBallObj, transform.position, Quaternion.identity);
+    }
+    
+    /// <summary>
+    /// 摄像机移动
+    /// </summary>
+    /// <param name="pos">移动的终点 根据球与摄像机的偏移来计算</param>
+    void CameraMove(Vector3 pos)
+    {
+        _camera.transform.position = Vector3.Lerp(_camera.transform.position, pos,
+            cameraSpeed * Time.deltaTime);
+    }
+    
+    //计算球的弹跳 摩擦
     void OnCollisionEnter(Collision col)
     {
         //非弹性碰撞
         if (col.collider.tag == "Ground")
         {
-            Debug.Log("碰撞");
+            //Debug.Log("碰撞");
             
             
             ContactPoint contactPoint = col.contacts[0];
             Vector3 newDir = Vector3.zero;
             Vector3 curDir = moveSpeed;
             newDir = Vector3.Reflect(curDir, contactPoint.normal);
-            Debug.Log(newDir + "newDir");
+            //Debug.Log(newDir + "newDir");
             //速度衰减
             moveSpeed = new Vector3(groundBounceX* newDir.x, groundBounceY * newDir.y, groundBounceZ * newDir.z);
             
@@ -181,6 +280,41 @@ public class BallMove : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider col)
+    {
+        //球进洞
+        if (col.gameObject.tag == "Hole")
+        {
+            //摧毁假球
+            //fakeBall.transform.Translate(Vector3.forward,Space.World);
+            Destroy(fakeBall,fakeBallRuinTime);
+            //摧毁真球
+            Destroy(gameObject,ballRuinTime);
+        }
+    }
+
+    void OnTriggerStay(Collider col)
+    {
+        //进洞动画
+        if (col.gameObject.tag == "Hole")
+        {
+            fakeBallBleach();
+        }
+    }
+
+    /// <summary>
+    /// 假球渐变消失
+    /// </summary>
+    void fakeBallBleach()
+    {
+        if (fakeBall)
+        {
+            fakeBall.GetComponent<SpriteRenderer>().color = new Color(fakeBall.GetComponent<SpriteRenderer>().color.r,
+                fakeBall.GetComponent<SpriteRenderer>().color.g, fakeBall.GetComponent<SpriteRenderer>().color.b,
+                fakeBall.GetComponent<SpriteRenderer>().color.a - Time.deltaTime * fakeBallBleachSpeed);
+            Destroy(fakeBall, fakeBallRuinTime);
+        }
+    }
      
 //    /// <summary>
 //    /// 基础线绘制
