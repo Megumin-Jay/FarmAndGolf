@@ -8,7 +8,13 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="BallDir.cs" t="Include" />
           <e p="BallMove.cs" t="Include" />
+          <e p="Environment.cs" t="Include" />
+          <e p="Floor.cs" t="Include" />
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="LineMove.shader" t="Include" />
         </e>
       </e>
       <e p="FarmAndGolfProject.sln" t="IncludeFlat" />
