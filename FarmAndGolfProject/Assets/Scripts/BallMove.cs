@@ -19,7 +19,7 @@ public class BallMove : MonoBehaviour
     [SerializeField]
     private float crossArea = 1.0f;
     /*Z方向速度归零的阈值*/
-    public float speedThresholdZ = 1.0f;
+    public float speedThresholdZ = 2.0f;
     /*y方向速度归零的阈值*/
     public float speedThresholdY = 0.2f;
     /*x方向速度归零的阈值*/
@@ -34,7 +34,7 @@ public class BallMove : MonoBehaviour
     /*球当前旋转角度*/
     public float angle;
     /*弧度*/
-    public float radius;
+    public float radian;
     public Rigidbody rb;
     /*球高度方向停止运动*/
     public bool canStop = false;
@@ -211,8 +211,8 @@ public class BallMove : MonoBehaviour
         }
 
         //角度
-//        radius = Mathf.Atan(moveSpeed.z / moveSpeed.y);
-//        angle = (180 / Mathf.PI * radius);
+//        radian = Mathf.Atan(moveSpeed.z / moveSpeed.y);
+//        angle = (180 / Mathf.PI * radian);
 //        transform.eulerAngles = new Vector3(transform.eulerAngles.x,
 //            transform.eulerAngles.y,angle);
 
@@ -225,6 +225,7 @@ public class BallMove : MonoBehaviour
     /// <param name="pos">球的终点</param>
     void HitBall(int _hitTimes, Vector3 pos)
     {
+        canStop = false;
         //Debug.Log(1);
         //挥棒的力
         hitDirection = (pos - transform.position);
@@ -233,7 +234,7 @@ public class BallMove : MonoBehaviour
         moveSpeed.x = hitDirection.x / movespeedX;
         moveSpeed.y = hitDirection.y / movespeedY;
         moveSpeed.z = movespeedZ;
-        
+
         //假球
         fakeBall = Instantiate(fakeBallObj, transform.position, Quaternion.identity);
     }
@@ -273,7 +274,7 @@ public class BallMove : MonoBehaviour
             windRatio = 0;
 
             //竖直方向速度归零
-            if (moveSpeed.z < speedThresholdZ)
+            if (Mathf.Abs(moveSpeed.z) < speedThresholdZ)
             {
                 canStop = true;
             }

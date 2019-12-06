@@ -1,4 +1,4 @@
-﻿Shader "Unlit/LineMove"
+﻿Shader "Unlit/NewUnlitShader"
 {
     Properties
     {

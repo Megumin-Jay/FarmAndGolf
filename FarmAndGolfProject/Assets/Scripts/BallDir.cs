@@ -115,7 +115,7 @@ public class BallDir : MonoBehaviour
             if (isHit)
             {
                 pos = _hit.point;
-                //Debug.Log(pos);
+                Debug.Log(pos);
                 //选终点时启用虚线
                 lineRenderer.enabled = true;
                 
