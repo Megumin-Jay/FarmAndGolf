@@ -16,14 +16,16 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/TestForGolf/Assets/Scripts/Bullet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallDir.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SliderController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Shaders/GolfClubsIcon.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
       </list>
     </option>
   </component>
@@ -66,7 +68,8 @@
       <workItem from="1575368900525" duration="6234000" />
       <workItem from="1575443485724" duration="15812000" />
       <workItem from="1575613424747" duration="13322000" />
-      <workItem from="1575637995296" duration="4900000" />
+      <workItem from="1575637995296" duration="5416000" />
+      <workItem from="1575707735719" duration="4955000" />
     </task>
     <servers />
   </component>

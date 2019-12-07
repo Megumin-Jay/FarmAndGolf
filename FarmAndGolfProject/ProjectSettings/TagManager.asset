@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Hole
   - GolfClubs
+  - Slider
   layers:
   - Default
   - TransparentFX

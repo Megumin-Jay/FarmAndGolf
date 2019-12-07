@@ -19,7 +19,7 @@ public class BallMove : MonoBehaviour
     [SerializeField]
     private float crossArea = 1.0f;
     /*Z方向速度归零的阈值*/
-    public float speedThresholdZ = 2.0f;
+    public float speedThresholdZ = 3.0f;
     /*y方向速度归零的阈值*/
     public float speedThresholdY = 0.2f;
     /*x方向速度归零的阈值*/
@@ -151,13 +151,15 @@ public class BallMove : MonoBehaviour
         
         //风力
         windDirection = ballMass * windRatio * windDirection.normalized;
+
+        if (transform.position.z >= -1)
+        {
+            canStop = true;
+        }
         
         //当球无法在弹跳 只能在地上摩擦时
         if (canStop)
         {
-            //关闭假抛物线绘画组件
-            //lineRenderer.enabled = false;
-                
             //速度
             moveSpeed.z = 0;
             //f/m=a
