@@ -231,6 +231,8 @@ public class BallMove : MonoBehaviour
         //Debug.Log(1);
         //挥棒的力
         hitDirection = (pos - transform.position);
+        //pos.x = hitDirection.magnitude * Mathf.Cos()
+        
         
         //初始速度
         moveSpeed.x = hitDirection.x / movespeedX;

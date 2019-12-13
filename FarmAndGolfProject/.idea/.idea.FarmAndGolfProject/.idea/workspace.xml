@@ -21,11 +21,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Shaders/GolfClubsIcon.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
       </list>
     </option>
   </component>
@@ -70,6 +70,7 @@
       <workItem from="1575613424747" duration="13322000" />
       <workItem from="1575637995296" duration="5416000" />
       <workItem from="1575707735719" duration="4955000" />
+      <workItem from="1576137820989" duration="6215000" />
     </task>
     <servers />
   </component>
@@ -113,8 +114,11 @@
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="681" y="259" key="run.anything.popup" />
+    <state x="681" y="259" key="run.anything.popup/2560.1440" />
     <state x="623" y="225" width="672" height="680" key="search.everywhere.popup" />
     <state x="623" y="225" width="672" height="680" key="search.everywhere.popup/1920.1080" />
+    <state x="623" y="225" width="672" height="680" key="search.everywhere.popup/2560.1440" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
