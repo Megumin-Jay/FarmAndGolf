@@ -12,7 +12,7 @@ public class UISetting : MonoBehaviour
         {
             if(_instance==null)
             {
-                GameObject uiSetting = new GameObject("UISetting");
+                GameObject uiSetting = new GameObject("UISettingScript");
                 _instance = uiSetting.AddComponent<UISetting>();
                 DontDestroyOnLoad(uiSetting);
             }
@@ -23,7 +23,7 @@ public class UISetting : MonoBehaviour
     //按键设置
     public Dictionary<string, KeyCode> btn_code = new Dictionary<string, KeyCode>();
     //屏幕分辨率
-    private bool isFullScreen = false;
+    [SerializeField] private bool isFullScreen = false;
     //音量设置方面
     [SerializeField] private float mainMusicValue = 1.0f;  //主音量的值
     [SerializeField] private float bgMusicValue = 1.0f;    //背景音量的值
@@ -36,7 +36,7 @@ public class UISetting : MonoBehaviour
     { set { effectMusicValue = value;} get { return effectMusicValue; } }
     //屏幕分辨率设置
     public bool IsFullScreen
-    { set { isFullScreen = value; SetScreen(isFullScreen); }get { return isFullScreen; } }
+    { set { isFullScreen = value; SetScreen(value); }get { return isFullScreen; } }
     private void SetScreen(bool value)  //如果不是全屏，则是1920×1080的分辨率
     {
         if (value)

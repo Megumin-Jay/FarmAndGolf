@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//写到另外一个脚本上了，这个弃用
 public class MusicSetting : MonoBehaviour
 {
     public Slider mainMusic_Slider;
@@ -11,13 +11,6 @@ public class MusicSetting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //不加这些if语句，unity会报错：调用了一个空的引用。也不知道为什么。。。
-        if (mainMusic_Slider == null)
-            mainMusic_Slider = GameObject.Find("MainMusic").GetComponent<Slider>();
-        if (bgMusic_Slider == null)
-            bgMusic_Slider = GameObject.Find("BgMusic").GetComponent<Slider>();
-        if (effectMusic_Slider == null)
-            effectMusic_Slider = GameObject.Find("EffectMusic").GetComponent<Slider>();
         mainMusic_Slider.value = UISetting.Instance.MainMusicValue;
         bgMusic_Slider.value = UISetting.Instance.BgMusicValue;
         effectMusic_Slider.value = UISetting.Instance.EffectMusicValue;
