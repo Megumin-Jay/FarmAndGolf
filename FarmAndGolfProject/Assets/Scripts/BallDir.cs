@@ -28,6 +28,8 @@ public class BallDir : MonoBehaviour
     private float resetSpeed;
     /*初始击球方向(鼠标选择)*/
     private Vector3 hitDirection;
+    /*是否选择终点*/
+    private bool isCheck;
     #endregion
     
     #region public
@@ -93,6 +95,8 @@ public class BallDir : MonoBehaviour
         //初始化击打状态
         isHit = false;
 
+        isCheck = false;
+
         //记录相机初始位置
         camera = GameObject.FindWithTag("MainCamera");
         cameraFirstPos = camera.transform.position;
@@ -111,7 +115,7 @@ public class BallDir : MonoBehaviour
 
         //获取水平输入
         float horizontal = Input.GetAxis("Horizontal");
-        Debug.Log(horizontal);
+        //Debug.Log(horizontal);
         
         //选终点
         if(Input.GetMouseButtonDown(0))
@@ -125,38 +129,92 @@ public class BallDir : MonoBehaviour
                 //Debug.Log(pos);
                 //选终点时启用虚线
                 lineRenderer.enabled = true;
+
+                isCheck = true;
             }
         }
+
         //选方向
         if (horizontal != 0)
         {
-            if (ball)
+            if (ball && isCheck)
             {
                 hitDirection = pos - ball.transform.position;
+                isCheck = false;
             }
-            else
+            else if(!ball && isCheck)
             {
                 hitDirection = pos - new Vector3(0, 1, -1.15f);
+                isCheck = false;
+            }
+            
+            Vector3 direction = new Vector3(hitDirection.x, hitDirection.y, 0);
+
+            //第一次选方向
+            if (!ball)
+            {
+                pos.x = direction.magnitude *
+                        Mathf.Cos(Mathf.Acos(Mathf.Clamp((pos.x) / direction.magnitude, -1,
+                                      1)) -
+                                  horizontal * Time.deltaTime);
+                if (pos.x <= -10)
+                {
+                    pos.y = direction.magnitude *
+                            Mathf.Sin(Mathf.PI - Mathf.Asin(Mathf.Clamp((pos.y) / direction.magnitude, -1, 1)) - 
+                                      horizontal * Time.deltaTime);
+                }
+                else if (pos.x > 10)
+                {
+                    pos.y = direction.magnitude *
+                            Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y) / direction.magnitude, -1, 1)) -
+                                      horizontal * Time.deltaTime);
+                }
+            }
+            //第一次以后
+            if (ball)
+            {
+                pos.x = ball.transform.position.x + direction.magnitude *
+                        Mathf.Cos(Mathf.Acos(Mathf.Clamp((pos.x - ball.transform.position.x) / direction.magnitude, -1,
+                                      1)) -
+                                  horizontal * Time.deltaTime);
+                if (pos.x <= ball.transform.position.x)
+                {
+                    pos.y = ball.transform.position.y + direction.magnitude *
+                            Mathf.Sin(Mathf.PI - Mathf.Asin(Mathf.Clamp((pos.y - ball.transform.position.y) / direction.magnitude, -1, 1)) - 
+                                      horizontal * Time.deltaTime);
+                }
+                else
+                {
+                    pos.y = ball.transform.position.y + direction.magnitude *
+                            Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y - ball.transform.position.y) / direction.magnitude, -1, 1)) -
+                                      horizontal * Time.deltaTime);
+                }
             }
 
-//            if (Mathf.Acos(pos.x / hitDirection.magnitude) == Mathf.Asin(pos.y / hitDirection.magnitude))
+//            //Debug.Log(pos.x - ball.transform.position.x / direction.magnitude);
+//            if (!ball && (pos.x <= -10))
 //            {
-                Debug.Log("x" +
-                          (Mathf.Acos(Mathf.Clamp(pos.x / hitDirection.magnitude, -1, 1)) - horizontal * Time.deltaTime));
-                Debug.Log("y" +
-                          (Mathf.Asin(Mathf.Clamp(pos.y / hitDirection.magnitude, -1, 1)) - horizontal * Time.deltaTime));
-                pos.x = hitDirection.magnitude *
-                        Mathf.Cos(Mathf.Acos(Mathf.Clamp(pos.x / hitDirection.magnitude, -1, 1)) - horizontal * Time.deltaTime);
-                if (pos.x <= 0)
-                {
-                    pos.y = hitDirection.magnitude *
-                            Mathf.Sin(Mathf.PI - Mathf.Asin(Mathf.Clamp(pos.y / hitDirection.magnitude, -1, 1)) - horizontal * Time.deltaTime);
-                }
-                else if (pos.x > 0)
-                {
-                    pos.y = hitDirection.magnitude *
-                            Mathf.Sin(Mathf.Asin(Mathf.Clamp(pos.y / hitDirection.magnitude, -1, 1)) - horizontal * Time.deltaTime); 
-                }
+//                pos.y = direction.magnitude *
+//                        Mathf.Sin(Mathf.PI - Mathf.Asin(Mathf.Clamp((pos.y) / direction.magnitude, -1, 1)) - 
+//                                  horizontal * Time.deltaTime);
+//            }
+//            else if (!ball && (pos.x > 10))
+//            {
+//                pos.y = direction.magnitude *
+//                        Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y) / direction.magnitude, -1, 1)) -
+//                                  horizontal * Time.deltaTime);
+//            }
+//            if (ball && (pos.x <= ball.transform.position.x))
+//            {
+//                pos.y = ball.transform.position.y + direction.magnitude *
+//                        Mathf.Sin(Mathf.PI - Mathf.Asin(Mathf.Clamp((pos.y - ball.transform.position.y) / direction.magnitude, -1, 1)) - 
+//                                  horizontal * Time.deltaTime);
+//            }
+//            else if (ball && (pos.x > ball.transform.position.x))
+//            { 
+//                pos.y = ball.transform.position.y + direction.magnitude *
+//                        Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y - ball.transform.position.y) / direction.magnitude, -1, 1)) -
+//                                  horizontal * Time.deltaTime);
 //            }
         }
         

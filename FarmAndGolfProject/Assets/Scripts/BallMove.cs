@@ -61,6 +61,8 @@ public class BallMove : MonoBehaviour
     public float ballRuinTime;
     /*假球的透明化速度 用透明代表进洞*/
     public float fakeBallBleachSpeed;
+    /*是否处于推杆区*/
+    public bool inArea;
 
     /// BallArm
     /*击打的方向和力*/
@@ -113,7 +115,7 @@ public class BallMove : MonoBehaviour
 //        //注册
 //        BallDir.Instance.publisher += HitBall;
 
-        HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos);
+        HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos, movespeedZ);
 
         //初始速度
         cameraSpeed = 3;
@@ -122,6 +124,9 @@ public class BallMove : MonoBehaviour
         hitTimes = BallDir.Instance.HitTimes;
 
         canStop = false;
+
+        //初始不位于推杆区
+        inArea = false;
         
         //一些组件
         lineRenderer = GameObject.FindWithTag("GameController").GetComponent<LineRenderer>();
@@ -177,7 +182,10 @@ public class BallMove : MonoBehaviour
                 fakeBallBleach();
                 if (BallDir.Instance.IsHit)
                 {
-                    HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos);
+                    if(!inArea)
+                        HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos, movespeedZ);
+                    if(inArea)
+                        HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos, 0);
                     BallDir.Instance.IsHit = false;
                 }
             }
@@ -225,7 +233,7 @@ public class BallMove : MonoBehaviour
     /// </summary>
     /// <param name="_hitTimes">挥棒次数</param>
     /// <param name="pos">球的终点</param>
-    void HitBall(int _hitTimes, Vector3 pos)
+    void HitBall(int _hitTimes, Vector3 pos, float speedZ)
     {
         canStop = false;
         //Debug.Log(1);
@@ -237,7 +245,7 @@ public class BallMove : MonoBehaviour
         //初始速度
         moveSpeed.x = hitDirection.x / movespeedX;
         moveSpeed.y = hitDirection.y / movespeedY;
-        moveSpeed.z = movespeedZ;
+        moveSpeed.z = speedZ;
 
         //假球
         fakeBall = Instantiate(fakeBallObj, transform.position, Quaternion.identity);
@@ -251,6 +259,8 @@ public class BallMove : MonoBehaviour
     {
         _camera.transform.position = Vector3.Lerp(_camera.transform.position, pos,
             cameraSpeed * Time.deltaTime);
+        _camera.transform.position = new Vector3(Mathf.Clamp(_camera.transform.position.x, 0, 535),
+            Mathf.Clamp(_camera.transform.position.y, 62, 146), -113);
     }
     
     //计算球的弹跳 摩擦
@@ -304,6 +314,20 @@ public class BallMove : MonoBehaviour
         if (col.gameObject.tag == "Hole")
         {
             fakeBallBleach();
+        }
+        //暂定推杆区
+        if (col.gameObject.tag == "Area1")
+        {
+            inArea = true;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        //暂定推杆区
+        if (col.gameObject.tag == "Area1")
+        {
+            inArea = false;
         }
     }
 
