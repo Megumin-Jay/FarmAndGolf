@@ -13,19 +13,27 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/TestForGolf/Assets/Scripts/Bullet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallDir.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SliderController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Shaders/GolfClubsIcon.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChangeState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
       </list>
     </option>
   </component>
@@ -40,6 +48,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -76,6 +85,12 @@
       <workItem from="1576844717570" duration="5885000" />
       <workItem from="1576866403143" duration="281000" />
       <workItem from="1576908834178" duration="2072000" />
+      <workItem from="1576994546716" duration="3534000" />
+      <workItem from="1579080671469" duration="12470000" />
+      <workItem from="1579176244924" duration="3365000" />
+      <workItem from="1579401614825" duration="9374000" />
+      <workItem from="1580575656006" duration="9153000" />
+      <workItem from="1580591395820" duration="6034000" />
     </task>
     <servers />
   </component>
@@ -120,6 +135,7 @@
   </component>
   <component name="WindowStateProjectService">
     <state x="681" y="259" key="run.anything.popup" />
+    <state x="681" y="259" key="run.anything.popup/1920.1080" />
     <state x="681" y="259" key="run.anything.popup/2560.1440" />
     <state x="623" y="225" width="672" height="680" key="search.everywhere.popup" />
     <state x="623" y="225" width="672" height="680" key="search.everywhere.popup/1920.1080" />

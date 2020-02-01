@@ -9,6 +9,7 @@ TagManager:
   - GolfClubs
   - Slider
   - Area1
+  - Area2
   layers:
   - Default
   - TransparentFX

@@ -103,8 +103,9 @@ public class CircleScoreSelector : MonoBehaviour
 
     void UpdateNewState(int index)
     {
-        Debug.Log(index);
+        //Debug.Log(index);
         Color color = golfClubsList[index].gameObject.GetComponent<Image>().color;
+        BallStatus._Instance.ballName = golfClubsList[index].gameObject.GetComponentInChildren<Text>().text;
         if (index >= 1)
         {
             Color color0 = golfClubsList[index - 1].gameObject.GetComponent<Image>().color;

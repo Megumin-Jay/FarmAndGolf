@@ -18,10 +18,6 @@ public class BallDir : MonoBehaviour
     private bool isHit;
     /*真球*/
     private GameObject ball;
-    /*摄像机*/
-    private GameObject camera;
-    /*摄像机初始位置*/
-    private Vector3 cameraFirstPos;
     /*是否复位*/
     private bool isReset;
     /*复位速度*/
@@ -30,6 +26,25 @@ public class BallDir : MonoBehaviour
     private Vector3 hitDirection;
     /*是否选择终点*/
     private bool isCheck;
+    
+    /*人和球的向量*/
+    private Vector3 playerBalloffset;
+    /*球的初始位置*/
+    private Vector3 ballInitialPos;
+    
+    /// /*摄像机*/
+    private GameObject camera;
+    /*摄像机初始位置*/
+    private Vector3 cameraFirstPos;
+    /*相机与球的偏移*/
+    private Vector3 offset;
+    /*相机移动速度*/
+    private float cameraSpeed;
+
+    /// /*主人公*/
+    private GameObject player;
+
+    private Animator _animator;
     #endregion
     
     #region public
@@ -96,10 +111,20 @@ public class BallDir : MonoBehaviour
         isHit = false;
 
         isCheck = false;
-
+        
+        //主角相关
+        player = GameObject.FindWithTag("Player");
+        _animator = player.GetComponent<Animator>();
+        playerBalloffset = new Vector3(- 1.73f, 5.27f);
+        ballInitialPos = new Vector3(-50.0f, 57.0f, -1.15f);
+        
         //记录相机初始位置
         camera = GameObject.FindWithTag("MainCamera");
         cameraFirstPos = camera.transform.position;
+        //初始速度
+        cameraSpeed = 3;
+        //计算相机与球的初始偏移
+        offset = transform.position - camera.transform.position;
 
         isReset = false;
 
@@ -129,9 +154,10 @@ public class BallDir : MonoBehaviour
                 //Debug.Log(pos);
                 //选终点时启用虚线
                 lineRenderer.enabled = true;
-
+                
                 isCheck = true;
             }
+            CameraMove(pos);
         }
 
         //选方向
@@ -140,11 +166,13 @@ public class BallDir : MonoBehaviour
             if (ball && isCheck)
             {
                 hitDirection = pos - ball.transform.position;
+                player.transform.position = new Vector3(ball.transform.position.x + playerBalloffset.x,
+                    ball.transform.position.y + playerBalloffset.y, -2);
                 isCheck = false;
             }
             else if(!ball && isCheck)
             {
-                hitDirection = pos - new Vector3(0, 1, -1.15f);
+                hitDirection = pos - ballInitialPos;
                 isCheck = false;
             }
             
@@ -153,37 +181,62 @@ public class BallDir : MonoBehaviour
             //第一次选方向
             if (!ball)
             {
-                pos.x = direction.magnitude *
-                        Mathf.Cos(Mathf.Acos(Mathf.Clamp((pos.x) / direction.magnitude, -1,
-                                      1)) -
-                                  horizontal * Time.deltaTime);
-                if (pos.x <= -10)
+                if (pos.y > ballInitialPos.y)
                 {
-                    pos.y = direction.magnitude *
-                            Mathf.Sin(Mathf.PI - Mathf.Asin(Mathf.Clamp((pos.y) / direction.magnitude, -1, 1)) - 
+                    pos.x = ballInitialPos.x + direction.magnitude *
+                            Mathf.Cos(Mathf.Acos(Mathf.Clamp((pos.x - ballInitialPos.x) / direction.magnitude, -1f,
+                                          1)) -
+                                      horizontal * Time.deltaTime);
+                } 
+                else if (pos.y <= ballInitialPos.y)
+                {
+                    pos.x = ballInitialPos.x + direction.magnitude *
+                            Mathf.Cos(Mathf.PI * 2 - Mathf.Acos(Mathf.Clamp((pos.x - ballInitialPos.x) / direction.magnitude, -1f,
+                                          1f)) -
+                                      horizontal * Time.deltaTime);
+                    //Debug.Log(1);
+                }
+                if (pos.x <= ballInitialPos.x)
+                {
+                    pos.y = ballInitialPos.y + direction.magnitude *
+                            Mathf.Sin(Mathf.PI - Mathf.Asin(Mathf.Clamp((pos.y - ballInitialPos.y) / direction.magnitude, -1,
+                                          1)) - 
                                       horizontal * Time.deltaTime);
                 }
-                else if (pos.x > 10)
+                else if (pos.x > ballInitialPos.x)
                 {
-                    pos.y = direction.magnitude *
-                            Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y) / direction.magnitude, -1, 1)) -
+                    pos.y = ballInitialPos.y + direction.magnitude *
+                            Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y - ballInitialPos.y) / direction.magnitude, -1,
+                                          1)) -
                                       horizontal * Time.deltaTime);
                 }
             }
             //第一次以后
             if (ball)
             {
-                pos.x = ball.transform.position.x + direction.magnitude *
-                        Mathf.Cos(Mathf.Acos(Mathf.Clamp((pos.x - ball.transform.position.x) / direction.magnitude, -1,
-                                      1)) -
-                                  horizontal * Time.deltaTime);
+                if (pos.y <= ball.transform.position.y)
+                {
+                    pos.x = ball.transform.position.x + direction.magnitude *
+                            Mathf.Cos(Mathf.PI * 2 - Mathf.Acos(Mathf.Clamp((pos.x - ball.transform.position.x) / direction.magnitude,
+                                          -1,
+                                          1)) -
+                                      horizontal * Time.deltaTime);
+                }
+                else if (pos.y > ball.transform.position.y)
+                {
+                    pos.x = ball.transform.position.x + direction.magnitude *
+                            Mathf.Cos(Mathf.Acos(Mathf.Clamp((pos.x - ball.transform.position.x) / direction.magnitude,
+                                          -1,
+                                          1)) -
+                                      horizontal * Time.deltaTime);
+                }
                 if (pos.x <= ball.transform.position.x)
                 {
                     pos.y = ball.transform.position.y + direction.magnitude *
                             Mathf.Sin(Mathf.PI - Mathf.Asin(Mathf.Clamp((pos.y - ball.transform.position.y) / direction.magnitude, -1, 1)) - 
                                       horizontal * Time.deltaTime);
                 }
-                else
+                else if (pos.x > ball.transform.position.x)
                 {
                     pos.y = ball.transform.position.y + direction.magnitude *
                             Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y - ball.transform.position.y) / direction.magnitude, -1, 1)) -
@@ -216,14 +269,15 @@ public class BallDir : MonoBehaviour
 //                        Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y - ball.transform.position.y) / direction.magnitude, -1, 1)) -
 //                                  horizontal * Time.deltaTime);
 //            }
+            CameraMove(pos);
         }
         
         //绘制起点终点方向虚线
         if(ball)
-            lineRenderer.SetPosition(0, new Vector3(ball.transform.position.x, ball.transform.position.y, -1.15f));
+            lineRenderer.SetPosition(0, new Vector3(ball.transform.position.x, ball.transform.position.y, ballInitialPos.z));
         else 
-            lineRenderer.SetPosition(0, new Vector3(0, 1, -1.15f));
-        lineRenderer.SetPosition(1, new Vector3(pos.x, pos.y,-1.15f));
+            lineRenderer.SetPosition(0, new Vector3(ballInitialPos.x, ballInitialPos.y, ballInitialPos.z));
+        lineRenderer.SetPosition(1, new Vector3(pos.x, pos.y,ballInitialPos.z));
         
         //打球
         if(Input.GetKeyDown(KeyCode.Z))
@@ -236,27 +290,48 @@ public class BallDir : MonoBehaviour
             //实例化球
             if (hitTimes <= 1)
             {
-                ball = Instantiate(ballObj, new Vector3(0, 0, -1.15f), Quaternion.identity);
+                ball = Instantiate(ballObj, new Vector3(ballInitialPos.x, ballInitialPos.y, ballInitialPos.z), Quaternion.identity);
+                //CameraMove(ball.transform.position);
             }
             else
             {
                 isHit = true;
             }
-            //Debug.Log(publisher);
-            //publisher(hitTimes, pos);
+            
+            //播动画
+            //_animator.Play("PlayerAction",0,0);
+            _animator.SetBool("IsHit",true);
         }
         //复位
         if (Input.GetKey(KeyCode.R))
         {
             //击球次数归零
-            hitTimes = 0;
+            //hitTimes = 0;
             
             isReset = true;
         }
 
         if (isReset)
         {
-            camera.transform.position = Vector3.Lerp(camera.transform.position, cameraFirstPos, resetSpeed * Time.deltaTime); 
+            if(camera.transform.position.y <= 146 && camera.transform.position.y >= 62 && camera.transform.position.x >=0 &&
+               camera.transform.position.x <= 535)
+                if(!ball)
+                    camera.transform.position = Vector3.Lerp(camera.transform.position, cameraFirstPos, resetSpeed * Time.deltaTime); 
+                if(ball)
+                    camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(ball.transform.position.x, 
+                            ball.transform.position.y, camera.transform.position.z), resetSpeed * Time.deltaTime); 
         }
+    }
+    
+    /// <summary>
+    /// 摄像机移动
+    /// </summary>
+    /// <param name="pos">移动的终点 根据球与摄像机的偏移来计算</param>
+    void CameraMove(Vector3 pos)
+    {
+        camera.transform.position = Vector3.Lerp(camera.transform.position, pos,
+            cameraSpeed * Time.deltaTime);
+        camera.transform.position = new Vector3(Mathf.Clamp(camera.transform.position.x, 0, 535),
+            Mathf.Clamp(camera.transform.position.y, 62, 146), -113);
     }
 }

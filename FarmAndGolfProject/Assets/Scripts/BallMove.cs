@@ -61,8 +61,6 @@ public class BallMove : MonoBehaviour
     public float ballRuinTime;
     /*假球的透明化速度 用透明代表进洞*/
     public float fakeBallBleachSpeed;
-    /*是否处于推杆区*/
-    public bool inArea;
 
     /// BallArm
     /*击打的方向和力*/
@@ -88,6 +86,8 @@ public class BallMove : MonoBehaviour
     public Vector3 windDirection;
     /*地面高度*/
     public float groundHeight;
+    /*地面类型*/
+    //public FloorStatus _FloorStatus;
 
     /// camera
     private GameObject _camera;
@@ -125,19 +125,17 @@ public class BallMove : MonoBehaviour
 
         canStop = false;
 
-        //初始不位于推杆区
-        inArea = false;
-        
         //一些组件
         lineRenderer = GameObject.FindWithTag("GameController").GetComponent<LineRenderer>();
         //初始 假抛物线绘画组件启用
         lineRenderer.enabled = true;
         rb = this.GetComponent<Rigidbody>();
         _camera = GameObject.FindWithTag("MainCamera").gameObject;
-        
+        //_FloorStatus = GameObject.FindWithTag("GameController").GetComponent<FloorStatus>();
+
         //计算相机与球的初始偏移
         offset = transform.position - _camera.transform.position;
-        
+        //CameraMove(transform.position - offset);
         //为了绘制假抛物线绘制的点个数清零
         dotCount = 0;
     }
@@ -145,6 +143,9 @@ public class BallMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //_FloorStatus._floorStatu = FloorStatu.Area2;
+        //Debug.Log(FloorStatus._Instance._floorStatu);
+        //CameraMove(transform.position - offset);
         //Debug.Log(_camera);
         //阻力
         airForceDirection = 0.5f * AirDensity * shapeParameter * crossArea * moveSpeed.magnitude * (-moveSpeed);
@@ -177,15 +178,21 @@ public class BallMove : MonoBehaviour
             if (moveSpeed.x == 0 && moveSpeed.y == 0 && moveSpeed.z == 0)
             {
                 //一次击球结束后 会将fakeball销毁 所以这里用来判断一次击球是否结束
-                if(fakeBall)
-                    CameraMove(transform.position - offset);
+//                if(fakeBall)
+//                    CameraMove(transform.position - offset);
                 fakeBallBleach();
                 if (BallDir.Instance.IsHit)
                 {
-                    if(!inArea)
+                    if (FloorStatus._Instance._floorStatu != FloorStatu.Area1)
+                    {
                         HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos, movespeedZ);
-                    if(inArea)
+                    }
+
+                    if (FloorStatus._Instance._floorStatu == FloorStatu.Area1)
+                    {
                         HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos, 0);
+                    }
+
                     BallDir.Instance.IsHit = false;
                 }
             }
@@ -210,8 +217,8 @@ public class BallMove : MonoBehaviour
         {
             fakeBall.transform.position = dotPos;
             fakeBall.transform.localScale = new Vector3(
-                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight)) * 5, MinScale, MaxScale),
-                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight)) * 5, MinScale, MaxScale), 1);
+                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight)) , MinScale, MaxScale),
+                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight)) , MinScale, MaxScale), 1);
         }
 
         while (index < dotCount)
@@ -318,18 +325,19 @@ public class BallMove : MonoBehaviour
         //暂定推杆区
         if (col.gameObject.tag == "Area1")
         {
-            inArea = true;
+            Debug.Log(1);
+            FloorStatus._Instance._floorStatu = FloorStatu.Area1;
         }
-    }
+    }    
 
-    void OnTriggerExit(Collider col)
-    {
-        //暂定推杆区
-        if (col.gameObject.tag == "Area1")
-        {
-            inArea = false;
-        }
-    }
+//    void OnTriggerExit(Collider col)
+//    {
+//        //暂定推杆区
+//        if (col.gameObject.tag == "Area1")
+//        {
+//            inArea = false;
+//        }
+//    }
 
     /// <summary>
     /// 假球渐变消失
@@ -338,9 +346,9 @@ public class BallMove : MonoBehaviour
     {
         if (fakeBall)
         {
-            fakeBall.GetComponent<SpriteRenderer>().color = new Color(fakeBall.GetComponent<SpriteRenderer>().color.r,
-                fakeBall.GetComponent<SpriteRenderer>().color.g, fakeBall.GetComponent<SpriteRenderer>().color.b,
-                fakeBall.GetComponent<SpriteRenderer>().color.a - Time.deltaTime * fakeBallBleachSpeed);
+//            fakeBall.GetComponent<SpriteRenderer>().color = new Color(fakeBall.GetComponent<SpriteRenderer>().color.r,
+//                fakeBall.GetComponent<SpriteRenderer>().color.g, fakeBall.GetComponent<SpriteRenderer>().color.b,
+//                fakeBall.GetComponent<SpriteRenderer>().color.a - Time.deltaTime * fakeBallBleachSpeed);
             Destroy(fakeBall, fakeBallRuinTime);
         }
     }

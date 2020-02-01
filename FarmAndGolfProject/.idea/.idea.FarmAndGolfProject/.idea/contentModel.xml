@@ -10,12 +10,17 @@
         <e p="Scripts" t="Include">
           <e p="BallDir.cs" t="Include" />
           <e p="BallMove.cs" t="Include" />
+          <e p="BallStatus.cs" t="Include" />
+          <e p="ChangeState.cs" t="Include" />
           <e p="CircleScoreSelector.cs" t="Include" />
           <e p="Environment.cs" t="Include" />
           <e p="Floor.cs" t="Include" />
+          <e p="FloorStatus.cs" t="Include" />
+          <e p="PlayerCollision.cs" t="Include" />
           <e p="SliderController.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
+          <e p="New Amplify Shader.shader" t="Include" />
           <e p="NewUnlitShader.shader" t="Include" />
         </e>
       </e>
