@@ -51,15 +51,15 @@ public class FloorStatus : MonoBehaviour
         {
             case FloorStatu.Area1:
                 //_currentFloor = new 
-                Text.text = "当前所在区域：1";
+                Text.text = "当前所在区域：推杆区域";
                 break;
             case FloorStatu.Area2:
                 //_currentFloor = new 
-                Text.text = "当前所在区域：2";
+                Text.text = "当前所在区域：浅色区域";
                 break;
             case FloorStatu.Area3:
                 //_currentFloor = new 
-                Text.text = "当前所在区域：3";
+                Text.text = "当前所在区域：深色区域";
                 break;   
             case FloorStatu.Area4:
                 //_currentFloor = new 

@@ -40,8 +40,10 @@ public class CircleScoreSelector : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && KeyStatus._Instance._KeyStatu == KeyStatu.Initiate)
         {
+            //当前按键状态
+            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseBall;
             if (rotateTimes == 5)
                 rotateTimes = -1;
             canRotate = true;

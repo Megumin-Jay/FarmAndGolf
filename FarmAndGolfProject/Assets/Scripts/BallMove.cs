@@ -294,10 +294,13 @@ public class BallMove : MonoBehaviour
             //风力系数置零
             windRatio = 0;
 
+            //当前按键状态
+            KeyStatus._Instance._KeyStatu = KeyStatu.Initiate;
             //竖直方向速度归零
             if (Mathf.Abs(moveSpeed.z) < speedThresholdZ)
             {
                 canStop = true;
+                
             }
         }
     }

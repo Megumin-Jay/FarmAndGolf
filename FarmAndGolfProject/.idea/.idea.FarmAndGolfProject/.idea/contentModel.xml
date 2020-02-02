@@ -16,6 +16,7 @@
           <e p="Environment.cs" t="Include" />
           <e p="Floor.cs" t="Include" />
           <e p="FloorStatus.cs" t="Include" />
+          <e p="KeyStatus.cs" t="Include" />
           <e p="PlayerCollision.cs" t="Include" />
           <e p="SliderController.cs" t="Include" />
         </e>
