@@ -32,9 +32,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
       </list>
     </option>
@@ -94,6 +94,7 @@
       <workItem from="1580575656006" duration="9153000" />
       <workItem from="1580591395820" duration="6034000" />
       <workItem from="1580650649689" duration="10306000" />
+      <workItem from="1581092232230" duration="6845000" />
     </task>
     <servers />
   </component>

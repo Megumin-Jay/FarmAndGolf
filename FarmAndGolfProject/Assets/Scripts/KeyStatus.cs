@@ -32,10 +32,38 @@ public class KeyStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //返回上一个按键状态
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            switch (_KeyStatu)
+            {
+                case KeyStatu.Initiate:
+                    _KeyStatu = KeyStatu.Initiate;
+                    break;
+                case KeyStatu.ChooseClub:
+                    _KeyStatu = KeyStatu.Initiate;
+                    break;
+                case KeyStatu.ChooseDirOne:
+                    _KeyStatu = KeyStatu.ChooseClub;
+                    break;
+                case KeyStatu.ChooseDirTwo:
+                    _KeyStatu = KeyStatu.ChooseDirOne;
+                    break;
+                case KeyStatu.Reset:
+                    _KeyStatu = KeyStatu.ChooseDirTwo;
+                    break;
+                case KeyStatu.Shoot:
+                    _KeyStatu = KeyStatu.Reset;
+                    break;
+            }
+        }
         switch (_KeyStatu)
         {
             case KeyStatu.Initiate :
                 Text.text = "鼠标<color=red><I>左键</I></color>点击屏幕某处";
+                break;
+            case KeyStatu.ChooseClub:
+                Text.text = "请选择你的球杆";
                 break;
             case KeyStatu.ChooseDirOne:
                 Text.text = "通过<color=red><I>A，D</I></color>键\n选择球要击打的方向";
@@ -58,6 +86,7 @@ public enum KeyStatu
     ChooseBall,
     ChooseDirOne,
     ChooseDirTwo,
+    ChooseClub,
     Reset,
     Shoot,
     Initiate

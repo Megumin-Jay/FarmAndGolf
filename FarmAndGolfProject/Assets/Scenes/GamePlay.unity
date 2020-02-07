@@ -1339,7 +1339,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750298680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1380,8 +1380,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.003967285
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1523,7 +1523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32521aef1065fe48a9a7cef2fdb9bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _KeyStatu: 5
+  _KeyStatu: 6
   Text: {fileID: 32370202}
 --- !u!1 &752414427
 GameObject:
@@ -3699,7 +3699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &2001749742
 Animator:
   serializedVersion: 3

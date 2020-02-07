@@ -95,6 +95,12 @@ public class BallMove : MonoBehaviour
     private Vector3 offset;
     /*相机移动速度*/
     private float cameraSpeed;
+    
+    ///人物相关
+    /*人和球的向量*/
+    private Vector3 playerBalloffset;
+    /*主角*/
+    private GameObject player;
 
     /// 画线相关
     /*画线组件*/
@@ -124,6 +130,10 @@ public class BallMove : MonoBehaviour
         hitTimes = BallDir.Instance.HitTimes;
 
         canStop = false;
+        
+        //主角相关
+        player = GameObject.FindWithTag("Player");
+        playerBalloffset = new Vector3(- 1.73f, 5.27f);
 
         //一些组件
         lineRenderer = GameObject.FindWithTag("GameController").GetComponent<LineRenderer>();
@@ -180,6 +190,8 @@ public class BallMove : MonoBehaviour
                 //一次击球结束后 会将fakeball销毁 所以这里用来判断一次击球是否结束
 //                if(fakeBall)
 //                    CameraMove(transform.position - offset);
+                player.transform.position = new Vector3(this.transform.position.x + playerBalloffset.x,
+                    this.transform.position.y + playerBalloffset.y, -2);
                 fakeBallBleach();
                 if (BallDir.Instance.IsHit)
                 {

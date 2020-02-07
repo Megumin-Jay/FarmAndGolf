@@ -10,6 +10,8 @@ public class BallDir : MonoBehaviour
     //private RaycastHit _hit;
     /*鼠标所点击的点 即击球终点*/
     private Vector3 pos;
+    /*存储鼠标点击的点*/
+    private Vector3 invariantPos;
     /*起点终点方向虚线uv的移动速度*/
     private float speed; 
     /*击球次数*/
@@ -46,6 +48,9 @@ public class BallDir : MonoBehaviour
     /// /*主人公*/
     private GameObject player;
 
+    /// /*高尔夫杆*/
+    private float length;
+
     private Animator _animator;
     #endregion
     
@@ -75,6 +80,7 @@ public class BallDir : MonoBehaviour
     public Material material;
     /*要实例化的球*/
     public GameObject ballObj;
+    
 
     //public delegate void myDelegate(int _hitTimes, Vector3 pos);
 
@@ -120,6 +126,9 @@ public class BallDir : MonoBehaviour
         playerBalloffset = new Vector3(- 1.73f, 5.27f);
         ballInitialPos = new Vector3(-50.0f, 57.0f, -1.15f);
         
+        //高尔夫球杆
+        length = 100.0f;
+        
         //记录相机初始位置
         camera = GameObject.FindWithTag("MainCamera");
         cameraFirstPos = camera.transform.position;
@@ -155,7 +164,7 @@ public class BallDir : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && KeyStatus._Instance._KeyStatu == KeyStatu.Initiate)
         {
             //当前按键状态
-            KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirOne;
+            KeyStatus._Instance._KeyStatu = KeyStatu.ChooseClub;
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit _hit;
@@ -163,15 +172,60 @@ public class BallDir : MonoBehaviour
             if (isHit)
             {
                 pos = _hit.point;
+                invariantPos = pos;
                 //Debug.Log(pos);
                 //选终点时启用虚线
                 lineRenderer.enabled = true;
                 
                 isCheck = true;
 
+                //不复位
                 isReset = false;
+
+                //杆初始长度
+                length = 100.0f;
             }
+            
             CameraMove(pos);
+        }
+
+        //选杆
+        if (KeyStatus._Instance._KeyStatu == KeyStatu.ChooseClub)
+        {
+            if (ball && isCheck)
+            {
+                hitDirection = (invariantPos - ball.transform.position).normalized * length;
+                pos = ball.transform.position + hitDirection;
+//                player.transform.position = new Vector3(ball.transform.position.x + playerBalloffset.x,
+//                    ball.transform.position.y + playerBalloffset.y, -2);
+                isCheck = false;
+            }
+            else if(!ball && isCheck)
+            {
+                Debug.Log(1);
+                hitDirection = (invariantPos - ballInitialPos).normalized * length;
+                pos = ballInitialPos + hitDirection;
+                isCheck = false;
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            length = 70f;
+            isCheck = true;
+            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirOne;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            length = 20f;
+            isCheck = true;
+            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirOne;
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirOne;
         }
 
         //选方向
@@ -181,18 +235,20 @@ public class BallDir : MonoBehaviour
             KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirTwo;
             
             isReset = false;
-            if (ball && isCheck)
-            {
-                hitDirection = pos - ball.transform.position;
-                player.transform.position = new Vector3(ball.transform.position.x + playerBalloffset.x,
-                    ball.transform.position.y + playerBalloffset.y, -2);
-                isCheck = false;
-            }
-            else if(!ball && isCheck)
-            {
-                hitDirection = pos - ballInitialPos;
-                isCheck = false;
-            }
+//            if (ball && isCheck)
+//            {
+//                hitDirection = (pos - ball.transform.position) * length;
+//                pos = ball.transform.position + hitDirection;
+////                player.transform.position = new Vector3(ball.transform.position.x + playerBalloffset.x,
+////                    ball.transform.position.y + playerBalloffset.y, -2);
+//                isCheck = false;
+//            }
+//            else if(!ball && isCheck)
+//            {
+//                hitDirection = (pos - ballInitialPos) * length;
+//                pos = ballInitialPos + hitDirection;
+//                isCheck = false;
+//            }
             
             Vector3 direction = new Vector3(hitDirection.x, hitDirection.y, 0);
 
@@ -297,6 +353,12 @@ public class BallDir : MonoBehaviour
             //播动画
             //_animator.Play("PlayerAction",0,0);
             _animator.SetBool("IsHit",true);
+        }
+        //摄像机跟着球
+        if (KeyStatus._Instance._KeyStatu == KeyStatu.Shoot)
+        {
+            if(ball)
+                CameraMove(ball.transform.position);
         }
         //复位
         if (Input.GetKey(KeyCode.R) && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseDirTwo)
