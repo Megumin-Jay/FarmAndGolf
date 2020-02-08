@@ -27,7 +27,7 @@ public class BallDir : MonoBehaviour
     /*初始击球方向(鼠标选择)*/
     private Vector3 hitDirection;
     /*是否选择终点*/
-    private bool isCheck;
+    public bool isCheck;
     /*键盘响应*/
     private float horizontal;
     
@@ -49,7 +49,7 @@ public class BallDir : MonoBehaviour
     private GameObject player;
 
     /// /*高尔夫杆*/
-    private float length;
+    public float length;
 
     private Animator _animator;
     #endregion
@@ -209,19 +209,19 @@ public class BallDir : MonoBehaviour
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            length = 70f;
-            isCheck = true;
-            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirOne;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            length = 20f;
-            isCheck = true;
-            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirOne;
-        }
+//        if (Input.GetKeyDown(KeyCode.T))
+//        {
+//            length = 70f;
+//            isCheck = true;
+//            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirOne;
+//        }
+//
+//        if (Input.GetKeyDown(KeyCode.Y))
+//        {
+//            length = 20f;
+//            isCheck = true;
+//            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirOne;
+//        }
 
         if (Input.GetKeyDown(KeyCode.U))
         {

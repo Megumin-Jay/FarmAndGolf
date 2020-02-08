@@ -193,6 +193,10 @@ public class BallMove : MonoBehaviour
                 player.transform.position = new Vector3(this.transform.position.x + playerBalloffset.x,
                     this.transform.position.y + playerBalloffset.y, -2);
                 fakeBallBleach();
+                //后处理模糊关闭
+                GaussianBlur._Instance.BlurRadius = Mathf.Lerp(GaussianBlur._Instance.BlurRadius, 0,  Time.deltaTime);
+                GaussianBlur._Instance.downSample = GaussianBlur._Instance.downSample > 0 ? GaussianBlur._Instance.downSample - 1 : 0;
+                
                 if (BallDir.Instance.IsHit)
                 {
                     if (FloorStatus._Instance._floorStatu != FloorStatu.Area1)
@@ -312,8 +316,17 @@ public class BallMove : MonoBehaviour
             if (Mathf.Abs(moveSpeed.z) < speedThresholdZ)
             {
                 canStop = true;
-                
             }
+        }
+    }
+
+    void OnCollisionStay(Collision col)
+    {
+        if (col.collider.tag == "Ground")
+        {
+            //后处理模糊开启
+            GaussianBlur._Instance.BlurRadius = Mathf.Lerp(GaussianBlur._Instance.BlurRadius, 2, Time.deltaTime);
+            GaussianBlur._Instance.downSample = GaussianBlur._Instance.downSample < 6 ? GaussianBlur._Instance.downSample + 1 : 6;
         }
     }
 

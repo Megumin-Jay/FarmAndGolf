@@ -22,6 +22,8 @@ public class CircleScoreSelector : MonoBehaviour
     private bool canRotate;
     /*旋转次数*/
     private int rotateTimes;
+
+    private BallDir _ballDir;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,21 +37,27 @@ public class CircleScoreSelector : MonoBehaviour
         FirstPos = golfClubsList[0].gameObject.transform.position;
         //ui初始化时自动排列成圆环状
         UIArrangeInCircle(golfClubsList.Length, golfClubsList);
+
+        _ballDir = GameObject.FindWithTag("GameController").GetComponent<BallDir>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && KeyStatus._Instance._KeyStatu == KeyStatu.Initiate)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseClub)
         {
             //当前按键状态
-            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseBall;
+            //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseClub;
             if (rotateTimes == 5)
                 rotateTimes = -1;
             canRotate = true;
             localTime = 1.00f;
             //旋转次数加一
             rotateTimes++;
+
+            //选杆后的击打距离和击打条件
+            _ballDir.length = (rotateTimes + 1) * 10;
+            _ballDir.isCheck = true;
         }
         //Debug.Log(Time.time - localTime);
         if (canRotate)

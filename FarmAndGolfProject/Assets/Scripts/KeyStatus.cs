@@ -63,7 +63,7 @@ public class KeyStatus : MonoBehaviour
                 Text.text = "鼠标<color=red><I>左键</I></color>点击屏幕某处";
                 break;
             case KeyStatu.ChooseClub:
-                Text.text = "请选择你的球杆";
+                Text.text = "请按<color=red><I>左Ctrl</I></color>键选择你的球杆\n选择完按<color=red><I>U</I></color>键确定";
                 break;
             case KeyStatu.ChooseDirOne:
                 Text.text = "通过<color=red><I>A，D</I></color>键\n选择球要击打的方向";

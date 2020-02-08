@@ -1899,6 +1899,8 @@ GameObject:
   - component: {fileID: 883723453}
   - component: {fileID: 883723452}
   - component: {fileID: 883723451}
+  - component: {fileID: 883723455}
+  - component: {fileID: 883723454}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1970,6 +1972,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &883723454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883723450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77eea2cc6b04bc49bf841b4152721dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: b242740d6fb896a4889f5ba38c72f2f1, type: 3}
+  BlurRadius: 0
+  downSample: 0
+  iteration: 2
+--- !u!114 &883723455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883723450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd97f58feb69174ba55b8f7cd8ec66a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: b242740d6fb896a4889f5ba38c72f2f1, type: 3}
 --- !u!1 &885884802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,7 +2114,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 298829d963a753d43a699574a399ea8e, type: 2}
   - {fileID: 2100000, guid: 298829d963a753d43a699574a399ea8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

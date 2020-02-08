@@ -14,6 +14,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PostEffect/GaussianBlur.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallMove.cs" root0="FORCE_HIGHLIGHTING" />
@@ -22,6 +23,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallDir.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SliderController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PostEffect/PostEffectBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -31,11 +33,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ChangeState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PostEffect/PostEffectBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Shaders/GaussianBlur.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PostEffect/GaussianBlur.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
       </list>
     </option>
   </component>
@@ -95,6 +100,7 @@
       <workItem from="1580591395820" duration="6034000" />
       <workItem from="1580650649689" duration="10306000" />
       <workItem from="1581092232230" duration="6845000" />
+      <workItem from="1581180949156" duration="5688000" />
     </task>
     <servers />
   </component>

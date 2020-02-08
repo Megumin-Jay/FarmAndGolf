@@ -116,7 +116,7 @@ MonoBehaviour:
     type: 3}
   MaxScale: 25
   MinScale: 3
-  fakeBallRuinTime: 0.5
+  fakeBallRuinTime: 0.2
   ballRuinTime: 0.5
   fakeBallBleachSpeed: 5
   hitDirection: {x: 0, y: 0, z: 0}
