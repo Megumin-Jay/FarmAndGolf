@@ -49,8 +49,14 @@ public class KeyStatus : MonoBehaviour
                 case KeyStatu.ChooseDirTwo:
                     _KeyStatu = KeyStatu.ChooseDirOne;
                     break;
-                case KeyStatu.Reset:
+                case KeyStatu.CheckSliderValue:
                     _KeyStatu = KeyStatu.ChooseDirTwo;
+                    break;
+                case KeyStatu.GetSliderValue:
+                    _KeyStatu = KeyStatu.CheckSliderValue;
+                    break;
+                case KeyStatu.Reset:
+                    _KeyStatu = KeyStatu.GetSliderValue;
                     break;
                 case KeyStatu.Shoot:
                     _KeyStatu = KeyStatu.Reset;
@@ -69,6 +75,12 @@ public class KeyStatus : MonoBehaviour
                 Text.text = "通过<color=red><I>A，D</I></color>键\n选择球要击打的方向";
                 break;
             case KeyStatu.ChooseDirTwo:
+                Text.text = "按<color=red><I>空格</I></color>键滑条开始运动";
+                break;
+            case KeyStatu.CheckSliderValue:
+                Text.text = "第二次按<color=red><I>空格</I></color>键，确定击打的精准度";
+                break;
+            case KeyStatu.GetSliderValue:
                 Text.text = "按<color=red><I>R</I></color>键准备击打";
                 break;
             case KeyStatu.Reset:
@@ -87,6 +99,8 @@ public enum KeyStatu
     ChooseDirOne,
     ChooseDirTwo,
     ChooseClub,
+    CheckSliderValue,
+    GetSliderValue,
     Reset,
     Shoot,
     Initiate

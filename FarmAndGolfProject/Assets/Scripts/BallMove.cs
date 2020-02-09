@@ -111,6 +111,8 @@ public class BallMove : MonoBehaviour
     private int dotCount;
 
     private BallDir _ballDir;
+
+    private SliderController _sliderController;
 //    //修正后的轨迹的点的位置
 //    private Vector3 dotPos;
     
@@ -141,6 +143,7 @@ public class BallMove : MonoBehaviour
         lineRenderer.enabled = true;
         rb = this.GetComponent<Rigidbody>();
         _camera = GameObject.FindWithTag("MainCamera").gameObject;
+        _sliderController = GameObject.FindWithTag("GameController").GetComponent<SliderController>();
         //_FloorStatus = GameObject.FindWithTag("GameController").GetComponent<FloorStatus>();
 
         //计算相机与球的初始偏移
@@ -217,7 +220,7 @@ public class BallMove : MonoBehaviour
         {
             //速度
             moveSpeed.z += gravity * Time.fixedDeltaTime;
-            moveSpeed += (airForceDirection + liftForce + windDirection) / ballMass * Time.fixedDeltaTime;
+            moveSpeed += (airForceDirection + liftForce + windDirection) / ballMass * _sliderController.sliderValue * Time.fixedDeltaTime;
             //rb.MovePosition(moveSpeed * Time.deltaTime);
         }
         transform.Translate(moveSpeed * Time.fixedDeltaTime,

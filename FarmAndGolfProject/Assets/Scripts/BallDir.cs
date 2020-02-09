@@ -361,7 +361,7 @@ public class BallDir : MonoBehaviour
                 CameraMove(ball.transform.position);
         }
         //复位
-        if (Input.GetKey(KeyCode.R) && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseDirTwo)
+        if (Input.GetKey(KeyCode.R) && KeyStatus._Instance._KeyStatu == KeyStatu.GetSliderValue)
         {
             //当前按键状态
             KeyStatus._Instance._KeyStatu = KeyStatu.Reset;

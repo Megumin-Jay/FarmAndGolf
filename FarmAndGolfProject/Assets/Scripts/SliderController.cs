@@ -15,6 +15,8 @@ public class SliderController : MonoBehaviour
     private Slider _slider;
     /*方法执行的最短时间*/
     private float localTime;
+
+    public float sliderValue;
     /*用来将pingpong第一个参数置零*/
     //private float zeroTime;
     // Start is called before the first frame update
@@ -30,10 +32,11 @@ public class SliderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !canRun && !canStop)
+        if (Input.GetKeyDown(KeyCode.Space) && !canRun && !canStop && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseDirTwo)
         {
             canRun = true;
             localTime = 0;
+            KeyStatus._Instance._KeyStatu = KeyStatu.CheckSliderValue;
         }
 
         if (canRun)
@@ -42,10 +45,11 @@ public class SliderController : MonoBehaviour
             //isRunning = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && canStop)
+        if (Input.GetKeyDown(KeyCode.Space) && canStop && KeyStatus._Instance._KeyStatu == KeyStatu.CheckSliderValue)
         {
             canRun = false;
             canStop = false;
+            KeyStatus._Instance._KeyStatu = KeyStatu.GetSliderValue;
         }
     }
 
@@ -53,7 +57,8 @@ public class SliderController : MonoBehaviour
     {
         //zeroTime = Time.time;
         _slider.value = Mathf.PingPong(localTime, 1);
-        
+        sliderValue = _slider.value;
+        //Debug.Log(_slider.value);
         localTime += Time.deltaTime;
         if (localTime >= 2)
             canStop = true;
