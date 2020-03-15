@@ -6,7 +6,7 @@ using UnityEngine;
 public class SceneChange : MonoBehaviour
 {
     public string scene;//传送目标场景名，在检查器输入
-    public float x, y;//传送后坐标，在检查器输入
+    //public float x, y;//传送后坐标，在检查器输入
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,7 +15,7 @@ public class SceneChange : MonoBehaviour
         if (collision.tag == "Protagonist")//检测碰撞物体是否为主角
         {
             SceneManager.LoadScene(scene);//切换场景
-            collision.transform.localPosition = new Vector3(x, y, 0);//改变人物坐标
+            //collision.transform.localPosition = new Vector3(x, y, 0);//改变人物坐标
         }
     }
 }

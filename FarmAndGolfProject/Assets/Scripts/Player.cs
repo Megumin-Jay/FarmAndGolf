@@ -14,11 +14,11 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        //加载新场景时人物不消失
-        if (GameObject.FindGameObjectsWithTag("Protagonist").Length > 1)
-            Destroy(this.gameObject);
-        else
-            DontDestroyOnLoad(this.gameObject);
+        ////加载新场景时人物不消失
+        //if (GameObject.FindGameObjectsWithTag("Protagonist").Length > 1)
+        //    Destroy(this.gameObject);
+        //else
+        //    DontDestroyOnLoad(this.gameObject);
     }
 
 

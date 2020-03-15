@@ -162,9 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b74399fa6e41241ae731002a548d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Street3
-  x: -8
-  y: 0
+  scene: GamePlay
 --- !u!61 &496404054
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -293,8 +291,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: House1
-  x: 0
-  y: -4
 --- !u!61 &660912525
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -937,8 +933,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: Street2
-  x: 8
-  y: 0
 --- !u!61 &1363891055
 BoxCollider2D:
   m_ObjectHideFlags: 0
