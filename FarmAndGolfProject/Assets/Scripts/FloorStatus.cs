@@ -46,7 +46,7 @@ public class FloorStatus : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(_floorStatu);
+        //Debug.Log(_floorStatu);
         switch (_floorStatu)
         {
             case FloorStatu.Area1:
@@ -63,7 +63,7 @@ public class FloorStatus : MonoBehaviour
                 break;   
             case FloorStatu.Area4:
                 //_currentFloor = new 
-                Text.text = "当前所在区域：4";
+                Text.text = "当前所在区域：沙地";
                 break;
         }
     }

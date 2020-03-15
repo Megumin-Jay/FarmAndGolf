@@ -109,6 +109,9 @@ public class BallMove : MonoBehaviour
     private int index;
     //点的数目
     private int dotCount;
+    
+    /*计时器*/
+    private float localTime;
 
     private BallDir _ballDir;
 
@@ -193,13 +196,23 @@ public class BallMove : MonoBehaviour
                 //一次击球结束后 会将fakeball销毁 所以这里用来判断一次击球是否结束
 //                if(fakeBall)
 //                    CameraMove(transform.position - offset);
-                player.transform.position = new Vector3(this.transform.position.x + playerBalloffset.x,
-                    this.transform.position.y + playerBalloffset.y, -2);
-                fakeBallBleach();
-                //后处理模糊关闭
-                GaussianBlur._Instance.BlurRadius = Mathf.Lerp(GaussianBlur._Instance.BlurRadius, 0,  Time.deltaTime);
-                GaussianBlur._Instance.downSample = GaussianBlur._Instance.downSample > 0 ? GaussianBlur._Instance.downSample - 1 : 0;
-                
+                if(localTime <= 2)
+                //后处理模糊开启
+                {
+                    GaussianBlur._Instance.BlurRadius = Mathf.Lerp(GaussianBlur._Instance.BlurRadius, 2, Time.deltaTime);
+                    GaussianBlur._Instance.downSample = GaussianBlur._Instance.downSample < 6 ? GaussianBlur._Instance.downSample + 1 : 6;
+                }
+                localTime += Time.deltaTime;
+                Debug.Log(localTime);
+                if (localTime > 2)
+                {
+                    player.transform.position = new Vector3(this.transform.position.x + playerBalloffset.x,
+                        this.transform.position.y + playerBalloffset.y, -2);
+                    fakeBallBleach();
+                    //后处理模糊关闭
+                    GaussianBlur._Instance.BlurRadius = Mathf.Lerp(GaussianBlur._Instance.BlurRadius, 0,  Time.deltaTime);
+                    GaussianBlur._Instance.downSample = GaussianBlur._Instance.downSample > 0 ? GaussianBlur._Instance.downSample - 1 : 0;
+                }
                 if (BallDir.Instance.IsHit)
                 {
                     if (FloorStatus._Instance._floorStatu != FloorStatu.Area1)
@@ -296,7 +309,7 @@ public class BallMove : MonoBehaviour
         if (col.collider.tag == "Ground")
         {
             //Debug.Log("碰撞");
-            
+            localTime = 0;
             
             ContactPoint contactPoint = col.contacts[0];
             Vector3 newDir = Vector3.zero;
@@ -327,9 +340,8 @@ public class BallMove : MonoBehaviour
     {
         if (col.collider.tag == "Ground")
         {
-            //后处理模糊开启
-            GaussianBlur._Instance.BlurRadius = Mathf.Lerp(GaussianBlur._Instance.BlurRadius, 2, Time.deltaTime);
-            GaussianBlur._Instance.downSample = GaussianBlur._Instance.downSample < 6 ? GaussianBlur._Instance.downSample + 1 : 6;
+            //if(moveSpeed.x < 1 && moveSpeed.y < 1 && moveSpeed.z < 1)
+            
         }
     }
 

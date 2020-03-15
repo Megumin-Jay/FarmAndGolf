@@ -32,18 +32,18 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Shaders/GolfClubsIcon.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ChangeState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PostEffect/PostEffectBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Shaders/GaussianBlur.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PostEffect/GaussianBlur.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/WindUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/WindUI.cs" />
       </list>
     </option>
   </component>
@@ -106,6 +106,13 @@
       <workItem from="1581180949156" duration="5688000" />
       <workItem from="1581270567977" duration="4680000" />
       <workItem from="1581277114537" duration="38000" />
+      <workItem from="1581532499806" duration="3995000" />
+      <workItem from="1581593611803" duration="1281000" />
+      <workItem from="1581599084823" duration="7177000" />
+      <workItem from="1582453528248" duration="490000" />
+      <workItem from="1582454047997" duration="1925000" />
+      <workItem from="1583041033567" duration="125000" />
+      <workItem from="1584178762047" duration="9699000" />
     </task>
     <servers />
   </component>

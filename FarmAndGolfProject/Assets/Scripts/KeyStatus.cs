@@ -66,10 +66,10 @@ public class KeyStatus : MonoBehaviour
         switch (_KeyStatu)
         {
             case KeyStatu.Initiate :
-                Text.text = "鼠标<color=red><I>左键</I></color>点击屏幕某处";
+                Text.text = /*"鼠标<color=red><I>左键</I></color>点击屏幕某处"*/ "";
                 break;
             case KeyStatu.ChooseClub:
-                Text.text = "请按<color=red><I>左Ctrl</I></color>键选择你的球杆\n选择完按<color=red><I>U</I></color>键确定";
+                Text.text = "请按<color=red><I>左Ctrl/左Shift</I></color>键\n选择你的球杆,选择完\n按<color=red><I>U</I></color>键确定";
                 break;
             case KeyStatu.ChooseDirOne:
                 Text.text = "通过<color=red><I>A，D</I></color>键\n选择球要击打的方向";
@@ -78,13 +78,13 @@ public class KeyStatus : MonoBehaviour
                 Text.text = "按<color=red><I>空格</I></color>键滑条开始运动";
                 break;
             case KeyStatu.CheckSliderValue:
-                Text.text = "第二次按<color=red><I>空格</I></color>键，确定击打的精准度";
+                Text.text = "第二次按<color=red><I>空格</I></color>键，\n确定击打的精准度";
                 break;
             case KeyStatu.GetSliderValue:
-                Text.text = "按<color=red><I>R</I></color>键准备击打";
+                Text.text = /*"按<color=red><I>R</I></color>键准备击打"*/ "";
                 break;
             case KeyStatu.Reset:
-                Text.text = "按<color=red><I>Z</I></color>键将球打出";
+                Text.text = /*"按<color=red><I>Z</I></color>键将球打出"*/ "";
                 break;
             case KeyStatu.Shoot:
                 Text.text = "当球落地时，可击打下一球";

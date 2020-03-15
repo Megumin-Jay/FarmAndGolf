@@ -47,9 +47,11 @@ public class SliderController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canStop && KeyStatus._Instance._KeyStatu == KeyStatu.CheckSliderValue)
         {
-            canRun = false;
             canStop = false;
             KeyStatus._Instance._KeyStatu = KeyStatu.GetSliderValue;
+            //canRun = false;
+            canRun = false;
+            //KeyStatus._Instance._KeyStatu = KeyStatu.GetSliderValue;
         }
     }
 
@@ -61,6 +63,8 @@ public class SliderController : MonoBehaviour
         //Debug.Log(_slider.value);
         localTime += Time.deltaTime;
         if (localTime >= 2)
+        {
             canStop = true;
+        }
     }
 }
