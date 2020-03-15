@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bb993091-c123-4210-8270-974cd11b2a53" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/WindUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Environment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallMove.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PostEffect/PostEffectBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PostEffect/GaussianBlur.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Desktop/TestForGolf/Assets/Scripts/Bullet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallDir.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SliderController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Shaders/GolfClubsIcon.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChangeState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PostEffect/PostEffectBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Shaders/GaussianBlur.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PostEffect/GaussianBlur.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/WindUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UHiZ265enrrnfpDDx5PE5deKnw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb993091-c123-4210-8270-974cd11b2a53" name="Default Changelist" comment="" />
+      <created>1575019984409</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575019984409</updated>
+      <workItem from="1575020003341" duration="10655000" />
+      <workItem from="1575103413774" duration="2275000" />
+      <workItem from="1575368900525" duration="6234000" />
+      <workItem from="1575443485724" duration="15812000" />
+      <workItem from="1575613424747" duration="13322000" />
+      <workItem from="1575637995296" duration="5416000" />
+      <workItem from="1575707735719" duration="4955000" />
+      <workItem from="1576137820989" duration="6215000" />
+      <workItem from="1576592224448" duration="2319000" />
+      <workItem from="1576657316502" duration="10209000" />
+      <workItem from="1576844717570" duration="5885000" />
+      <workItem from="1576866403143" duration="281000" />
+      <workItem from="1576908834178" duration="2072000" />
+      <workItem from="1576994546716" duration="3534000" />
+      <workItem from="1579080671469" duration="12470000" />
+      <workItem from="1579176244924" duration="3365000" />
+      <workItem from="1579401614825" duration="9374000" />
+      <workItem from="1580575656006" duration="9153000" />
+      <workItem from="1580591395820" duration="6034000" />
+      <workItem from="1580650649689" duration="10306000" />
+      <workItem from="1581092232230" duration="6845000" />
+      <workItem from="1581180949156" duration="5688000" />
+      <workItem from="1581270567977" duration="4680000" />
+      <workItem from="1581277114537" duration="38000" />
+      <workItem from="1581532499806" duration="3995000" />
+      <workItem from="1581593611803" duration="1281000" />
+      <workItem from="1581599084823" duration="7177000" />
+      <workItem from="1582453528248" duration="490000" />
+      <workItem from="1582454047997" duration="1925000" />
+      <workItem from="1583041033567" duration="125000" />
+      <workItem from="1584178762047" duration="9699000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnitTestsCoverage.Settings">
+    <option name="coveragePercentColumnWidth" value="150" />
+    <option name="sortOrder" value="DESCENDING" />
+    <option name="sortedColumn" value="1" />
+    <option name="symbolColumnWidth" value="255" />
+    <coverage-tree-state>
+      <expand>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="1" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="1" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="2" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+      </expand>
+      <select />
+    </coverage-tree-state>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="681" y="259" key="run.anything.popup" />
+    <state x="681" y="259" key="run.anything.popup/1920.1080" />
+    <state x="681" y="259" key="run.anything.popup/2560.1440" />
+    <state x="623" y="225" width="672" height="680" key="search.everywhere.popup" />
+    <state x="623" y="225" width="672" height="680" key="search.everywhere.popup/1920.1080" />
+    <state x="623" y="225" width="672" height="680" key="search.everywhere.popup/2560.1440" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
