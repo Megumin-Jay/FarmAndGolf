@@ -133,12 +133,12 @@ public class BallDir : MonoBehaviour
         //主角相关
         player = GameObject.FindWithTag("Player");
         _animator = player.GetComponent<Animator>();
-        playerBalloffset = new Vector3(- 1.73f, 5.27f);
-        ballInitialPos = new Vector3(-101.0f, 122.0f, -1.15f);
+        //playerBalloffset = new Vector3(- 1.73f, 5.27f);
+        ballInitialPos = new Vector3(-95.0f, 116.0f, -1.15f);
         lastPlayerPos = Vector3.zero;
         
         //高尔夫球杆
-        length = 100.0f;
+        length = 30.0f;
         
         //记录相机初始位置
         camera = GameObject.FindWithTag("MainCamera");
@@ -192,8 +192,16 @@ public class BallDir : MonoBehaviour
 //            if (isHit)
 //            {
 //                pos = _hit.point;
-                pos = player.transform.position + new Vector3(50, -5.5f, 0);
-                invariantPos = pos;
+//            if (ball && hitDirection != null)
+//            { 
+//               pos = ball.transform.position + hitDirection;
+//            }
+//            if(!ball && hitDirection != null)
+//            {
+//               pos = ballInitialPos + hitDirection;
+//            }
+            pos = player.transform.position + new Vector3(50, -5.5f, 0);
+            invariantPos = pos;
                 //Debug.Log(pos);
 //                //选终点时启用虚线
 //                lineRenderer.enabled = true;
@@ -204,7 +212,7 @@ public class BallDir : MonoBehaviour
                 isReset = false;
 
                 //杆初始长度
-                length = 100.0f;
+                //length = 30.0f;
 //            }
             
             //CameraMove(pos);
@@ -234,6 +242,7 @@ public class BallDir : MonoBehaviour
                 pos = ballInitialPos + hitDirection;
                 isCheck = false;
             }
+            CameraMove(pos);
         }
         
 //        if (Input.GetKeyDown(KeyCode.T))
@@ -310,6 +319,7 @@ public class BallDir : MonoBehaviour
                                           1)) -
                                       horizontal * Time.deltaTime);
                 }
+                invariantPos = new Vector3(pos.x,pos.y,0);
                 _animator.SetFloat("DirectionX",pos.x - ballInitialPos.x);
                 _animator.SetFloat("DirectionY",pos.y - ballInitialPos.y);
             }
@@ -344,6 +354,7 @@ public class BallDir : MonoBehaviour
                             Mathf.Sin(Mathf.Asin(Mathf.Clamp((pos.y - ball.transform.position.y) / direction.magnitude, -1, 1)) -
                                       horizontal * Time.deltaTime);
                 }
+                invariantPos = new Vector3(pos.x,pos.y,0);
                 _animator.SetFloat("DirectionX",pos.x - ball.transform.position.x);
                 _animator.SetFloat("DirectionY",pos.y - ball.transform.position.y);
             }

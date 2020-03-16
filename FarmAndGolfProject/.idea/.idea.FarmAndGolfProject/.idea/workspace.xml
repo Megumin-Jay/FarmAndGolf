@@ -36,14 +36,14 @@
         <option value="$PROJECT_DIR$/Assets/Shaders/GaussianBlur.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PostEffect/GaussianBlur.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WindUI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
       </list>
     </option>
   </component>
@@ -113,6 +113,7 @@
       <workItem from="1582454047997" duration="1925000" />
       <workItem from="1583041033567" duration="125000" />
       <workItem from="1584178762047" duration="9699000" />
+      <workItem from="1584375416177" duration="4462000" />
     </task>
     <servers />
   </component>

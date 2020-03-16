@@ -138,7 +138,7 @@ public class BallMove : MonoBehaviour
         
         //主角相关
         player = GameObject.FindWithTag("Player");
-        playerBalloffset = new Vector3(- 1.73f, 5.27f);
+        playerBalloffset = new Vector3(- 6.73f, 11.27f);
 
         //一些组件
         lineRenderer = GameObject.FindWithTag("GameController").GetComponent<LineRenderer>();
@@ -208,7 +208,7 @@ public class BallMove : MonoBehaviour
                 {
                     player.transform.position = new Vector3(this.transform.position.x + playerBalloffset.x,
                         this.transform.position.y + playerBalloffset.y, -2);
-                    fakeBallBleach();
+                    //fakeBallBleach();
                     //后处理模糊关闭
                     GaussianBlur._Instance.BlurRadius = Mathf.Lerp(GaussianBlur._Instance.BlurRadius, 0,  Time.deltaTime);
                     GaussianBlur._Instance.downSample = GaussianBlur._Instance.downSample > 0 ? GaussianBlur._Instance.downSample - 1 : 0;
@@ -287,7 +287,8 @@ public class BallMove : MonoBehaviour
         moveSpeed.z = speedZ;
 
         //假球
-        fakeBall = Instantiate(fakeBallObj, transform.position, Quaternion.identity);
+        //fakeBall = Instantiate(fakeBallObj, transform.position, Quaternion.identity);
+        fakeBall = GameObject.Find("golfball");
     }
     
     /// <summary>

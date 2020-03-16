@@ -58,7 +58,7 @@ public class CircleScoreSelector : MonoBehaviour
             rotateTimes++;
 
             //选杆后的击打距离和击打条件
-            _ballDir.length = (rotateTimes + 1) * 10;
+            _ballDir.length = (rotateTimes + 1) * 30;
             _ballDir.isCheck = true;
         }
 
