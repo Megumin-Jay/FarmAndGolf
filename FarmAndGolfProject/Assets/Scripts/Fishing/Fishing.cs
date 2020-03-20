@@ -8,9 +8,10 @@ public class Fishing : MonoBehaviour
     public float H;
     public float V;//钓鱼点相对检测区域的方向
     public float timer;//计时器,控制播放动画时间
-    private Vector3 position = new Vector3(0, 0, 1000);//用于判断人物是否静止的位置变量
+    private Vector3 position;//用于判断人物是否静止的位置变量
     private bool fishIsOn = false;//判断是否启动钓鱼功能
-    private int seed;
+    private int seed;//随机数,钓鱼的"种子"
+    private bool[] condition = new bool[2] { true, true };//确保有些方法在Update中只执行一次的布尔变量
 
 
     public FishItems fishItems;//取得"鱼池"
@@ -22,8 +23,7 @@ public class Fishing : MonoBehaviour
     public Player player;//人物身上的脚本
     public Animator animator;//动画器
 
-    //测试
-    private bool condition = false;
+
 
 
 
@@ -33,8 +33,7 @@ public class Fishing : MonoBehaviour
         {
             player = collision.GetComponent<Player>();//获取角色的脚本
             animator = collision.GetComponent<Animator>();//获取角色挂载的动画器
-            timer = 0.9f;//计时器赋初值,作为整个钓鱼动画播放时长
-
+            timer = 6.0f;//计时器赋初值,作为整个钓鱼动画播放时长
         }
     }
 
@@ -43,7 +42,6 @@ public class Fishing : MonoBehaviour
     {
         if (collision.tag == "Player")//检测碰撞物体是否为主角
         {
-            Test();
             //按下互动键(暂设为K),开启钓鱼功能
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -67,7 +65,7 @@ public class Fishing : MonoBehaviour
                 if (collision.transform.position == position)
                 {
                     animator.SetFloat("Magnitude", 0);
-                    FishEnd();//播放一轮钓鱼的动画并结算
+                    FishEnd();
                 }
             }
             position = collision.transform.position;//保存人物上一帧的位置
@@ -88,29 +86,40 @@ public class Fishing : MonoBehaviour
         animator.SetBool("Fishing", true);//开始播放钓鱼动画
         animator.SetFloat("Horizontal", H);
         animator.SetFloat("Vertical", V);
-
         timer -= Time.deltaTime;
-        fish.updateFishImage(fishItems.FishItemList[seed].itemImage);
 
-        if (!condition)
+        if (timer < 5.5f)
+            if (condition[0])
+            {
+                //替换为鱼饵的图片(用了Resources,所以别乱改路径
+                fish.updateFishImage(Resources.Load<Sprite>("Graphics/Inventory/FishItems/lure"));
+                fish.lureAutoMove();
+                condition[0] = false;
+            }
+
+        if (timer < 1.0f)
+            if (condition[1])
+            {
+                fish.updateFishImage(fishItems.FishItemList[seed].itemImage);
+                fish.AutoMove();
+                condition[1] = false;
+            }
+
+        if (condition[1])//以 是否执行鱼的移动 为中介点,分别执行鱼和饵的位置判断
+            fish.lureReached();
+        else fish.fishReached();
+
+
+        if (timer < -0.1f)//钓鱼动画播放完毕,准备结算
         {
-            fish.AutoMove();
-            condition = true;
-        }
-
-        if (timer < 0.1f)//钓鱼动画播放完毕,准备结算
-        {
-            timer = 0.9f;
-            animator.SetBool("Fishing", false);
-            player.moveIsOn = true;
-            fishIsOn = false;
-            condition = false;
-
-            GetFish(seed);
+            timer = 6.0f;//恢复计时器
+            animator.SetBool("Fishing", false);//退出钓鱼动画
+            player.moveIsOn = true;//恢复移动控制权
+            fishIsOn = false;//退出钓鱼
+            condition = new bool[2] { true, true };//重置单次函数的判断数组
+            GetFish(seed);//将钓上的物品加入背包
             popUps.UpdateTooltip("恭喜您获得\"" + fishItems.FishItemList[seed].name + "\"!");
-            popUps.Show();
-
-
+            popUps.Show();//显示"确认"弹窗
         }
     }
 
@@ -134,14 +143,5 @@ public class Fishing : MonoBehaviour
         }
 
         InventoryManager.RefreshItem();
-    }
-    //开发用 , J键强制脱出钓鱼状态
-    private void Test()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            player.moveIsOn = true;
-            fishIsOn = false;
-        }
     }
 }
