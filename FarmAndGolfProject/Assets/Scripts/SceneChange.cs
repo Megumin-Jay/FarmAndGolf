@@ -12,7 +12,7 @@ public class SceneChange : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //起“传送门”的作用，用来切换场景并传送角色到下一场景
-        if (collision.tag == "Protagonist")//检测碰撞物体是否为主角
+        if (collision.tag == "Player")//检测碰撞物体是否为主角
         {
             SceneManager.LoadScene(scene);//切换场景
             //collision.transform.localPosition = new Vector3(x, y, 0);//改变人物坐标

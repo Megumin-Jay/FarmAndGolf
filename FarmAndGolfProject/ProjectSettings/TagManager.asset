@@ -4,9 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Protagonist
   - Grid
   - GridPanel
+  - Area3
+  - Slider
+  - Hole
+  - Area1
+  - GolfClubs
+  - Area2
+  - Ground
+  - PlayerCollision
   layers:
   - Default
   - TransparentFX
