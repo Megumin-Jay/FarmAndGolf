@@ -13,7 +13,6 @@ TagManager:
   - GolfClubs
   - Area2
   - Ground
-  - PlayerCollision
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class Fishing : MonoBehaviour
 {
     public float H;
     public float V;//钓鱼点相对检测区域的方向
-    public float timer;//计时器,控制播放动画时间
+    private float timer;//计时器,控制播放动画时间
     private Vector3 position;//用于判断人物是否静止的位置变量
     private bool fishIsOn = false;//判断是否启动钓鱼功能
     private int seed;//随机数,钓鱼的"种子"
@@ -58,7 +58,7 @@ public class Fishing : MonoBehaviour
 
             if (fishIsOn)
             {
-                tips.Hide();//隐藏提示栏
+                tips.UpdateTooltip("正在前往钓鱼地点");
                 player.StopMove();//强制播放自动行走,剥夺玩家控制权
                 player.AutoMove(H, V);
                 //对比两帧物体位置是否改变,若不变 说明人物已到达目标位置,停止播放行走动画
@@ -87,6 +87,13 @@ public class Fishing : MonoBehaviour
         animator.SetFloat("Horizontal", H);
         animator.SetFloat("Vertical", V);
         timer -= Time.deltaTime;
+
+        if (timer > 4.5f)
+            tips.UpdateTooltip("抛出鱼饵中...");
+        else if (timer > 1.5f)
+            tips.UpdateTooltip("等待中...");
+        else
+            tips.UpdateTooltip("收杆中...");
 
         if (timer < 5.5f)
             if (condition[0])
@@ -133,6 +140,7 @@ public class Fishing : MonoBehaviour
                 if (playerInventory.itemList[i] == null)//找空格子,有就给他的物品赋值
                 {
                     playerInventory.itemList[i] = fishItems.FishItemList[a];//赋值
+                    fishItems.FishItemList[a].itemHeld = 1;
                     break;
                 }
             }

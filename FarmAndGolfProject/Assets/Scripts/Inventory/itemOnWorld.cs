@@ -26,6 +26,7 @@ public class itemOnWorld : MonoBehaviour
                 if (playerInventory.itemList[i] == null)//找空格子,有就给他的物品赋值
                 {
                     playerInventory.itemList[i] = thisItem;//赋值
+                    thisItem.itemHeld = 1;
                     break;
                 }
             }

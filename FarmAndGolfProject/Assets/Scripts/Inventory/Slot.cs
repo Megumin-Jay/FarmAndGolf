@@ -10,12 +10,14 @@ public class Slot : MonoBehaviour
     public Item slotItem;//获取到Item 
     public Image slotImage;//Item的图片
     public Text slotNum;//Item有多少个
-    public string slotInfo;//物品的描述信息
+    public string slotDescription;//物品的描述信息
 
     public GameObject itemInSlot;
+
+    //当被点击,传出自身的文本和图片
     public void ItemOnClicked()
-    {//显然 要传入物品的文本, 不可能从背包管理脚本那里传啊, 只能从视觉层物品本身这里传过去,本来就是按钮嘛
-        InventoryManager.UpdateItemInfo(slotInfo, slotImage.sprite);
+    {
+        InventoryManager.UpdateItemInfo(slotDescription, slotImage.sprite);
     }
 
     //从数据层 生成物品 到视觉层 的方法
@@ -29,6 +31,6 @@ public class Slot : MonoBehaviour
         //如果有东西,如下赋值
         slotImage.sprite = item.itemImage;
         slotNum.text = item.itemHeld.ToString();
-        slotInfo = item.itemInfo;
+        slotDescription = item.itemInfo;
     }
 }
