@@ -900,6 +900,7 @@ GameObject:
   - component: {fileID: 491475075}
   - component: {fileID: 491475074}
   - component: {fileID: 491475073}
+  - component: {fileID: 491475076}
   m_Layer: 5
   m_Name: Save
   m_TagString: Untagged
@@ -924,8 +925,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 581, y: 472}
-  m_SizeDelta: {x: 117.6, y: 54.2}
+  m_AnchoredPosition: {x: 0.000030518, y: 337}
+  m_SizeDelta: {x: 204.88, y: 94.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491475073
 MonoBehaviour:
@@ -978,6 +979,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 491475076}
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &491475074
@@ -1017,6 +1029,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491475071}
   m_CullTransparentMesh: 0
+--- !u!114 &491475076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491475071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd9af928db63e44f8b88109ba39ad22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &496404051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2868,7 +2892,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.5168849, y: -0.34020293}
+    - - {x: 1.5151609, y: -0.65935683}
       - {x: 1.5383106, y: 1.0089313}
       - {x: 1.05, y: 1.04}
       - {x: 0.88, y: 1.01}
@@ -2881,13 +2905,10 @@ PolygonCollider2D:
       - {x: -0.76, y: 1.52}
       - {x: -1.9092089, y: 1.1231375}
       - {x: -1.8855577, y: -0.4361793}
-      - {x: -0.68, y: -0.39}
-      - {x: -0.29, y: -0.48999998}
-      - {x: -0.07276159, y: -0.52427256}
+      - {x: -0.70692796, y: -0.67274636}
+      - {x: -0.28999993, y: -0.7121575}
       - {x: -0.051245198, y: -0.77153957}
       - {x: 0.17999986, y: -0.7745435}
-      - {x: 0.17999999, y: -0.51}
-      - {x: 0.22999999, y: -0.5}
 --- !u!114 &1067256004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3075,7 +3096,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Save
+  m_Text: "\u4FDD\u5B58\u5E76\u9000\u51FA"
 --- !u!222 &1129309851
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3094,6 +3115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152612766}
   - component: {fileID: 1152612765}
+  - component: {fileID: 1152612767}
   m_Layer: 0
   m_Name: GamSaveManager
   m_TagString: Untagged
@@ -3114,6 +3136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myInventory: {fileID: 11400000, guid: 236ed10a582ad9a4a95f5c7af36b590d, type: 2}
+  myHeld: {fileID: 1152612767}
 --- !u!4 &1152612766
 Transform:
   m_ObjectHideFlags: 0
@@ -3128,6 +3151,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1152612767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152612764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646aa88165e041d46b3e7462ae1a58a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Held: 
+  items: {fileID: 11400000, guid: 721746c63a0306b438e6edb95d9d4da1, type: 2}
 --- !u!1 &1182628779
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,6 +3523,21 @@ PrefabInstance:
       propertyPath: myBag
       value: 
       objectReference: {fileID: 112539409}
+    - target: {fileID: 405029100884001866, guid: 9268e4ec737d3d143b6a532b64428356,
+        type: 3}
+      propertyPath: gameSaveManager
+      value: 
+      objectReference: {fileID: 1152612765}
+    - target: {fileID: 405029100884001866, guid: 9268e4ec737d3d143b6a532b64428356,
+        type: 3}
+      propertyPath: myHeld
+      value: 
+      objectReference: {fileID: 1152612767}
+    - target: {fileID: 405029100884001866, guid: 9268e4ec737d3d143b6a532b64428356,
+        type: 3}
+      propertyPath: tip
+      value: 
+      objectReference: {fileID: 1410829868}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9268e4ec737d3d143b6a532b64428356, type: 3}
 --- !u!1 &1268709627
@@ -3787,7 +3839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1410829865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4136,7 +4188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1729325253
 RectTransform:
   m_ObjectHideFlags: 0

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da41142d1a8e0b4b8d10fa782fe9644, type: 3}
-  m_Name: New FishItems
+  m_Script: {fileID: 11500000, guid: 8c1d10b81122ff947a8bc91230b05a62, type: 3}
+  m_Name: All_Items
   m_EditorClassIdentifier: 
-  FishItemList:
-  - {fileID: 11400000, guid: 17d67c4d9745c7646b3d43139ba43a34, type: 2}
+  itemList:
   - {fileID: 11400000, guid: c878397aa236aad4da13c0562353905e, type: 2}
+  - {fileID: 11400000, guid: 17d67c4d9745c7646b3d43139ba43a34, type: 2}
   - {fileID: 11400000, guid: 0866dfd10c10ad646b82a5b6f91889e0, type: 2}
   - {fileID: 11400000, guid: 512ae262271042447ab1741c302bbc5e, type: 2}
   - {fileID: 11400000, guid: 64fdf1ebfc76276489ac9cc3ff20b71c, type: 2}

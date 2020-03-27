@@ -4543,7 +4543,7 @@ MonoBehaviour:
   H: 1
   V: 0
   playerReached: 0
-  fishItems: {fileID: 11400000, guid: 7d80c103d20ee644eaf73f2096b2e288, type: 2}
+  fishItems: {fileID: 11400000, guid: ae6f04b5d476143468a504378a614fc4, type: 2}
   playerInventory: {fileID: 11400000, guid: 236ed10a582ad9a4a95f5c7af36b590d, type: 2}
   tips: {fileID: 246014208}
   popUps: {fileID: 195040049}

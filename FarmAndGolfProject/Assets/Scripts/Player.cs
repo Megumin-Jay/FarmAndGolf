@@ -13,11 +13,17 @@ public class Player : MonoBehaviour
     public bool moveIsOn = true;//判断是否为可移动状态
 
     public GameObject myBag;//获取我的背包
+    public GameSaveManager gameSaveManager;//数据存储器
+    public HeldManager myHeld;//我的物品持有
     public static Vector3 initialPosition = new Vector3(0, 1, 0);//场景切换后加载的初始位置
+    public TipsUI tip;
     void Start()
     {
-
+        tip.UpdateTooltip(Application.persistentDataPath);
+        gameSaveManager.LoadGame();//加载游戏数据
+        myHeld.Load();
     }
+
     void Awake()
     {
         gameObject.transform.position = initialPosition;//传送到切换场景后逻辑上应该在的位置

@@ -8,10 +8,13 @@ public class GameSaveManager : MonoBehaviour
 {
     //暂时只做了"背包里有什么"的存储,物品数量的存储还没做
     public Inventory myInventory;//先生成我们要存储的变量
+    public HeldManager myHeld;
 
     public void SaveGame()
     {
         Debug.Log(Application.persistentDataPath);//直接输出这个保存文件的文件夹的路径
+        myHeld.Save();
+
         if (!Directory.Exists(Application.persistentDataPath + "/game_SaveData"))//如果没有文件夹,则生成一个
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/game_SaveData");
@@ -27,6 +30,11 @@ public class GameSaveManager : MonoBehaviour
         formatter.Serialize(file, json);//把上面的json用二进制的方法写到文件夹当中
 
         file.Close();//相当于保存,不然文档是在闪存中,关机即消失
+
+        FileStream file2 = File.Create(Application.persistentDataPath + "/game_SaveData/held.txt");
+        json = JsonUtility.ToJson(myHeld);
+        formatter.Serialize(file2, json);
+        file2.Close();
     }
 
     public void LoadGame()
@@ -41,6 +49,14 @@ public class GameSaveManager : MonoBehaviour
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file), myInventory);//反序列化之后覆盖重写
 
             file.Close();//关闭!别忘了这个!
+        }
+
+        if (File.Exists(Application.persistentDataPath + "/game_SaveData/held.txt"))//先判断文件是否存在 
+        {
+            FileStream file2 = File.Open(Application.persistentDataPath + "/game_SaveData/held.txt", FileMode.Open);
+
+            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file2), myHeld);//反序列化之后覆盖重写
+            file2.Close();//关闭!别忘了这个!
         }
     }
 }

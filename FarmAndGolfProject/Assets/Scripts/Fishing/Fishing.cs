@@ -14,7 +14,7 @@ public class Fishing : MonoBehaviour
     private bool[] condition = new bool[2] { true, true };//确保有些方法在Update中只执行一次的布尔变量
 
 
-    public FishItems fishItems;//取得"鱼池"
+    public Inventory fishItems;//取得"鱼池"
     public Inventory playerInventory;//取得玩家的背包
     public TipsUI tips;//提示框
     public TipsUI popUps;//弹窗
@@ -46,7 +46,7 @@ public class Fishing : MonoBehaviour
             {
                 fishIsOn = true;
                 seed = Random.Range(0, 19);//暂时还是等概率...
-                fishSp = fishItems.FishItemList[seed].itemImage;//鱼的图片
+                fishSp = fishItems.itemList[seed].itemImage;//鱼的图片
                 lureSp = Resources.Load<Sprite>("Graphics/Function/Inventory/FishItems/lure");//鱼饵的图片
                 timer = 6.0f;//计时器赋初值,作为整个钓鱼动画播放时长
                 playerReached = false;
@@ -118,8 +118,8 @@ public class Fishing : MonoBehaviour
 
         if (condition[1])//以 是否执行鱼的移动 为中介点,分别执行鱼和饵的位置判断
             fish.lureReached();
-        else fish.fishReached();
-
+        else
+            fish.fishReached();
 
         if (timer < -0.1f)//钓鱼动画播放完毕,准备结算
         {
@@ -128,7 +128,7 @@ public class Fishing : MonoBehaviour
             fishIsOn = false;//退出钓鱼
             condition = new bool[2] { true, true };//重置单次函数的判断数组
             GetFish(seed);//将钓上的物品加入背包
-            popUps.UpdateTooltip("恭喜您获得\"" + fishItems.FishItemList[seed].name + "\"!");
+            popUps.UpdateTooltip("恭喜您获得\"" + fishItems.itemList[seed].name + "\"!");
             popUps.Show();//显示"确认"弹窗
         }
     }
@@ -136,21 +136,22 @@ public class Fishing : MonoBehaviour
     //生成物品至背包
     public void GetFish(int a)
     {
-        if (!playerInventory.itemList.Contains(fishItems.FishItemList[a]))//如果背包中没这个
+        if (!playerInventory.itemList.Contains(fishItems.itemList[a]))//如果背包中没这个
         {
             for (int i = 0; i < playerInventory.itemList.Count; i++)
             {
                 if (playerInventory.itemList[i] == null)//找空格子,有就给他的物品赋值
                 {
-                    playerInventory.itemList[i] = fishItems.FishItemList[a];//赋值
-                    fishItems.FishItemList[a].itemHeld = 1;
+                    playerInventory.itemList[i] = fishItems.itemList[a];//赋值
+                    fishItems.itemList[a].itemHeld = 1;
                     break;
                 }
             }
         }
+
         else
         {
-            fishItems.FishItemList[a].itemHeld += 1;//如果原本就有,则增加"这个物品"的数量 
+            fishItems.itemList[a].itemHeld += 1;//如果原本就有,则增加"这个物品"的数量 
         }
 
         InventoryManager.RefreshItem();
