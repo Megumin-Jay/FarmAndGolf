@@ -7,21 +7,20 @@ public class Player : MonoBehaviour
 {
     //属性
     private float moveSpeed = 4;//角色移动的初始速度
-    float v = -1, h = 0;//记录上一帧的移动指令
+    static float v = -1, h = 0;//记录上一帧的移动指令
     //引用
     public Animator animator;//动画器
     public bool moveIsOn = true;//判断是否为可移动状态
 
     public GameObject myBag;//获取我的背包
+    public static Vector3 initialPosition = new Vector3(0, 1, 0);//场景切换后加载的初始位置
+    void Start()
+    {
 
-
+    }
     void Awake()
     {
-        ////加载新场景时人物不消失
-        //if (GameObject.FindGameObjectsWithTag("Protagonist").Length > 1)
-        //    Destroy(this.gameObject);
-        //else
-        //    DontDestroyOnLoad(this.gameObject);
+        gameObject.transform.position = initialPosition;//传送到切换场景后逻辑上应该在的位置
     }
 
     void Update()
@@ -99,7 +98,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             myBag.SetActive(!myBag.activeSelf);
-            InventoryManager.RefreshItem();
+            InventoryManager.RefreshItem();//打开时就刷新一次背包
         }
     }
 }

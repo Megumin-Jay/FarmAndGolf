@@ -30,7 +30,7 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (eventData.pointerCurrentRaycast.gameObject == null)
         {//删除物品,更新描述为"空",更新背包
             myBag.itemList[currentItemID] = null;
-            InventoryManager.UpdateItemInfo("", Resources.Load<Sprite>("Graphics/Transparent"));
+            InventoryManager.UpdateItemInfo("", Resources.Load<Sprite>("Graphics/Others/Transparent"));
             InventoryManager.RefreshItem();
         }
 

@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     public Image itemImagePanel;//物品的放大图片
     public List<GameObject> slots = new List<GameObject>();//格子列表
 
+
     void Awake()//单例
     {
         if (instance != null)
@@ -27,7 +28,6 @@ public class InventoryManager : MonoBehaviour
     {
         RefreshItem();
         instance.itemInformation.text = "";//这个背包的描述框是一直显示的,所以要保证没点击物品的时候描述为"空"
-        //instance.itemImagePanel.sprite=
     }
 
     //更新描述框文本为 传入的这个文本
@@ -59,7 +59,5 @@ public class InventoryManager : MonoBehaviour
             instance.slots[i].GetComponent<Slot>().SetupSlot(instance.myBag.itemList[i]);//同步图片等物品信息
         }
     }
-
-
 }
 

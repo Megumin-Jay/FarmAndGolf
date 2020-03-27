@@ -8,25 +8,25 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Street1.unity
+  - enabled: 1
+    path: Assets/Scenes/Road.unity
     guid: 6e8b9977ad4d11940a6e29cf1a309f74
   - enabled: 1
-    path: Assets/Scenes/fishDEMO.unity
+    path: Assets/Scenes/Seaside.unity
     guid: fa3de0fcb9bd5b347bc15bb543b2af80
-  - enabled: 0
-    path: Assets/Scenes/House1.unity
+  - enabled: 1
+    path: Assets/Scenes/Crossing.unity
     guid: fcbeb1cc3f9f5f84986acbf73bf58427
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: a67a95a7661957b43ba8fc78b3aa2a3e
-  - enabled: 0
-    path: Assets/Scenes/Street3.unity
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
     guid: 08f7f3a8ca3ba1442b155017fa3dfd36
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GamePlay.unity
     guid: 1af768a0d4a2e8a4db9019de41b6b32e
   m_configObjects: {}

@@ -8,8 +8,8 @@ public class Fishing : MonoBehaviour
     public float H;
     public float V;//钓鱼点相对检测区域的方向
     private float timer;//计时器,控制播放动画时间
-    private Vector3 position;//用于判断人物是否静止的位置变量
     private bool fishIsOn = false;//判断是否启动钓鱼功能
+    public bool playerReached = false;//检测玩家是否到达钓鱼地点
     private int seed;//随机数,钓鱼的"种子"
     private bool[] condition = new bool[2] { true, true };//确保有些方法在Update中只执行一次的布尔变量
 
@@ -22,8 +22,8 @@ public class Fishing : MonoBehaviour
 
     public Player player;//人物身上的脚本
     public Animator animator;//动画器
-
-
+    private Sprite lureSp;//鱼饵图片
+    private Sprite fishSp;//鱼的图片
 
 
 
@@ -33,7 +33,6 @@ public class Fishing : MonoBehaviour
         {
             player = collision.GetComponent<Player>();//获取角色的脚本
             animator = collision.GetComponent<Animator>();//获取角色挂载的动画器
-            timer = 6.0f;//计时器赋初值,作为整个钓鱼动画播放时长
         }
     }
 
@@ -46,7 +45,11 @@ public class Fishing : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K))
             {
                 fishIsOn = true;
-                seed = Random.Range(0, 19);
+                seed = Random.Range(0, 19);//暂时还是等概率...
+                fishSp = fishItems.FishItemList[seed].itemImage;//鱼的图片
+                lureSp = Resources.Load<Sprite>("Graphics/Function/Inventory/FishItems/lure");//鱼饵的图片
+                timer = 6.0f;//计时器赋初值,作为整个钓鱼动画播放时长
+                playerReached = false;
             }
 
 
@@ -58,17 +61,18 @@ public class Fishing : MonoBehaviour
 
             if (fishIsOn)
             {
-                tips.UpdateTooltip("正在前往钓鱼地点");
-                player.StopMove();//强制播放自动行走,剥夺玩家控制权
-                player.AutoMove(H, V);
-                //对比两帧物体位置是否改变,若不变 说明人物已到达目标位置,停止播放行走动画
-                if (collision.transform.position == position)
+                if (playerReached)//到达钓鱼地点
                 {
                     animator.SetFloat("Magnitude", 0);
                     FishEnd();
                 }
+                else
+                {
+                    tips.UpdateTooltip("正在前往钓鱼地点");
+                    player.StopMove();//强制播放自动行走,剥夺玩家控制权
+                    player.AutoMove(H, V);
+                }
             }
-            position = collision.transform.position;//保存人物上一帧的位置
         }
     }
 
@@ -95,19 +99,19 @@ public class Fishing : MonoBehaviour
         else
             tips.UpdateTooltip("收杆中...");
 
-        if (timer < 5.5f)
+        if (timer < 5.6f)
             if (condition[0])
             {
-                //替换为鱼饵的图片(用了Resources,所以别乱改路径
-                fish.updateFishImage(Resources.Load<Sprite>("Graphics/Inventory/FishItems/lure"));
+                //替换为鱼饵的图片
+                fish.updateFishImage(lureSp);
                 fish.lureAutoMove();
                 condition[0] = false;
             }
 
-        if (timer < 1.0f)
+        if (timer < 1.1f)
             if (condition[1])
             {
-                fish.updateFishImage(fishItems.FishItemList[seed].itemImage);
+                fish.updateFishImage(fishSp);
                 fish.AutoMove();
                 condition[1] = false;
             }
@@ -119,7 +123,6 @@ public class Fishing : MonoBehaviour
 
         if (timer < -0.1f)//钓鱼动画播放完毕,准备结算
         {
-            timer = 6.0f;//恢复计时器
             animator.SetBool("Fishing", false);//退出钓鱼动画
             player.moveIsOn = true;//恢复移动控制权
             fishIsOn = false;//退出钓鱼

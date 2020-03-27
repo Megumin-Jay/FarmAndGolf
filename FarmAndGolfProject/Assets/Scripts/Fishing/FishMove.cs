@@ -10,6 +10,7 @@ public class FishMove : MonoBehaviour
     public GameObject player;//为了获取玩家碰撞体的位置
     private Vector3 originalSize;//原始"尺寸"
     public GameObject path;//总轨迹设计参考点
+    private Vector3 fix = new Vector3(0, -0.7f, 0);//修正参考点位置的向量
     public Transform[] PointList;//生成路径的保存的目标点
     private Transform[] lurePointList;//上面那个的逆序
 
@@ -32,7 +33,7 @@ public class FishMove : MonoBehaviour
     {
         gameObject.transform.position = PointList[0].position;//物品位置更新为第一个目标点(保证相对玩家的轨迹正常)
         gameObject.SetActive(true);//激活
-        path.transform.position = player.transform.position;//总轨迹设计参考点与玩家位置一致
+        path.transform.position = player.transform.position + fix;//加入修正向量,使总轨迹设计参考点与玩家下盘位置一致
         var positions = PointList.Select(u => u.position).ToArray();
         transform.DOPath(positions, 1, PathType.CatmullRom, 0, 10);//(目标点, 运动总耗时, 运动方式:曲线, Lookat, 轨迹精度)
     }
@@ -51,7 +52,7 @@ public class FishMove : MonoBehaviour
     {
         gameObject.transform.position = lurePointList[0].position;//物品位置更新为第一个目标点(保证相对玩家的轨迹正常)
         gameObject.SetActive(true);//激活
-        path.transform.position = player.transform.position;//总轨迹设计参考点与玩家位置一致
+        path.transform.position = player.transform.position + fix;//加入修正向量,使总轨迹设计参考点与玩家下盘位置一致
         var positions = lurePointList.Select(u => u.position).ToArray();
         transform.DOPath(positions, 1, PathType.CatmullRom, 0, 10);//(目标点, 运动总耗时, 运动方式:曲线, Lookat, 轨迹精度)
     }
