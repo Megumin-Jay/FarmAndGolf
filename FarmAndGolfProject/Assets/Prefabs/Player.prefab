@@ -164,3 +164,6 @@ MonoBehaviour:
   animator: {fileID: 405029100884001861}
   moveIsOn: 1
   myBag: {fileID: 0}
+  gameSaveManager: {fileID: 4161873700495228919, guid: 2f3e1ed8c485fc447b3794c21aed39f4,
+    type: 3}
+  myHeld: {fileID: 4161873700495228917, guid: 2f3e1ed8c485fc447b3794c21aed39f4, type: 3}

@@ -427,6 +427,7 @@ MonoBehaviour:
   scene: Seaside
   x: -8
   y: 1
+  gsm: {fileID: 0}
 --- !u!61 &247695920
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -892,6 +893,16 @@ PrefabInstance:
       propertyPath: myBag
       value: 
       objectReference: {fileID: 1224731789}
+    - target: {fileID: 405029100884001866, guid: 9268e4ec737d3d143b6a532b64428356,
+        type: 3}
+      propertyPath: gameSaveManager
+      value: 
+      objectReference: {fileID: 1432127862}
+    - target: {fileID: 405029100884001866, guid: 9268e4ec737d3d143b6a532b64428356,
+        type: 3}
+      propertyPath: myHeld
+      value: 
+      objectReference: {fileID: 1432127861}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9268e4ec737d3d143b6a532b64428356, type: 3}
 --- !u!1 &518197107
@@ -2130,6 +2141,7 @@ MonoBehaviour:
   scene: Road
   x: -8
   y: 1
+  gsm: {fileID: 0}
 --- !u!61 &1431674691
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2156,6 +2168,66 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1432127860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432127863}
+  - component: {fileID: 1432127862}
+  - component: {fileID: 1432127861}
+  m_Layer: 0
+  m_Name: GameSaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1432127861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432127860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646aa88165e041d46b3e7462ae1a58a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Held: 
+  items: {fileID: 11400000, guid: 721746c63a0306b438e6edb95d9d4da1, type: 2}
+--- !u!114 &1432127862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432127860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa7809d5b2b3f94791a8dfe31064f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myInventory: {fileID: 11400000, guid: 236ed10a582ad9a4a95f5c7af36b590d, type: 2}
+  myHeld: {fileID: 1432127861}
+--- !u!4 &1432127863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432127860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1481865509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3681,6 +3753,7 @@ MonoBehaviour:
   scene: Village
   x: 8
   y: 1
+  gsm: {fileID: 0}
 --- !u!1 &2014989593
 GameObject:
   m_ObjectHideFlags: 0

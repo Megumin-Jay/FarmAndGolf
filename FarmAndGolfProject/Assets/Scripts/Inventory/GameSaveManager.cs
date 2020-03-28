@@ -7,8 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;//将任何数据转化为�
 public class GameSaveManager : MonoBehaviour
 {
     //暂时只做了"背包里有什么"的存储,物品数量的存储还没做
-    public Inventory myInventory;//先生成我们要存储的变量
-    public HeldManager myHeld;
+    public Inventory myInventory;//背包
+    public HeldManager myHeld;//物品持有数
 
     public void SaveGame()
     {
@@ -31,6 +31,7 @@ public class GameSaveManager : MonoBehaviour
 
         file.Close();//相当于保存,不然文档是在闪存中,关机即消失
 
+        //下面是对 持有数 的保存
         FileStream file2 = File.Create(Application.persistentDataPath + "/game_SaveData/held.txt");
         json = JsonUtility.ToJson(myHeld);
         formatter.Serialize(file2, json);
@@ -51,6 +52,7 @@ public class GameSaveManager : MonoBehaviour
             file.Close();//关闭!别忘了这个!
         }
 
+        //下面是对 持有数 的读取
         if (File.Exists(Application.persistentDataPath + "/game_SaveData/held.txt"))//先判断文件是否存在 
         {
             FileStream file2 = File.Open(Application.persistentDataPath + "/game_SaveData/held.txt", FileMode.Open);
