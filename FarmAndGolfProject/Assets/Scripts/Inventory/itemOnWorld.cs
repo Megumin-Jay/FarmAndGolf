@@ -14,6 +14,13 @@ public class itemOnWorld : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             tips.Show();
+            tips.UpdateTooltip("按空格键拾取");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AddNewItem();//添加物品到背包
+                Destroy(gameObject);//销毁"物品"->销毁场景中的这个能看到的物品
+                tips.Hide();//隐藏提示栏
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D other)
