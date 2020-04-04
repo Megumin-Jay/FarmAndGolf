@@ -27,19 +27,19 @@ public class Fishing : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.tag == "Player")//检测碰撞物体是否为主角
+        if (other.tag == "Player")//检测碰撞物体是否为主角
         {
-            player = collision.GetComponent<Player>();//获取角色的脚本
-            animator = collision.GetComponent<Animator>();//获取角色挂载的动画器
+            player = other.GetComponent<Player>();//获取角色的脚本
+            animator = other.GetComponent<Animator>();//获取角色挂载的动画器
         }
     }
 
     //整个钓鱼过程中人物都应处在碰撞器中
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (collision.tag == "Player")//检测碰撞物体是否为主角
+        if (other.tag == "Player")//检测碰撞物体是否为主角
         {
             //按下互动键(暂设为K),开启钓鱼功能
             if (Input.GetKeyDown(KeyCode.K))
@@ -76,9 +76,9 @@ public class Fishing : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.tag == "Player")//检测碰撞物体是否为主角
+        if (other.tag == "Player")//检测碰撞物体是否为主角
         {
             tips.Hide();//隐藏提示栏
         }
