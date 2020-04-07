@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//通过3个摄像机实现农场的预览和切换
 public class Farm : MonoBehaviour
 {
     public bool farmIsOn = false;//判断是否打开农场
