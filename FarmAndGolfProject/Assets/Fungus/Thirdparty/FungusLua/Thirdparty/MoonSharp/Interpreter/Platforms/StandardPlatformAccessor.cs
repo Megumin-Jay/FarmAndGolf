@@ -154,7 +154,7 @@ namespace MoonSharp.Interpreter.Platforms
 		/// </returns>
 		public override string GetEnvironmentVariable(string envvarname)
 		{
-			return Environment.GetEnvironmentVariable(envvarname);
+			return System.Environment.GetEnvironmentVariable(envvarname);
 		}
 
 		/// <summary>
@@ -205,7 +205,7 @@ namespace MoonSharp.Interpreter.Platforms
 		/// <param name="exitCode">The exit code.</param>
 		public override void OS_ExitFast(int exitCode)
 		{
-			Environment.Exit(exitCode);
+			System.Environment.Exit(exitCode);
 		}
 
 		/// <summary>

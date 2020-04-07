@@ -12,8 +12,10 @@ public class FarmUI : MonoBehaviour
     void Start()
     {
         farmOp.SetActive(false);
-        fop = GameObject.FindGameObjectWithTag("Player").GetComponent<FarmOperation>();
-        pop= GameObject.FindGameObjectWithTag("Player").GetComponent<PastureOP>();
+        if(fop==null)
+            fop = GameObject.FindGameObjectWithTag("Player").GetComponent<FarmOperation>();
+        if (pop == null)
+            pop = GameObject.FindGameObjectWithTag("Player").GetComponent<PastureOP>();
     }
 
     public void FarmOpUI()
@@ -21,8 +23,10 @@ public class FarmUI : MonoBehaviour
         farmOp.SetActive(!farmOp.activeSelf);
         if (!farmOp.activeSelf)
         {
-            fop.SetReset();
-            pop.SetReset();
+            if(fop!=null)
+                fop.SetReset();
+            if (pop != null)
+                pop.SetReset();
         }
     }
 }

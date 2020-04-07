@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Grid
+  - GridPanel
+  - Area3
+  - Slider
+  - Hole
+  - Area1
+  - GolfClubs
+  - Area2
+  - Ground
   layers:
   - Default
   - TransparentFX
