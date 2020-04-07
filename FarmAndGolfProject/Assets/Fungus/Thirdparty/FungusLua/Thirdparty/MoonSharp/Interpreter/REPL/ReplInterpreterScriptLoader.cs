@@ -24,18 +24,18 @@ namespace MoonSharp.Interpreter.REPL
 		/// </summary>
 		public ReplInterpreterScriptLoader()
 		{
-			string env = Environment.GetEnvironmentVariable("MOONSHARP_PATH");
+			string env = System.Environment.GetEnvironmentVariable("MOONSHARP_PATH");
 			if (!string.IsNullOrEmpty(env)) ModulePaths = UnpackStringPaths(env);
 
 			if (ModulePaths == null)
 			{
-				env = Environment.GetEnvironmentVariable("LUA_PATH_5_2");
+				env = System.Environment.GetEnvironmentVariable("LUA_PATH_5_2");
 				if (!string.IsNullOrEmpty(env)) ModulePaths = UnpackStringPaths(env);
 			}
 
 			if (ModulePaths == null)
 			{
-				env = Environment.GetEnvironmentVariable("LUA_PATH");
+				env = System.Environment.GetEnvironmentVariable("LUA_PATH");
 				if (!string.IsNullOrEmpty(env)) ModulePaths = UnpackStringPaths(env);
 			}
 

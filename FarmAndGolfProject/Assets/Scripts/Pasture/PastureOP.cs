@@ -56,6 +56,7 @@ public class PastureOP : MonoBehaviour
         GameObject myani = Instantiate(ani);
         myani.transform.parent = pasture.transform;
         myani.transform.position = brithPoint;
+        Debug.Log(myani.transform);
     }
     public void Harvest()
     {
