@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public static Vector3 initialPosition = new Vector3(0, 1, 0);//场景切换后加载的初始位置
 
 
+
     void Awake()
     {
         gameObject.transform.position = initialPosition;//传送到切换场景后逻辑上应该在的位置
@@ -107,4 +108,5 @@ public class Player : MonoBehaviour
             InventoryManager.RefreshItem();//打开时就刷新一次背包
         }
     }
+
 }

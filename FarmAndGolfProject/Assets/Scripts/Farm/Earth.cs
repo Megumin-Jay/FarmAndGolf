@@ -11,7 +11,7 @@ public class Earth : MonoBehaviour
     public float fertilizedTimeLength = 5;//施一次肥，可保持土地肥沃4H
     public float dryTimeLength = 5;//
 
-    [SerializeField] int condition ;//土地的状态，0代表干旱，1代表普通，2代表湿润，3代表普通+施肥，4代表湿润+施肥
+    [SerializeField] int condition;//土地的状态，0代表干旱，1代表普通，2代表湿润，3代表普通+施肥，4代表湿润+施肥
     [SerializeField] bool occupied;
     [SerializeField] Plant myplant = null;
     [SerializeField] float watertime = -1;//浇水时间
@@ -53,10 +53,10 @@ public class Earth : MonoBehaviour
         }
         else
         {
-            if(Wet)
-               StartCoroutine("WaterTheEarth");
-             if(Fertilized)
-               StartCoroutine("FertilizeTheEarth");
+            if (Wet)
+                StartCoroutine("WaterTheEarth");
+            if (Fertilized)
+                StartCoroutine("FertilizeTheEarth");
         }
         this_sp = this.gameObject.GetComponent<SpriteRenderer>();
         this_sp.sprite = sp[0];
@@ -85,11 +85,11 @@ public class Earth : MonoBehaviour
     //用协程控制土地干湿、施肥状况
     public bool WaterThread()
     {
-        switch(condition)
+        switch (condition)
         {
             case 4:
             case 2: return false;
-            default:if (!Dry) { watertime = 0; waterbegintime = Time.time; } StartCoroutine("WaterTheEarth");break;
+            default: if (!Dry) { watertime = 0; waterbegintime = Time.time; } StartCoroutine("WaterTheEarth"); break;
         }
         return true;
     }
@@ -106,20 +106,20 @@ public class Earth : MonoBehaviour
                 condition = 4;
             else
                 condition = 2;
-            yield return new WaitForSeconds(waterTimeLength-watertime);
+            yield return new WaitForSeconds(waterTimeLength - watertime);
             watertime = -1;
             if (Fertilized)
                 condition = 3;
             else
                 condition = 1;
-            
+
         }
     }
     public bool FertilizeThread()
     {
-        if (Fertilized||Dry)
+        if (Fertilized || Dry)
             return false;
-        fertilizedtime = 0;fertilizedbegintime = Time.time;
+        fertilizedtime = 0; fertilizedbegintime = Time.time;
         StartCoroutine("FertilizeTheEarth");
         return true;
     }
@@ -129,13 +129,13 @@ public class Earth : MonoBehaviour
             condition = 4;
         else
             condition = 3;
-        yield return new WaitForSeconds(fertilizedTimeLength-fertilizedtime);
+        yield return new WaitForSeconds(fertilizedTimeLength - fertilizedtime);
         fertilizedtime = -1;
         if (Wet)
             condition = 2;
         else
             condition = 1;
-        
+
     }
     public bool PlantTheEarth(Plant plant) //种植时，改变土地占有状况
     {

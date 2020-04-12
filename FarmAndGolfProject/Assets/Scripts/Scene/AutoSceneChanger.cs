@@ -15,13 +15,13 @@ public class AutoSceneChanger : MonoBehaviour
         //按ESC跳过开场CG
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("Road");
+            SceneManager.LoadScene("Village");
         }
     }
 
     IEnumerator waitChangeScene()
     {
         yield return new WaitForSeconds(videoLength);
-        SceneManager.LoadScene("Road");
+        SceneManager.LoadScene("Village");
     }
 }
