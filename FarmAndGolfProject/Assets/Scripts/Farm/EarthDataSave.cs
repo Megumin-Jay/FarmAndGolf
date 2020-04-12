@@ -65,7 +65,6 @@ public class EarthDataSave : MonoBehaviour
         if (File.Exists(filePath))
         {
             Debug.Log(filePath + ":保存成功");
-            AssetDatabase.Refresh();
         }
         else
             Debug.Log("保存失败");
