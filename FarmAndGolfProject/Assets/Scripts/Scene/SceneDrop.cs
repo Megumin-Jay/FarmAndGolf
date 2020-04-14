@@ -12,6 +12,7 @@ public class SceneDrop : MonoBehaviour
     {
         Drop();
     }
+
     private void Drop()
     {
         var positions = PointList.Select(u => u.position).ToArray();
