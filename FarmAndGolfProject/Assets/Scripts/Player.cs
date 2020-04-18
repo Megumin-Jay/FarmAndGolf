@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public GameObject myBag;//获取我的背包
     public GameSaveManager gameSaveManager;//数据存储器
     public HeldManager myHeld;//我的物品持有
+    public Inventory AllItems;
     public static Vector3 initialPosition = new Vector3(0, 1, 0);//场景切换后加载的初始位置
 
 
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
         gameObject.transform.position = initialPosition;//传送到切换场景后逻辑上应该在的位置
+
+
     }
 
     void Start()
@@ -63,8 +66,8 @@ public class Player : MonoBehaviour
                 h = movement.x;
             }
 
-            //按下"L"时“跑步”（移动速度增加）
-            if (Input.GetKey(KeyCode.L))
+            //按下"Shift"时“跑步”（移动速度增加）
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 moveSpeed = 6;
                 animator.speed = 1.3f;
@@ -91,9 +94,11 @@ public class Player : MonoBehaviour
     }
 
     //直线的自动移动
-    public void AutoMove(float h, float v)
+    public void AutoMove(float H, float V)
     {
-        Vector3 movement = new Vector3(h, v, 0.0f);
+        h = H;
+        v = V;//确保退出自动行走后人物朝向不矛盾
+        Vector3 movement = new Vector3(H, V, 0.0f);
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Magnitude", movement.magnitude);

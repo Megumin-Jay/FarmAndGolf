@@ -8,12 +8,13 @@ public class GameSaveManager : MonoBehaviour
 {
     //暂时只做了"背包里有什么"的存储,物品数量的存储还没做
     public Inventory myInventory;//背包
-    public HeldManager myHeld;//物品持有数
+    public Held myHeld;//物品持有数
+    public HeldManager heldManager;
 
     public void SaveGame()
     {
         Debug.Log(Application.persistentDataPath);//直接输出这个保存文件的文件夹的路径
-        myHeld.Save();
+        heldManager.Save();
 
         if (!Directory.Exists(Application.persistentDataPath + "/game_SaveData"))//如果没有文件夹,则生成一个
         {
@@ -33,8 +34,8 @@ public class GameSaveManager : MonoBehaviour
 
         //下面是对 持有数 的保存
         FileStream file2 = File.Create(Application.persistentDataPath + "/game_SaveData/held.txt");
-        json = JsonUtility.ToJson(myHeld);
-        formatter.Serialize(file2, json);
+        var json2 = JsonUtility.ToJson(myHeld);
+        formatter.Serialize(file2, json2);
         file2.Close();
     }
 
@@ -58,6 +59,7 @@ public class GameSaveManager : MonoBehaviour
             FileStream file2 = File.Open(Application.persistentDataPath + "/game_SaveData/held.txt", FileMode.Open);
 
             JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file2), myHeld);//反序列化之后覆盖重写
+
             file2.Close();//关闭!别忘了这个!
         }
     }
