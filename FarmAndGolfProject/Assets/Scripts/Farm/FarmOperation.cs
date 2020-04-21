@@ -6,7 +6,9 @@ public class FarmOperation : MonoBehaviour
 {
     [SerializeField] Earth earth = null;
     [SerializeField] int op = 0;//0表示未选中操作，1表示浇水，2表示施肥，3表示种植，4表示收获
-    [SerializeField] GameObject plant;
+    [SerializeField] GameObject[] plant;
+    [SerializeField] int plant_num = -1;
+    public int Plant_num { set { plant_num = value; } }
 
     private void Update()
     {
@@ -27,20 +29,20 @@ public class FarmOperation : MonoBehaviour
     {
         set { earth = value; }
     }
-    public void SetWater()     { op = 1; }
-    public void SetFertilize() { op = 2; }
+    public void SetWater()     { op = 1; plant_num = -1; }
+    public void SetFertilize() { op = 2; plant_num = -1; }
     public void SetPlant()     { op = 3; }
-    public void SetHarvest()   { op = 4; }
-    public void SetReset()     { op = 0; }
+    public void SetHarvest()   { op = 4; plant_num = -1; }
+    public void SetReset()     { op = 0; plant_num = -1; }
 
     public void Plant()
     {
-        if (earth == null||earth.Occupied||earth.Dry||plant == null)
+        if (earth == null||earth.Occupied||earth.Dry||plant_num == -1)
         {
             Debug.Log("种植失败");
             return;
         }
-        GameObject myplant = Instantiate(plant);
+        GameObject myplant = Instantiate(plant[plant_num]);
         Plant pplant = myplant.GetComponent<Plant>();
         if (pplant == null)
         {

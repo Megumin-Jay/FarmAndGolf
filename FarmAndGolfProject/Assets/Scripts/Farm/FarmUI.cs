@@ -7,6 +7,7 @@ public class FarmUI : MonoBehaviour
     public GameObject farmOp;
     public FarmOperation fop;
     public PastureOP pop;
+    public GameObject ScrollView;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,9 @@ public class FarmUI : MonoBehaviour
         if (pop == null)
             pop = GameObject.FindGameObjectWithTag("Player").GetComponent<PastureOP>();
     }
+
+    public void ScrollViewChange()
+    { ScrollView.SetActive(!ScrollView.activeSelf); }
 
     public void FarmOpUI()
     {
