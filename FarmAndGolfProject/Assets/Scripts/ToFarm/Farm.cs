@@ -10,7 +10,7 @@ public class Farm : MonoBehaviour
     public Player player;//人物身上的脚本
     public Animator animator;//动画器
     public TipsUI tips;//提示框
-    public FarmOperation FarmOp;//农场操作
+
     public GameObject mainCamera;//主摄
     public GameObject extraCamera;//投影农场的摄像机
     public GameObject farmCamera;//农场摄像机
@@ -37,7 +37,6 @@ public class Farm : MonoBehaviour
         {
             tips.Show();
             tips.UpdateTooltip("按下\"K\"键前往农场");
-            Back();//返回
         }
 
         if (farmIsOn)
@@ -65,10 +64,10 @@ public class Farm : MonoBehaviour
     }
 
     //要实现:关闭农场摄像机 激活主摄和投影摄像机 恢复玩家移动
-    private void Back()
+    public void Back()
     {
+        farmIsOn = false;
         player.moveIsOn = true;//恢复移动控制权
-        FarmOp.SetReset();
         farmCamera.SetActive(false);
         mainCamera.SetActive(true);
         extraCamera.SetActive(true);
