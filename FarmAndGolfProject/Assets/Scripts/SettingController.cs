@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -71,5 +72,11 @@ public class SettingController : MonoBehaviour
         GameObject UIset = GameObject.Find("UIsetting");
         if (UIset != null)
             UIset.SetActive(false);
+    }
+
+    //暂时先用这个函数恢复时间流速
+    public void Pause(bool click)
+    {
+        Time.timeScale = Convert.ToInt32(click);
     }
 }

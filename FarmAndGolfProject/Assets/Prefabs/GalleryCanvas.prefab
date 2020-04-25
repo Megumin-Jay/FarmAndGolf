@@ -2005,9 +2005,9 @@ RectTransform:
   m_Father: {fileID: 2684327441874219782}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000009536743}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 368.18506}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2684327442935973731
@@ -2031,7 +2031,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 460, y: 250}
-  m_Spacing: {x: 129, y: 220}
+  m_Spacing: {x: 153.4, y: 220}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &2684327442935973732
@@ -2255,7 +2255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2684327443262401303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2319,7 +2319,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2684327443262401320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -2414,8 +2414,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.1, y: 30.7}
-  m_SizeDelta: {x: 1691, y: 729.6}
+  m_AnchoredPosition: {x: 0, y: 30.7}
+  m_SizeDelta: {x: 1738.9, y: 729.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2684327443273897511
 MonoBehaviour:
@@ -2432,7 +2432,7 @@ MonoBehaviour:
   m_Content: {fileID: 2684327442935973733}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -2442,8 +2442,8 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 2684327443424853433}
   m_HorizontalScrollbarVisibility: 2
   m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: -3
-  m_VerticalScrollbarSpacing: -3
+  m_HorizontalScrollbarSpacing: -26.77
+  m_VerticalScrollbarSpacing: 6.6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2926,7 +2926,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2684327441789768733}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5988235
+  m_Size: 0.6187983
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

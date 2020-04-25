@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public bool moveIsOn = true;//判断是否为可移动状态
 
     public GameObject myBag;//获取我的背包
+    public GameObject mySetting;//获取设置界面
     public GameSaveManager gameSaveManager;//数据存储器
     public HeldManager myHeld;//我的物品持有
     public Inventory AllItems;
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        OpenMyBag();
+        OpenUI();
     }
     void FixedUpdate()
     {
@@ -105,12 +106,17 @@ public class Player : MonoBehaviour
         transform.position = transform.position + movement * Time.fixedDeltaTime * moveSpeed;
     }
 
-    void OpenMyBag()//用I键开关背包
+    void OpenUI()
     {
+        //用I键开关背包
         if (Input.GetKeyDown(KeyCode.I))
         {
             myBag.SetActive(!myBag.activeSelf);
             InventoryManager.RefreshItem();//打开时就刷新一次背包
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            mySetting.SetActive(true);
         }
     }
 
