@@ -42,7 +42,7 @@ public class Fishing : MonoBehaviour
         if (other.tag == "Player")//检测碰撞物体是否为主角
         {
             //按下互动键(暂设为K),开启钓鱼功能
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetKeyDown(KeyCode.K) && fishIsOn == false)
             {
                 fishIsOn = true;
                 seed = Random.Range(0, 19);//暂时还是等概率...
