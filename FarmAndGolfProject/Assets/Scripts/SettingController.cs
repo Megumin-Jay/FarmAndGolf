@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,18 +9,22 @@ public class SettingController : MonoBehaviour
     public Slider bgMusic_Slider;
     public Slider effectMusic_Slider;
     public Toggle fullScreen_Toggle;
-
+    public Toggle otherScreen_Toggle;
     public GameObject musicSetting;
     public GameObject screensizeSetting;
     public GameObject buttonchangeSetting;
 
-    void Start()
+    void Awake()
     {
         mainMusic_Slider.value = UISetting.Instance.MainMusicValue;
         bgMusic_Slider.value = UISetting.Instance.BgMusicValue;
         effectMusic_Slider.value = UISetting.Instance.EffectMusicValue;
-        fullScreen_Toggle.isOn = UISetting.Instance.IsFullScreen;
+        fullScreen_Toggle.isOn = UISetting.Instance.IsFullScreen;//Screen.fullScreen;
+        otherScreen_Toggle.isOn = !fullScreen_Toggle.isOn;
         UISetting.Instance.IsFullScreen = fullScreen_Toggle.isOn;
+    }
+    private void Start()
+    {
         MusicScence();
     }
     //打算用Slider自带的事件
@@ -72,11 +75,5 @@ public class SettingController : MonoBehaviour
         GameObject UIset = GameObject.Find("UIsetting");
         if (UIset != null)
             UIset.SetActive(false);
-    }
-
-    //暂时先用这个函数恢复时间流速
-    public void Pause(bool click)
-    {
-        Time.timeScale = Convert.ToInt32(click);
     }
 }

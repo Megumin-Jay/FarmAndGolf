@@ -1880,6 +1880,7 @@ MonoBehaviour:
   bgMusic_Slider: {fileID: 4059277840220767371}
   effectMusic_Slider: {fileID: 4059277839976757032}
   fullScreen_Toggle: {fileID: 4059277840906451807}
+  otherScreen_Toggle: {fileID: 1907788400}
   musicSetting: {fileID: 4059277840632764651}
   screensizeSetting: {fileID: 4059277839218543124}
   buttonchangeSetting: {fileID: 4059277841020124719}
