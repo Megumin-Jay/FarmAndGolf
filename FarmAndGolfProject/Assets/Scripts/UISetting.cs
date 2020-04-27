@@ -16,7 +16,7 @@ public class UISetting : MonoBehaviour
                 GameObject uiSetting = new GameObject("UISettingScript");
                 _instance = uiSetting.AddComponent<UISetting>();
                 DontDestroyOnLoad(uiSetting);
-            }
+           }
             return _instance;
         }
     }
@@ -51,6 +51,13 @@ public class UISetting : MonoBehaviour
     }
     private void Awake()
     {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+            Destroy(gameObject);
         isFullScreen = bool.Parse(PlayerPrefs.GetString("isFullScreen", "false"));
         SetScreen(isFullScreen);
         mainMusicValue = PlayerPrefs.GetFloat("mainMusicValue", 1.0f);  //主音量的值
