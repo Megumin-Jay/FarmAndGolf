@@ -61,6 +61,8 @@ public class BallMove : MonoBehaviour
     public float ballRuinTime;
     /*假球的透明化速度 用透明代表进洞*/
     public float fakeBallBleachSpeed;
+    /*假球的动画状态机*/
+    private Animator fakeBallAn;
 
     /// BallArm
     /*击打的方向和力*/
@@ -193,6 +195,7 @@ public class BallMove : MonoBehaviour
                                                                             * groundFrictionX / ballMass * Time.fixedDeltaTime;
             if (moveSpeed.x == 0 && moveSpeed.y == 0 && moveSpeed.z == 0)
             {
+                fakeBallAn.enabled = false;
                 //一次击球结束后 会将fakeball销毁 所以这里用来判断一次击球是否结束
 //                if(fakeBall)
 //                    CameraMove(transform.position - offset);
@@ -249,8 +252,8 @@ public class BallMove : MonoBehaviour
         {
             fakeBall.transform.position = dotPos;
             fakeBall.transform.localScale = new Vector3(
-                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight)) , MinScale, MaxScale),
-                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight)) , MinScale, MaxScale), 1);
+                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight))/2 , MinScale, MaxScale),
+                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight))/2 , MinScale, MaxScale), 1);
         }
 
         while (index < dotCount)
@@ -289,6 +292,8 @@ public class BallMove : MonoBehaviour
         //假球
         //fakeBall = Instantiate(fakeBallObj, transform.position, Quaternion.identity);
         fakeBall = GameObject.Find("golfball");
+        fakeBallAn = fakeBall.GetComponent<Animator>();
+        fakeBallAn.enabled = true;
     }
     
     /// <summary>

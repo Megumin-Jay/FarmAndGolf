@@ -322,6 +322,8 @@ public class BallDir : MonoBehaviour
                 invariantPos = new Vector3(pos.x,pos.y,0);
                 _animator.SetFloat("DirectionX",pos.x - ballInitialPos.x);
                 _animator.SetFloat("DirectionY",pos.y - ballInitialPos.y);
+                //_animator.SetFloat("Gradient",(pos.x - ball.transform.position.x)/(pos.y - ball.transform.position.y));
+                //_animator.SetFloat("GradientAbs",Mathf.Abs((pos.x - ball.transform.position.x)/(pos.y - ball.transform.position.y)));
             }
             //第一次以后
             if (ball)
@@ -357,6 +359,9 @@ public class BallDir : MonoBehaviour
                 invariantPos = new Vector3(pos.x,pos.y,0);
                 _animator.SetFloat("DirectionX",pos.x - ball.transform.position.x);
                 _animator.SetFloat("DirectionY",pos.y - ball.transform.position.y);
+                _animator.SetFloat("Gradient",(pos.x - ball.transform.position.x)/(pos.y - ball.transform.position.y));
+                _animator.SetFloat("GradientAbs",Mathf.Abs((pos.x - ball.transform.position.x)/(pos.y - ball.transform.position.y)));
+                
             }
             CameraMove(pos);
         }
