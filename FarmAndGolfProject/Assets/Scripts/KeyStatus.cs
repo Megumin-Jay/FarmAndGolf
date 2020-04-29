@@ -41,7 +41,7 @@ public class KeyStatus : MonoBehaviour
                     _KeyStatu = KeyStatu.Initiate;
                     break;
                 case KeyStatu.ChooseClub:
-                    _KeyStatu = KeyStatu.Initiate;
+                    _KeyStatu = KeyStatu.ChooseClub;
                     break;
                 case KeyStatu.ChooseDirOne:
                     _KeyStatu = KeyStatu.ChooseClub;

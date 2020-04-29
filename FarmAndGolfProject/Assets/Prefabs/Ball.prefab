@@ -112,10 +112,10 @@ MonoBehaviour:
   movespeedX: 2.5
   movespeedY: 2.5
   movespeedZ: -15
-  fakeBallObj: {fileID: 8123579207713472072, guid: 331623c769b80d347a8642efdf086bb8,
+  fakeBallObj: {fileID: 721967850867219152, guid: 71e91817278c2fc4d942150257ab5bee,
     type: 3}
-  MaxScale: 25
-  MinScale: 3
+  MaxScale: 6
+  MinScale: 1
   fakeBallRuinTime: 0.2
   ballRuinTime: 0.5
   fakeBallBleachSpeed: 5
