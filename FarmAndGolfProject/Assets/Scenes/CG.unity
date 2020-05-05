@@ -252,7 +252,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300002, guid: d1e3f45bd88e0ae48bf22738bfe5beda, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99fdc14601533284aa301907ff675148, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -298,7 +298,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763117780}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: cdcdc9f37b10dbf47b67ce887f646ec2, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 1c43fdb9067315849a1b68643da1ec50, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -309,14 +309,16 @@ VideoPlayer:
   m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
-  m_PlaybackSpeed: 4.23
+  m_PlaybackSpeed: 0.5
   m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
@@ -407,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92805e4dc36daf14b934031681087e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoLength: 10
+  videoLength: 1000
 --- !u!1 &1284918132
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +468,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: df652646022d5ee42aef6c850831d823, type: 3}
     m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0

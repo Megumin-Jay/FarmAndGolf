@@ -10,7 +10,7 @@ public class TurnPage : MonoBehaviour
     {
         if (!directionIsLeft)
         {
-            if (Grid.transform.position.y + 582 < 100)
+            if (Grid.transform.position.y + 582 < 300)
             {
                 Grid.transform.position = new Vector3(Grid.transform.position.x, Grid.transform.position.y + 582, Grid.transform.position.z);
             }
