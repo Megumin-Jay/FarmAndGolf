@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2255848255857571843
+--- !u!1 &2591602207670700596
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2045097163907381973}
-  - component: {fileID: 7884060002850611267}
-  - component: {fileID: 44480329986021707}
+  - component: {fileID: 2310399341378132783}
+  - component: {fileID: 6524906318404729846}
+  - component: {fileID: 4970231411314105905}
+  - component: {fileID: 2927104483578829930}
   m_Layer: 0
-  m_Name: Peach
-  m_TagString: Plant
+  m_Name: little earth (1)
+  m_TagString: Earth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2045097163907381973
+--- !u!4 &2310399341378132783
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2255848255857571843}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.01}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_GameObject: {fileID: 2591602207670700596}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7884060002850611267
+--- !u!212 &6524906318404729846
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2255848255857571843}
+  m_GameObject: {fileID: 2591602207670700596}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -69,44 +70,55 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300022, guid: 6df44d8b2c5a8444c83f05c19b193a67, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.85, y: 1.12}
+  m_Size: {x: 0.3, y: 0.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &44480329986021707
+--- !u!114 &4970231411314105905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2255848255857571843}
+  m_GameObject: {fileID: 2591602207670700596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e744d5488e4f55b4f8778a376789a55d, type: 3}
+  m_Script: {fileID: 11500000, guid: aeaa6a4530c87734abff810b16a0f1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typename: Peach
-  maxfruitnum: 5
-  minfruitnum: 1
-  totaltime: 0
-  stage: 0
-  grewtime:
-  - 5
-  - 20
-  - 40
-  waterspeed: 1
-  fertilizedspeed: 1
+  waterTimeLength: 5
+  fertilizedTimeLength: 10
+  dryTimeLength: 5
+  condition: 0
+  occupied: 0
+  myplant: {fileID: 0}
+  watertime: -1
+  waterbegintime: -1
+  fertilizedtime: -1
+  fertilizedbegintime: -1
   sp:
-  - {fileID: 21300000, guid: 4a567987388e89e478ea271bcd96dcd3, type: 3}
-  - {fileID: 21300000, guid: 6b7120a3f65cd77478ed282ac1e177c1, type: 3}
-  - {fileID: 21300000, guid: 6cc5d50b78732b04abc8f0236fe40ff4, type: 3}
-  - {fileID: 21300000, guid: 68368d28c2a01894081e549709fdb51b, type: 3}
-  this_earth: {fileID: 0}
-  fruit: {fileID: 4818345567168895658, guid: b8c22193133fbd3429e8be732133b1de, type: 3}
+  - {fileID: 21300084, guid: 003f9247b07435340a0a8516de03074a, type: 3}
+  - {fileID: 21300104, guid: 003f9247b07435340a0a8516de03074a, type: 3}
+  - {fileID: 21300116, guid: 003f9247b07435340a0a8516de03074a, type: 3}
+  - {fileID: 21300128, guid: 003f9247b07435340a0a8516de03074a, type: 3}
+  - {fileID: 21300198, guid: 003f9247b07435340a0a8516de03074a, type: 3}
+--- !u!65 &2927104483578829930
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591602207670700596}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0917299, y: 0.6666159, z: 0.2}
+  m_Center: {x: -0.015188098, y: -0.0151872635, z: 0}

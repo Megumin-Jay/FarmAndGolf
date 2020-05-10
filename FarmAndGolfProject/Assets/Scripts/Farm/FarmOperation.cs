@@ -78,8 +78,8 @@ public class FarmOperation : MonoBehaviour
     {
         if (earth == null)
             return;
-        if(!earth.Occupied)
-            Debug.Log("还未种植");
+        if (!earth.Occupied)
+        { Debug.Log("还未种植"); return; }
         int numoffruit=0;
         earth.Myplant.Ripe(ref numoffruit);
         if (numoffruit <= 0)
