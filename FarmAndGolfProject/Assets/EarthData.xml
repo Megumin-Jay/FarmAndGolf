@@ -4,8 +4,8 @@
     <occupied>True</occupied>
     <myplant>
       <plantType>Orange</plantType>
-      <totaltime>4.551567</totaltime>
-      <stage>0</stage>
+      <totaltime>7.464556</totaltime>
+      <stage>1</stage>
     </myplant>
     <watertime>-1</watertime>
     <waterbegintime>-1</waterbegintime>
@@ -17,8 +17,8 @@
     <occupied>True</occupied>
     <myplant>
       <plantType>Orange</plantType>
-      <totaltime>4.253021</totaltime>
-      <stage>0</stage>
+      <totaltime>7.16601</totaltime>
+      <stage>1</stage>
     </myplant>
     <watertime>-1</watertime>
     <waterbegintime>-1</waterbegintime>
@@ -30,8 +30,8 @@
     <occupied>True</occupied>
     <myplant>
       <plantType>Orange</plantType>
-      <totaltime>3.917173</totaltime>
-      <stage>0</stage>
+      <totaltime>6.830162</totaltime>
+      <stage>1</stage>
     </myplant>
     <watertime>-1</watertime>
     <waterbegintime>-1</waterbegintime>

@@ -169,6 +169,8 @@ public class Earth : MonoBehaviour
             XmlElement elem = xmldoc.GetElementsByTagName(this.name)[0] as XmlElement;
             XmlNode con = elem.SelectSingleNode("condition");
             condition = int.Parse(con.InnerText);
+            con = elem.SelectSingleNode("occupied");
+            occupied = bool.Parse(con.InnerText);
             con = elem.SelectSingleNode("myplant");
             if (con.InnerText != "null")
             {
