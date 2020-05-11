@@ -161,7 +161,7 @@ public class Earth : MonoBehaviour
 
     bool LoadXml()
     {
-        string filePath = Application.dataPath + "/DataSaveXml/" + "EarthData.xml";
+        string filePath = Application.dataPath + "/" + "EarthData.xml";
         if (File.Exists(filePath))
         {
             XmlDocument xmldoc = new XmlDocument();
