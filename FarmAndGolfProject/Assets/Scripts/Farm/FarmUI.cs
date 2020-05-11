@@ -24,13 +24,13 @@ public class FarmUI : MonoBehaviour
 
     public void FarmOpUI()
     {
-        farmOp.SetActive(!farmOp.activeSelf);
-        if (!farmOp.activeSelf)
+        /*if (farmOp.activeSelf)
         {
-            if(fop!=null)
+            if (fop != null)
                 fop.SetReset();
             if (pop != null)
                 pop.SetReset();
-        }
+        }*/
+        farmOp.SetActive(!farmOp.activeSelf);
     }
 }

@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 5100815749986926833}
   - component: {fileID: 703454687726705815}
   - component: {fileID: 5094652900350854099}
+  - component: {fileID: 5704554981204101921}
   m_Layer: 0
   m_Name: tomato_fruit
   m_TagString: Untagged
@@ -129,6 +130,22 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: 236ed10a582ad9a4a95f5c7af36b590d, type: 2}
   tips: {fileID: 0}
   time: 0
+--- !u!114 &5704554981204101921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4818345567168895658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ffa5901d7da7348b60b0137eb91356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointList:
+  - {fileID: 6326610396185030291}
+  - {fileID: 102691776950251880}
+  - {fileID: 2121484352625608304}
 --- !u!1 &8345232149028776144
 GameObject:
   m_ObjectHideFlags: 0

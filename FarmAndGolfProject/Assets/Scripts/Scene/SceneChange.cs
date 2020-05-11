@@ -23,6 +23,9 @@ public class SceneChange : MonoBehaviour
             gsm.GetComponent<GameSaveManager>().SaveGame();//每次转场都自动存储游戏
             Player.initialPosition = new Vector3(x, y, 0);
             SceneManager.LoadScene(scene);//切换场景
+            //切换音乐
+            if (scene == "GamePlay")
+                MusicPlay.Instance.ChangeMusic(1);
         }
     }
 }
