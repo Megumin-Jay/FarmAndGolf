@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e744d5488e4f55b4f8778a376789a55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typename: Peach
+  typename: Orange
   maxfruitnum: 5
   minfruitnum: 1
   totaltime: 0

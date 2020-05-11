@@ -17,7 +17,7 @@ public class EarthDataSave : MonoBehaviour
     public void SaveDataXml()
     {
         int num = earthsObject.Length;
-        string filePath = Application.dataPath + "/" + "EarthData.xml";
+        string filePath = Application.dataPath + "/DataSaveXml/" + "EarthData.xml";
         XmlDocument xmldoc = new XmlDocument();
         XmlElement root = xmldoc.CreateElement("Earthdata");
         for(int i=0;i<num;i++)

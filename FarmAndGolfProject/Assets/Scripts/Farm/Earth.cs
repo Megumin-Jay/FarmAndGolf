@@ -71,14 +71,14 @@ public class Earth : MonoBehaviour
             fertilizedtime = Time.time - fertilizedbegintime;
         else
         { fertilizedtime = -1; fertilizedbegintime = -1; }
-        switch (condition)
+        /*switch (condition)
         {
             case 0: this_sp.sprite = sp[0]; break;
             case 1: this_sp.sprite = sp[1]; break;
             case 2: this_sp.sprite = sp[2]; break;
             case 3: this_sp.sprite = sp[3]; break;
             case 4: this_sp.sprite = sp[4]; break;
-        }
+        }*/
     }
 
 
@@ -161,7 +161,7 @@ public class Earth : MonoBehaviour
 
     bool LoadXml()
     {
-        string filePath = Application.dataPath + "/" + "EarthData.xml";
+        string filePath = Application.dataPath + "/DataSaveXml/" + "EarthData.xml";
         if (File.Exists(filePath))
         {
             XmlDocument xmldoc = new XmlDocument();
@@ -174,7 +174,7 @@ public class Earth : MonoBehaviour
             {
                 XmlNode next = elem.SelectSingleNode("myplant/plantType");
                 string type = next.InnerText;
-                GameObject gameObject = (GameObject)Resources.Load(type);
+                GameObject gameObject = (GameObject)Resources.Load("Plant/"+type);
                 gameObject = Instantiate(gameObject);
                 myplant = gameObject.GetComponent<Plant>();
                 if (myplant != null)

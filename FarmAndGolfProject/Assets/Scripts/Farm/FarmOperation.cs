@@ -121,15 +121,15 @@ public class FarmOperation : MonoBehaviour
         if (earth == null)
             t = "还未选中任何土地";
         else if (earth.Dry)
-            t = "土地"+earth.name+"的状态：干旱";
+            t = earth.name+"的状态：干旱";
         else if (earth.Wet && earth.Fertilized)
-            t += "土地" + earth.name + "的状态：湿润并肥沃";
+            t += earth.name + "的状态：湿润并肥沃";
         else if (earth.Wet)
-            t += "土地" + earth.name + "的状态：湿润";
+            t +=  earth.name + "的状态：湿润";
         else if (earth.Fertilized)
-            t += "土地" + earth.name + "的状态：肥沃";
+            t += earth.name + "的状态：肥沃";
         else
-            t += "土地" + earth.name + "的状态：普通";
+            t += earth.name + "的状态：普通";
         EarthTips.UpdateTooltip(t);
     }
 }
