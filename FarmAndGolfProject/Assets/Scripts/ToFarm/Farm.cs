@@ -16,6 +16,9 @@ public class Farm : MonoBehaviour
     public GameObject farmCamera;//农场摄像机
 
     public GameObject farmBG;//农场背景
+    public GameObject farmTips;//农场提示
+    public GameObject farmOPTips;//农场操作提示
+    public GameObject farmUI;//农场UI
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -63,6 +66,9 @@ public class Farm : MonoBehaviour
         extraCamera.SetActive(false);
         farmCamera.SetActive(true);
         farmBG.SetActive(true);
+        farmTips.SetActive(true);
+        farmOPTips.SetActive(true);
+        farmUI.SetActive(true);
     }
 
     //要实现:关闭农场摄像机 激活主摄和投影摄像机 恢复玩家移动
@@ -74,6 +80,9 @@ public class Farm : MonoBehaviour
         mainCamera.SetActive(true);
         extraCamera.SetActive(true);
         farmBG.SetActive(false);
+        farmTips.SetActive(false);
+        farmOPTips.SetActive(false);
+        farmUI.SetActive(false);
     }
 }
 

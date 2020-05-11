@@ -36,6 +36,14 @@ public class Select : MonoBehaviour
                     if(far!=null)
                     {
                         far.My_earth = hitInfo.transform.gameObject.GetComponent<Earth>();
+                        switch (far.OP)
+                        {
+                            case 0: far.tips.UpdateTooltip("还未选中任何操作哦"); break;
+                            case 1: far.Water(); break;
+                            case 2: far.Fertilize(); break;
+                            case 3: far.Plant(); break;
+                            case 4: far.Harvest(); break;
+                        }
                     }
                 }
                 else if(hitInfo.transform.tag == "Animal")
