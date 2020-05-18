@@ -14,6 +14,8 @@ public class InventoryManager : MonoBehaviour
     public Text itemInformation;//物品描述
     public Image itemImagePanel;//物品的放大图片
     public List<GameObject> slots = new List<GameObject>();//格子列表
+    public Text ball;//要使用的球
+    public static string ballName = "Ball1";//球的名字,默认一号
 
 
     void Awake()//单例
@@ -27,6 +29,7 @@ public class InventoryManager : MonoBehaviour
     private void OnEnable()
     {
         RefreshItem();
+        instance.ball.text = ballName;
         instance.itemInformation.text = "";//这个背包的描述框是一直显示的,所以要保证没点击物品的时候描述为"空"
     }
 
@@ -59,5 +62,17 @@ public class InventoryManager : MonoBehaviour
             instance.slots[i].GetComponent<Slot>().SetupSlot(instance.myBag.itemList[i]);//同步图片等物品信息
         }
     }
+
+    public static void getBallName(string str)
+    {
+        ballName = str;
+        instance.ball.text = ballName;
+    }
+
+    public static string BallName()
+    {
+        return (ballName);
+    }
+
 }
 

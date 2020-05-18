@@ -11,6 +11,7 @@ public class Slot : MonoBehaviour
     public Image slotImage;//Item的图片
     public Text slotNum;//Item有多少个
     public string slotDescription;//物品的描述信息
+    public string slotName;//物品名称
 
     public GameObject itemInSlot;
 
@@ -18,6 +19,11 @@ public class Slot : MonoBehaviour
     public void ItemOnClicked()
     {
         InventoryManager.UpdateItemInfo(slotDescription, slotImage.sprite);
+        //截取前4个字符检测是不是球
+        if (slotName.Length > 4 && slotName.Substring(0, 4) == "Ball")
+        {
+            InventoryManager.getBallName(slotName);
+        }
     }
 
     //从数据层 生成物品 到视觉层 的方法
@@ -32,5 +38,6 @@ public class Slot : MonoBehaviour
         slotImage.sprite = item.itemImage;
         slotNum.text = item.itemHeld.ToString();
         slotDescription = item.itemInfo;
+        slotName = item.name;
     }
 }

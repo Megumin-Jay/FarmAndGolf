@@ -1,12 +1,8 @@
 <Earthdata>
   <土地1>
     <condition>1</condition>
-    <occupied>True</occupied>
-    <myplant>
-      <plantType>Orange</plantType>
-      <totaltime>7.464556</totaltime>
-      <stage>1</stage>
-    </myplant>
+    <occupied>False</occupied>
+    <myplant>null</myplant>
     <watertime>-1</watertime>
     <waterbegintime>-1</waterbegintime>
     <fertilizedtime>-1</fertilizedtime>
@@ -14,12 +10,8 @@
   </土地1>
   <土地2>
     <condition>1</condition>
-    <occupied>True</occupied>
-    <myplant>
-      <plantType>Orange</plantType>
-      <totaltime>7.16601</totaltime>
-      <stage>1</stage>
-    </myplant>
+    <occupied>False</occupied>
+    <myplant>null</myplant>
     <watertime>-1</watertime>
     <waterbegintime>-1</waterbegintime>
     <fertilizedtime>-1</fertilizedtime>
@@ -27,12 +19,8 @@
   </土地2>
   <土地3>
     <condition>1</condition>
-    <occupied>True</occupied>
-    <myplant>
-      <plantType>Orange</plantType>
-      <totaltime>6.830162</totaltime>
-      <stage>1</stage>
-    </myplant>
+    <occupied>False</occupied>
+    <myplant>null</myplant>
     <watertime>-1</watertime>
     <waterbegintime>-1</waterbegintime>
     <fertilizedtime>-1</fertilizedtime>

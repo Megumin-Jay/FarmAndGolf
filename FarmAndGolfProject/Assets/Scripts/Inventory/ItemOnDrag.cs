@@ -26,13 +26,13 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //拽到UI外则删除物品              !!!最好最好还是要有弹窗确认
-        if (eventData.pointerCurrentRaycast.gameObject == null)
-        {//删除物品,更新描述为"空",更新背包
-            myBag.itemList[currentItemID] = null;
-            InventoryManager.UpdateItemInfo("", Resources.Load<Sprite>("Graphics/Others/Transparent"));
-            InventoryManager.RefreshItem();
-        }
+        // //不太靠谱 还是先取消这个功能
+        // if (eventData.pointerCurrentRaycast.gameObject == null)
+        // {//删除物品,更新描述为"空",更新背包
+        //     myBag.itemList[currentItemID] = null;
+        //     InventoryManager.UpdateItemInfo("", Resources.Load<Sprite>("Graphics/Others/Transparent"));
+        //     InventoryManager.RefreshItem();
+        // }
 
         if (eventData.pointerCurrentRaycast.gameObject != null)
         {

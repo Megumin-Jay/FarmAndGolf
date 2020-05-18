@@ -2212,6 +2212,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3709591603993518063, guid: 45aa47410738a834a93070bed9dba633,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3709591604135979264, guid: 45aa47410738a834a93070bed9dba633,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2317,16 +2322,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3709591603035334975, guid: 45aa47410738a834a93070bed9dba633,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3709591603035334975, guid: 45aa47410738a834a93070bed9dba633,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4419125935183792093, guid: 45aa47410738a834a93070bed9dba633,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2336,6 +2331,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866484928031932906, guid: 45aa47410738a834a93070bed9dba633,
+        type: 3}
+      propertyPath: m_Name
+      value: Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709591603035334975, guid: 45aa47410738a834a93070bed9dba633,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709591603035334975, guid: 45aa47410738a834a93070bed9dba633,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45aa47410738a834a93070bed9dba633, type: 3}
