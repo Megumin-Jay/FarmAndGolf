@@ -18,11 +18,19 @@ public class CircleScoreSelector : MonoBehaviour
     /*计时器*/
     private float localTime;
     
+    /*旋转间隔时间*/
+    private float rotateIntervalTime;
+    /*距离上一次旋转的时间*/
+    private float rotateFromLastTime;
+    /*开始计时*/
+    private bool startTiming;
+    
     /*是否旋转*/
     private bool canRotateOne;
     private bool canRotateTwo;
     /*旋转次数*/
-    private int rotateTimes;
+    private float rotateTimes;
+    private float floatRoTimes;
 
     private BallDir _ballDir;
     // Start is called before the first frame update
@@ -33,6 +41,10 @@ public class CircleScoreSelector : MonoBehaviour
         canRotateOne = false;
         canRotateTwo = false;
         rotateTimes = 0;
+        floatRoTimes = 0.0f;
+        rotateIntervalTime = 1.5f;
+        rotateFromLastTime = 1.6f;
+        startTiming = false;
         
         golfClubsList = GameObject.FindGameObjectsWithTag("GolfClubs");
         //记录旋转的中心点
@@ -46,60 +58,106 @@ public class CircleScoreSelector : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseClub)
+        if (startTiming)
         {
+            rotateFromLastTime += Time.fixedUnscaledDeltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl) && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseClub && rotateFromLastTime > rotateIntervalTime)
+        {
+            rotateFromLastTime = 0;
             //当前按键状态
             //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseClub;
-            if (rotateTimes == 5)
+            if (rotateTimes == 2)
                 rotateTimes = -1;
             canRotateOne = true;
             localTime = 1.00f;
             //旋转次数加一
             rotateTimes++;
 
+            floatRoTimes = rotateTimes * 5;
             //选杆后的击打距离和击打条件
-            _ballDir.length = (rotateTimes + 1) * 30;
+            _ballDir.length = (floatRoTimes + 1) * 20;
             _ballDir.isCheck = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseClub)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseClub && rotateFromLastTime > rotateIntervalTime)
         {
+            rotateFromLastTime = 0;
             //当前按键状态
             //KeyStatus._Instance._KeyStatu = KeyStatu.ChooseClub;
             if (rotateTimes == 0)
-                rotateTimes = 6;
+                rotateTimes = 3;
             canRotateTwo = true;
             localTime = 1.00f;
             //旋转次数加一
             rotateTimes--;
 
+            floatRoTimes = rotateTimes * 5;
             //选杆后的击打距离和击打条件
-            _ballDir.length = (rotateTimes + 1) * 10;
+            _ballDir.length = (floatRoTimes + 1) * 20;
             _ballDir.isCheck = true;
         }
         //Debug.Log(Time.time - localTime);
+//        if (canRotateOne)
+//        {
+//            startTiming = true;
+//            
+//            localTime -= Time.fixedUnscaledDeltaTime;
+//            //更新轮盘上按钮位置
+//            UpdateNewPos(golfClubsList.Length, 1);
+//            //更新状态
+//            UpdateNewState((int)rotateTimes);
+//            //过了1s 停止旋转
+//            if (localTime <= 0.001f)
+//            {
+//                canRotateOne= false;
+//            }
+//        }
+//        if (canRotateTwo)
+//        {
+//            startTiming = true;
+//            
+//            localTime -= Time.fixedUnscaledDeltaTime;
+//            //更新轮盘上按钮位置
+//            UpdateNewPos(golfClubsList.Length, -1);
+//            //更新状态
+//            UpdateNewState((int)rotateTimes);
+//            //过了1s 停止旋转
+//            if (localTime <= 0.001f)
+//            {
+//                canRotateTwo= false;
+//            }
+//        }
+    }
+
+    void LateUpdate()
+    {
         if (canRotateOne)
         {
+            startTiming = true;
+            
             localTime -= Time.fixedUnscaledDeltaTime;
             //更新轮盘上按钮位置
             UpdateNewPos(golfClubsList.Length, 1);
             //更新状态
-            UpdateNewState(rotateTimes);
+            UpdateNewState((int)rotateTimes);
             //过了1s 停止旋转
-            if (localTime <= 0.01f)
+            if (localTime <= 0.001f)
             {
                 canRotateOne= false;
             }
         }
         if (canRotateTwo)
         {
+            startTiming = true;
+            
             localTime -= Time.fixedUnscaledDeltaTime;
             //更新轮盘上按钮位置
             UpdateNewPos(golfClubsList.Length, -1);
             //更新状态
-            UpdateNewState(rotateTimes);
+            UpdateNewState((int)rotateTimes);
             //过了1s 停止旋转
-            if (localTime <= 0.01f)
+            if (localTime <= 0.001f)
             {
                 canRotateTwo= false;
             }
@@ -113,7 +171,7 @@ public class CircleScoreSelector : MonoBehaviour
     /// <param name="uiList">ui集合</param>
     void UIArrangeInCircle(int uiNum, GameObject[] uiList)
     {
-        float angle = 60;
+        float angle = 120;
         for (int i = 0; i < uiNum; i++)
         {
             //角度转弧度
@@ -160,17 +218,17 @@ public class CircleScoreSelector : MonoBehaviour
             }
             else
             {
-                Color color0 = golfClubsList[5].gameObject.GetComponent<Image>().color;
+                Color color0 = golfClubsList[2].gameObject.GetComponent<Image>().color;
                 golfClubsList[index].gameObject.GetComponent<Image>().color =
                     Color.Lerp(color, new Color(color.r, color.g, color.b, 255), Time.fixedUnscaledDeltaTime * 10);
-                golfClubsList[5].gameObject.GetComponent<Image>().color =
+                golfClubsList[2].gameObject.GetComponent<Image>().color =
                     Color.Lerp(color0, new Color(color0.r, color0.g, color0.b, 0), Time.fixedUnscaledDeltaTime * 10);
             }
         }
 
         if (canRotateTwo)
         {
-            if (index <= 4)
+            if (index <= 1)
             {
                 Color color0 = golfClubsList[index + 1].gameObject.GetComponent<Image>().color;
                 golfClubsList[index].gameObject.GetComponent<Image>().color =

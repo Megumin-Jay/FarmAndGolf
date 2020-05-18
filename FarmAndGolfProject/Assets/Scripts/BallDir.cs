@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallDir : MonoBehaviour
 {
@@ -57,6 +58,9 @@ public class BallDir : MonoBehaviour
 
     /// /*高尔夫杆*/
     public float length;
+    
+    /// /*游戏*/
+    public bool gameEnd;
 
     private Animator _animator;
     #endregion
@@ -134,11 +138,14 @@ public class BallDir : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         _animator = player.GetComponent<Animator>();
         //playerBalloffset = new Vector3(- 1.73f, 5.27f);
-        ballInitialPos = new Vector3(-95.0f, 116.0f, -1.15f);
+        ballInitialPos = new Vector3(-95.0f, 152.0f, -1.15f);
         lastPlayerPos = Vector3.zero;
         
+        //游戏相关
+        gameEnd = false;
+        
         //高尔夫球杆
-        length = 30.0f;
+        length = 20.0f;
         
         //记录相机初始位置
         camera = GameObject.FindWithTag("MainCamera");
@@ -160,6 +167,11 @@ public class BallDir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameEnd && Input.GetKeyDown(KeyCode.M))
+        {
+            Debug.Log("游戏结束");
+            SceneManager.LoadScene(2);
+        }
         //暂时用来退出游戏
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -265,7 +277,7 @@ public class BallDir : MonoBehaviour
         }
 
         //选方向
-        if (horizontal != 0)
+        if (horizontal != 0 && KeyStatus._Instance._KeyStatu != KeyStatu.CheckSliderValue && KeyStatus._Instance._KeyStatu != KeyStatu.GetSliderValue)
         {
             //当前按键状态
             KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirTwo;

@@ -32,6 +32,11 @@ public class SliderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (canRun)
+        { 
+            MoveSlider();
+            //isRunning = true;
+        }
         if (Input.GetKeyDown(KeyCode.Space) && !canRun && !canStop && KeyStatus._Instance._KeyStatu == KeyStatu.ChooseDirTwo)
         {
             canRun = true;
@@ -39,13 +44,9 @@ public class SliderController : MonoBehaviour
             KeyStatus._Instance._KeyStatu = KeyStatu.CheckSliderValue;
         }
 
-        if (canRun)
-        {
-            MoveSlider();
-            //isRunning = true;
-        }
+        
 
-        if (Input.GetKeyDown(KeyCode.Space) && canStop && KeyStatus._Instance._KeyStatu == KeyStatu.CheckSliderValue)
+        else if (Input.GetKeyDown(KeyCode.Space) && canStop && KeyStatus._Instance._KeyStatu == KeyStatu.CheckSliderValue)
         {
             canStop = false;
             KeyStatus._Instance._KeyStatu = KeyStatu.GetSliderValue;
@@ -59,7 +60,7 @@ public class SliderController : MonoBehaviour
     {
         //zeroTime = Time.time;
         _slider.value = Mathf.PingPong(localTime, 1);
-        sliderValue = _slider.value;
+        sliderValue = _slider.value * 4;
         //Debug.Log(_slider.value);
         localTime += Time.deltaTime;
         if (localTime >= 2)

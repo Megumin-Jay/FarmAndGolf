@@ -2,7 +2,10 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Collision = UnityEngine.Collision;
 
 public class BallMove : MonoBehaviour
 {
@@ -63,6 +66,8 @@ public class BallMove : MonoBehaviour
     public float fakeBallBleachSpeed;
     /*假球的动画状态机*/
     private Animator fakeBallAn;
+    /*假球初始尺寸*/
+    private float fakeBallInitScale;
 
     /// BallArm
     /*击打的方向和力*/
@@ -104,6 +109,12 @@ public class BallMove : MonoBehaviour
     /*主角*/
     private GameObject player;
 
+    /// 墙体
+    private float XMax; 
+    private float XMin; 
+    private float YMax; 
+    private float YMin; 
+
     /// 画线相关
     /*画线组件*/
     private LineRenderer lineRenderer;
@@ -111,7 +122,7 @@ public class BallMove : MonoBehaviour
     private int index;
     //点的数目
     private int dotCount;
-    
+
     /*计时器*/
     private float localTime;
 
@@ -124,12 +135,15 @@ public class BallMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_ballDir = GameObject.FindWithTag("GameController").GetComponent<BallDir>();
+        _ballDir = GameObject.FindWithTag("GameController").GetComponent<BallDir>();
 //        //注册
 //        BallDir.Instance.publisher += HitBall;
 
         HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos, movespeedZ);
 
+        //fakeball
+        fakeBallInitScale = 0.5f;
+        
         //初始速度
         cameraSpeed = 3;
         
@@ -140,7 +154,13 @@ public class BallMove : MonoBehaviour
         
         //主角相关
         player = GameObject.FindWithTag("Player");
-        playerBalloffset = new Vector3(- 6.73f, 11.27f);
+        playerBalloffset = new Vector3(- 8.9f, 16.27f);
+
+        //墙体相关
+        XMax = 649;
+        XMin = -95.65f;
+        YMin = 0;
+        YMax = 208;
 
         //一些组件
         lineRenderer = GameObject.FindWithTag("GameController").GetComponent<LineRenderer>();
@@ -158,6 +178,27 @@ public class BallMove : MonoBehaviour
         dotCount = 0;
     }
 
+    void Update()
+    {
+        if (this.transform.position.x < XMin)
+        {
+            this.transform.position = new Vector3(Mathf.Max(XMin, this.transform.position.x), this.transform.position.y, this.transform.position.z);
+        }
+        else if (this.transform.position.x > XMax)
+        {
+            this.transform.position = new Vector3(Mathf.Min(XMax, this.transform.position.x), this.transform.position.y, this.transform.position.z);
+        }
+
+        if (this.transform.position.y < YMin)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, Mathf.Max(YMin, this.transform.position.y), this.transform.position.z);
+        }
+        else if (this.transform.position.y > YMax)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, Mathf.Min(YMax, this.transform.position.y), this.transform.position.z);
+        }
+    }
+    
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -206,7 +247,7 @@ public class BallMove : MonoBehaviour
                     GaussianBlur._Instance.downSample = GaussianBlur._Instance.downSample < 6 ? GaussianBlur._Instance.downSample + 1 : 6;
                 }
                 localTime += Time.deltaTime;
-                Debug.Log(localTime);
+                //Debug.Log(localTime);
                 if (localTime > 2)
                 {
                     player.transform.position = new Vector3(this.transform.position.x + playerBalloffset.x,
@@ -218,12 +259,12 @@ public class BallMove : MonoBehaviour
                 }
                 if (BallDir.Instance.IsHit)
                 {
-                    if (FloorStatus._Instance._floorStatu != FloorStatu.Area1)
+                    if (_ballDir.length != 20)
                     {
                         HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos, movespeedZ);
                     }
 
-                    if (FloorStatus._Instance._floorStatu == FloorStatu.Area1)
+                    if (_ballDir.length == 20)
                     {
                         HitBall(BallDir.Instance.HitTimes, BallDir.Instance.Pos, 0);
                     }
@@ -252,8 +293,8 @@ public class BallMove : MonoBehaviour
         {
             fakeBall.transform.position = dotPos;
             fakeBall.transform.localScale = new Vector3(
-                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight))/2 , MinScale, MaxScale),
-                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight))/2 , MinScale, MaxScale), 1);
+                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight))/2 * fakeBallInitScale, MinScale, MaxScale),
+                Mathf.Clamp(Mathf.Abs(transform.position.z - (groundHeight))/2 * fakeBallInitScale, MinScale, MaxScale), fakeBallInitScale);
         }
 
         while (index < dotCount)
@@ -277,6 +318,8 @@ public class BallMove : MonoBehaviour
     /// <param name="pos">球的终点</param>
     void HitBall(int _hitTimes, Vector3 pos, float speedZ)
     {
+        localTime = 0;
+        
         canStop = false;
         //Debug.Log(1);
         //挥棒的力
@@ -315,7 +358,7 @@ public class BallMove : MonoBehaviour
         if (col.collider.tag == "Ground")
         {
             //Debug.Log("碰撞");
-            localTime = 0;
+            //localTime = 0;
             
             ContactPoint contactPoint = col.contacts[0];
             Vector3 newDir = Vector3.zero;
@@ -347,6 +390,7 @@ public class BallMove : MonoBehaviour
         if (col.collider.tag == "Ground")
         {
             //if(moveSpeed.x < 1 && moveSpeed.y < 1 && moveSpeed.z < 1)
+            KeyStatus._Instance._KeyStatu = KeyStatu.Initiate;
             
         }
     }
@@ -358,9 +402,10 @@ public class BallMove : MonoBehaviour
         {
             //摧毁假球
             //fakeBall.transform.Translate(Vector3.forward,Space.World);
-            Destroy(fakeBall,fakeBallRuinTime);
+            //Destroy(fakeBall,fakeBallRuinTime);
             //摧毁真球
-            Destroy(gameObject,ballRuinTime);
+            //Destroy(gameObject,ballRuinTime);
+            
         }
     }
 
@@ -370,11 +415,13 @@ public class BallMove : MonoBehaviour
         if (col.gameObject.tag == "Hole")
         {
             fakeBallBleach();
+            Destroy(gameObject,ballRuinTime);
+            _ballDir.gameEnd = true;
         }
         //暂定推杆区
         if (col.gameObject.tag == "Area1")
         {
-            Debug.Log(1);
+            //Debug.Log(1);
             FloorStatus._Instance._floorStatu = FloorStatu.Area1;
         }
     }    
