@@ -13,8 +13,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/WindUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Environment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Floor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PostEffect/PostEffectBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -25,6 +27,7 @@
     <setting file="file://$USER_HOME$/Desktop/TestForGolf/Assets/Scripts/Bullet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BallDir.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SliderController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MusicSetting.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -39,9 +42,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BallStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollision.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FloorStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
       </list>
@@ -115,6 +118,9 @@
       <workItem from="1584178762047" duration="9699000" />
       <workItem from="1584375416177" duration="4539000" />
       <workItem from="1586997725636" duration="8449000" />
+      <workItem from="1588228756162" duration="9991000" />
+      <workItem from="1588319684564" duration="2924000" />
+      <workItem from="1589261371746" duration="16054000" />
     </task>
     <servers />
   </component>

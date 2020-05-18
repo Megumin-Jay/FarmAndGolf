@@ -97,7 +97,7 @@ MonoBehaviour:
   AirDensity: 0.1
   shapeParameter: 0.3
   crossArea: 0.1
-  speedThresholdZ: 1
+  speedThresholdZ: 0.5
   speedThresholdY: 0.2
   speedThresholdX: 0.2
   ballMass: 1
@@ -114,8 +114,8 @@ MonoBehaviour:
   movespeedZ: -15
   fakeBallObj: {fileID: 721967850867219152, guid: 71e91817278c2fc4d942150257ab5bee,
     type: 3}
-  MaxScale: 6
-  MinScale: 1
+  MaxScale: 4
+  MinScale: 0.5
   fakeBallRuinTime: 0.2
   ballRuinTime: 0.5
   fakeBallBleachSpeed: 5
