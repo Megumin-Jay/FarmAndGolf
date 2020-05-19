@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
     public GameObject mySetting;//获取设置界面
     public GameSaveManager gameSaveManager;//数据存储器
     public HeldManager myHeld;//我的物品持有
-    public Inventory AllItems;
+    public Inventory AllItems;//全物品,用以计数
+    public Inventory playerInventory;//取得玩家的背包
     public static Vector3 initialPosition = new Vector3(0, 1, 0);//场景切换后加载的初始位置
 
 
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
     {
         gameSaveManager.LoadGame();//加载游戏数据
         myHeld.Load();//刷新物品的持有数
+        GetBall();
     }
 
     void Update()
@@ -117,6 +119,27 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             mySetting.SetActive(true);
+        }
+    }
+
+    public void GetBall()
+    {
+        int a = 22;
+        for (a = 22; a < 27; a++)
+        {
+            if (!playerInventory.itemList.Contains(AllItems.itemList[a]))//如果背包中没这个
+            {
+                for (int i = 0; i < playerInventory.itemList.Count; i++)
+                {
+                    if (playerInventory.itemList[i] == null)//找空格子,有就给他的物品赋值
+                    {
+                        playerInventory.itemList[i] = AllItems.itemList[a];//赋值
+                        AllItems.itemList[a].itemHeld = 1;
+                        break;
+                    }
+                }
+            }
+            InventoryManager.RefreshItem();
         }
     }
 
