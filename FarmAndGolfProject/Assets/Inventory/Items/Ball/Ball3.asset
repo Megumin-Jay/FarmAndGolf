@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714079d0d8e33074282ad865aa3bfc3a, type: 3}
   m_Name: Ball3
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 43cfa7fa0eaff0340a399ace9e5b390c, type: 3}
+  itemImage: {fileID: 21300000, guid: b1a6f98816a628548bce8e04b62e9350, type: 3}
   itemHeld: 1
   itemInfo: Ball3
   equip: 0

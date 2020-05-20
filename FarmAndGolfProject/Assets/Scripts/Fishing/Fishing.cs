@@ -45,7 +45,7 @@ public class Fishing : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K) && fishIsOn == false)
             {
                 fishIsOn = true;
-                seed = Random.Range(0, 21);//暂时还是等概率...
+                seed = Random.Range(0, 18);//暂时还是等概率...
                 fishSp = fishItems.itemList[seed].itemImage;//鱼的图片
                 lureSp = Resources.Load<Sprite>("Graphics/Function/Inventory/FishItems/lure");//鱼饵的图片
                 timer = 6.0f;//计时器赋初值,作为整个钓鱼动画播放时长

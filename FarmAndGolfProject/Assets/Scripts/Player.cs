@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
     public void GetBall()
     {
         int a = 22;
-        for (a = 22; a < 27; a++)
+        for (a = 22; a < 29; a++)
         {
             if (!playerInventory.itemList.Contains(AllItems.itemList[a]))//如果背包中没这个
             {
