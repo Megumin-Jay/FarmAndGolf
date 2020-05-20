@@ -56,16 +56,19 @@ public class BallDir : MonoBehaviour
     /*主人公上一球的位置*/
     private Vector3 lastPlayerPos;
 
+    /// /*选择的球*/
+    private GameObject fakeballRoot;
+    private GameObject fakeball;
+    
+    private Animator _animator;
+    #endregion
+    
+    #region public
     /// /*高尔夫杆*/
     public float length;
     
     /// /*游戏*/
     public bool gameEnd;
-
-    private Animator _animator;
-    #endregion
-    
-    #region public
     /*鼠标点击方向*/
     public Vector3 Pos
     {
@@ -107,6 +110,10 @@ public class BallDir : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        fakeballRoot = GameObject.Find("Balls");
+        fakeball = fakeballRoot.transform.Find(InventoryManager.BallName()).gameObject;
+        //fakeball = fakeballRoot.transform.Find("Ball2").gameObject;
+        fakeball.SetActive(true);
     }
 
     void OnDestroy()

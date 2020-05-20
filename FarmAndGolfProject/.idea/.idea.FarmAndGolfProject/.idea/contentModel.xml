@@ -22,6 +22,7 @@
             <e p="readme.txt" t="Include" />
           </e>
         </e>
+        <e p="EarthData.xml" t="Include" />
         <e p="Fungus" t="Include">
           <e p="Docs" t="Include">
             <e p="CHANGELOG.txt" t="Include" />
@@ -935,7 +936,10 @@
             <e p="EarthDataSave.cs" t="Include" />
             <e p="FarmOperation.cs" t="Include" />
             <e p="FarmUI.cs" t="Include" />
+            <e p="OPTips.cs" t="Include" />
+            <e p="PickUP.cs" t="Include" />
             <e p="Plant.cs" t="Include" />
+            <e p="PlantTips.cs" t="Include" />
             <e p="Select.cs" t="Include" />
           </e>
           <e p="Fishing" t="Include">
@@ -957,6 +961,7 @@
             <e p="itemOnWorld.cs" t="Include" />
             <e p="MoveBag.cs" t="Include" />
             <e p="Slot.cs" t="Include" />
+            <e p="TurnPage.cs" t="Include" />
           </e>
           <e p="KeyStatus.cs" t="Include" />
           <e p="MainMenu" t="Include">
@@ -965,6 +970,7 @@
             <e p="GalleryUI.cs" t="Include" />
             <e p="StartUIController.cs" t="Include" />
           </e>
+          <e p="MusicPlay.cs" t="Include" />
           <e p="MusicSetting.cs" t="Include" />
           <e p="Pasture" t="Include">
             <e p="AILocomotion.cs" t="Include" />

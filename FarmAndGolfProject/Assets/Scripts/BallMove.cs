@@ -236,7 +236,7 @@ public class BallMove : MonoBehaviour
                                                                             * groundFrictionX / ballMass * Time.fixedDeltaTime;
             if (moveSpeed.x == 0 && moveSpeed.y == 0 && moveSpeed.z == 0)
             {
-                fakeBallAn.enabled = false;
+                //fakeBallAn.enabled = false;
                 //一次击球结束后 会将fakeball销毁 所以这里用来判断一次击球是否结束
 //                if(fakeBall)
 //                    CameraMove(transform.position - offset);
@@ -334,9 +334,9 @@ public class BallMove : MonoBehaviour
 
         //假球
         //fakeBall = Instantiate(fakeBallObj, transform.position, Quaternion.identity);
-        fakeBall = GameObject.Find("golfball");
-        fakeBallAn = fakeBall.GetComponent<Animator>();
-        fakeBallAn.enabled = true;
+        fakeBall = GameObject.FindWithTag("Ball");
+//        fakeBallAn = fakeBall.GetComponent<Animator>();
+//        fakeBallAn.enabled = true;
     }
     
     /// <summary>
