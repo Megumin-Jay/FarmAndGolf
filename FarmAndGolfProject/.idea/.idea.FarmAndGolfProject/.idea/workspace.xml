@@ -45,8 +45,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/KeyStatus.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CircleScoreSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SliderController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BallDir.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallMove.cs" />
       </list>
     </option>
   </component>
@@ -125,6 +125,8 @@
       <workItem from="1589875621391" duration="4647000" />
       <workItem from="1589952532990" duration="441000" />
       <workItem from="1589980296542" duration="760000" />
+      <workItem from="1590044349492" duration="316000" />
+      <workItem from="1590047685620" duration="2051000" />
     </task>
     <servers />
   </component>

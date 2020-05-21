@@ -284,10 +284,15 @@ public class BallDir : MonoBehaviour
         }
 
         //选方向
-        if (horizontal != 0 && KeyStatus._Instance._KeyStatu != KeyStatu.CheckSliderValue && KeyStatus._Instance._KeyStatu != KeyStatu.GetSliderValue)
+        if (horizontal != 0 && KeyStatus._Instance._KeyStatu != KeyStatu.CheckSliderValue && KeyStatus._Instance._KeyStatu != KeyStatu.GetSliderValue && 
+            KeyStatus._Instance._KeyStatu != KeyStatu.Reset)
         {
+            Debug.Log("ddd" + KeyStatus._Instance._KeyStatu);
+            
             //当前按键状态
             KeyStatus._Instance._KeyStatu = KeyStatu.ChooseDirTwo;
+            
+
             //Debug.Log(hitDirection);
             isReset = false;
 //            if (ball && isCheck)

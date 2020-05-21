@@ -230,10 +230,10 @@ public class BallMove : MonoBehaviour
             //f/m=a
             moveSpeed.y = (Mathf.Abs(moveSpeed.y) <= speedThresholdY) ? 0 : moveSpeed.y - 
                                                                             moveSpeed.y / Mathf.Abs(moveSpeed.y)
-                                                                            * groundFrictionY / ballMass * Time.fixedDeltaTime;
+                                                                            * groundFrictionY / ballMass * Time.fixedDeltaTime* _sliderController.sliderValue;
             moveSpeed.x = (Mathf.Abs(moveSpeed.x) <= speedThresholdX) ? 0 : moveSpeed.x - 
                                                                             moveSpeed.x / Mathf.Abs(moveSpeed.x) 
-                                                                            * groundFrictionX / ballMass * Time.fixedDeltaTime;
+                                                                            * groundFrictionX / ballMass * Time.fixedDeltaTime* _sliderController.sliderValue;
             if (moveSpeed.x == 0 && moveSpeed.y == 0 && moveSpeed.z == 0)
             {
                 //fakeBallAn.enabled = false;
