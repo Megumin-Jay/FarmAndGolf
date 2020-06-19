@@ -12,10 +12,12 @@ public class InventoryManager : MonoBehaviour
     public GameObject slotGrid;//一堆格子,表层意义上的"背包"
     public GameObject emptySlot;
     public Text itemInformation;//物品描述
+    public Text itemName;//物品名称
     public Image itemImagePanel;//物品的放大图片
     public List<GameObject> slots = new List<GameObject>();//格子列表
     public Text ball;//要使用的球
-    public static string ballName = "Ball1";//球的名字,默认一号
+    public static string ballObjName = "Ball1";//球的名字,默认一号
+    public static string ballName = "正经高尔夫球";
 
 
     void Awake()//单例
@@ -30,13 +32,15 @@ public class InventoryManager : MonoBehaviour
     {
         RefreshItem();
         instance.ball.text = ballName;
+        instance.itemName.text = "";
         instance.itemInformation.text = "";//这个背包的描述框是一直显示的,所以要保证没点击物品的时候描述为"空"
     }
 
     //更新描述框文本为 传入的这个文本
-    public static void UpdateItemInfo(string itemDescription, Sprite itemImage)
+    public static void UpdateItemInfo(string ItemName, string itemDescription, Sprite itemImage)
     {
         instance.itemInformation.text = itemDescription;
+        instance.itemName.text = ItemName;
         instance.itemImagePanel.sprite = itemImage;
     }
 
@@ -63,15 +67,16 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public static void getBallName(string str)
+    public static void getBallName(string objName, string itemName)
     {
-        ballName = str;
-        instance.ball.text = ballName;
+        ballObjName = objName;
+        ballName = itemName;
+        instance.ball.text = itemName;
     }
 
     public static string BallName()
     {
-        return (ballName);
+        return (ballObjName);
     }
 
 }

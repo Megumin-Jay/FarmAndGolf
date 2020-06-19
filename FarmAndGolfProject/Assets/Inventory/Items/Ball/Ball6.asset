@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: 3b5b51cc3cc2fdb4ea003f8f31ec61db, type: 3}
   itemHeld: 1
+  itemName: "\u82F9\u679C\u7403"
   itemInfo: Ball5
-  equip: 0
+  saleable: 0

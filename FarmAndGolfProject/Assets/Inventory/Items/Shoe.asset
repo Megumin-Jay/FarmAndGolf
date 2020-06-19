@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Shoe
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300034, guid: 2f6c96f9557ac8940bd11591e1a845c9, type: 3}
-  itemHeld: 1
+  itemHeld: 0
+  itemName: "\u978B\u5B50"
   itemInfo: "GM\u7684\u978B\u5B50"
-  equip: 1
+  saleable: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\u5723\u8BDE\u5E3D"
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: e82901e224edc1b4a95d50866fafc52d, type: 3}
-  itemHeld: 1
+  itemHeld: 0
+  itemName: "\u5723\u8BDE\u5E3D"
   itemInfo: "\u5723\u8BDE\u5E3D"
-  equip: 0
+  saleable: 1

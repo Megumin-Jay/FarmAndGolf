@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\u76AE\u978B"
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: d605ad6b03dc5a640bf716a1386147ee, type: 3}
-  itemHeld: 1
+  itemHeld: 0
+  itemName: "\u76AE\u978B"
   itemInfo: "\u76AE\u978B"
-  equip: 0
+  saleable: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300004, guid: 2f6c96f9557ac8940bd11591e1a845c9, type: 3}
-  itemHeld: 1
+  itemHeld: 0
+  itemName: "\U0001F5E1\u5251"
   itemInfo: "\u770B\u4E0A\u53BB\u666E\u666E\u901A\u901A,\u5176\u5B9E\u662FGM\u7684\u5251"
-  equip: 1
+  saleable: 1

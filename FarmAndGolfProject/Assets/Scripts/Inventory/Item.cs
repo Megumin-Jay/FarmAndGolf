@@ -9,7 +9,7 @@ public class Item : ScriptableObject
     //所有物品的基类,包含了物品的名字,图片,持有数量,描述,是否可装备
     public Sprite itemImage;
     public int itemHeld;
-    [TextArea]
-    public string itemInfo;
-    public bool equip;
+    public string itemName;
+    [TextArea] public string itemInfo;
+    public bool saleable = true;
 }
