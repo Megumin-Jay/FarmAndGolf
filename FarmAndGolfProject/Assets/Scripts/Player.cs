@@ -116,6 +116,7 @@ public class Player : MonoBehaviour
             myBag.SetActive(!myBag.activeSelf);
             InventoryManager.RefreshItem();//打开时就刷新一次背包
         }
+        //ESC打开背包
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             mySetting.SetActive(true);

@@ -71,5 +71,4 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         transform.position = originalParent.position;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
-
 }

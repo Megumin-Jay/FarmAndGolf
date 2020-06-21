@@ -13,11 +13,13 @@ public class InventoryManager : MonoBehaviour
     public GameObject emptySlot;
     public Text itemInformation;//物品描述
     public Text itemName;//物品名称
+    public Text playerWealth;//人物财富
     public Image itemImagePanel;//物品的放大图片
     public List<GameObject> slots = new List<GameObject>();//格子列表
     public Text ball;//要使用的球
     public static string ballObjName = "Ball1";//球的名字,默认一号
-    public static string ballName = "正经高尔夫球";
+    public static string ballName = "正经高尔夫球";//球的显示名称,默认一号
+    public static int wealthValue;//人物的财富值
 
 
     void Awake()//单例
@@ -34,6 +36,7 @@ public class InventoryManager : MonoBehaviour
         instance.ball.text = ballName;
         instance.itemName.text = "";
         instance.itemInformation.text = "";//这个背包的描述框是一直显示的,所以要保证没点击物品的时候描述为"空"
+        instance.playerWealth.text = wealthValue.ToString();
     }
 
     //更新描述框文本为 传入的这个文本

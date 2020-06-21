@@ -20,7 +20,7 @@ public class Slot : MonoBehaviour
     public void ItemOnClicked()
     {
         InventoryManager.UpdateItemInfo(slotName, slotDescription, slotImage.sprite);
-        //截取前4个字符检测是不是球
+        //截取objName前4个字符检测是不是球(憨批方法但是真的方便orz)
         if (objectName.Length > 4 && objectName.Substring(0, 4) == "Ball")
         {
             InventoryManager.getBallName(objectName, slotName);

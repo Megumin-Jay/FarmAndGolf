@@ -16,4 +16,5 @@ MonoBehaviour:
   itemHeld: 1
   itemName: "\u83E0\u841D\u7403"
   itemInfo: Ball4
-  saleable: 0
+  saleable: 1
+  price: 100

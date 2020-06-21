@@ -16,4 +16,5 @@ MonoBehaviour:
   itemHeld: 1
   itemName: "\u5C0F\u9E21\u7403"
   itemInfo: "\"\u6211\u60F3\u5230\u4E00\u79CD\u65B9\u6CD5\"\n\"\u4F46\u5B83\u53EA\u9002\u7528\u4E8E\u771F\u7A7A\u4E2D\u7684\u7403\u578B\u9E21\""
-  saleable: 0
+  saleable: 1
+  price: 100

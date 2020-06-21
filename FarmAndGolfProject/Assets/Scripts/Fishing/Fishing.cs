@@ -111,6 +111,7 @@ public class Fishing : MonoBehaviour
         if (timer < 1.1f)
             if (condition[1])
             {
+                //替换为钓上来的物品
                 fish.updateFishImage(fishSp);
                 fish.AutoMove();
                 condition[1] = false;

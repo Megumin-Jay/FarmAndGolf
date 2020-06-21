@@ -17,3 +17,4 @@ MonoBehaviour:
   itemName: "\u5723\u8BDE\u5E3D"
   itemInfo: "\u5723\u8BDE\u5E3D"
   saleable: 1
+  price: 60
