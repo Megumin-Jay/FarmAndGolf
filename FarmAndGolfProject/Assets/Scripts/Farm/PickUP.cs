@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUP : itemOnWorld
 {
-    [SerializeField] float time=0;
+    [SerializeField] float time = 0;
     // Update is called once per frame
     void Update()
     {
