@@ -11,6 +11,8 @@ public class Fishing : MonoBehaviour
     private bool fishIsOn = false;//判断是否启动钓鱼功能
     public bool playerReached = false;//检测玩家是否到达钓鱼地点
     private int seed;//随机数,钓鱼的"种子"
+    private int[] weight;//物品权重表
+    private int weightTotal;//物品总权重
     private bool[] condition = new bool[2] { true, true };//确保有些方法在Update中只执行一次的布尔变量
 
 
@@ -33,6 +35,15 @@ public class Fishing : MonoBehaviour
         {
             player = other.GetComponent<Player>();//获取角色的脚本
             animator = other.GetComponent<Animator>();//获取角色挂载的动画器
+
+            //根据价格构建概率池
+            weight = new int[fishItems.itemList.Count];
+            weightTotal = 0;
+            for (int i = 0; i < fishItems.itemList.Count; i++)
+            {
+                weight[i] = 10000 / fishItems.itemList[i].price;//价格越高权重越低
+                weightTotal += weight[i];
+            }
         }
     }
 
@@ -45,7 +56,7 @@ public class Fishing : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K) && fishIsOn == false)
             {
                 fishIsOn = true;
-                seed = Random.Range(0, 18);//暂时还是等概率...
+                seed = GetSeed();
                 fishSp = fishItems.itemList[seed].itemImage;//鱼的图片
                 lureSp = Resources.Load<Sprite>("Graphics/Function/Inventory/FishItems/lure");//鱼饵的图片
                 timer = 6.0f;//计时器赋初值,作为整个钓鱼动画播放时长
@@ -56,7 +67,7 @@ public class Fishing : MonoBehaviour
             if (!fishIsOn)
             {
                 tips.Show();//显示提示栏
-                tips.UpdateTooltip("按下\"K\"键开始钓鱼");
+                tips.UpdateTooltip("按下\"K\"键,使用鱼饵开始钓鱼");
             }
 
             if (fishIsOn)
@@ -129,7 +140,11 @@ public class Fishing : MonoBehaviour
             fishIsOn = false;//退出钓鱼
             condition = new bool[2] { true, true };//重置单次函数的判断数组
             GetFish(seed);//将钓上的物品加入背包
-            popUps.UpdateTooltip("恭喜您获得\"" + fishItems.itemList[seed].name + "\"!");
+
+            //消耗鱼饵
+            player.transaction.Sell(player.AllItems.itemList[player.transaction.FindItem("鱼饵")], 1, 0, false);
+
+            popUps.UpdateTooltip("恭喜您获得\"" + fishItems.itemList[seed].itemName + "\"!");
             popUps.Show();//显示"确认"弹窗
         }
     }
@@ -156,5 +171,20 @@ public class Fishing : MonoBehaviour
         }
 
         InventoryManager.RefreshItem();
+    }
+
+    private int GetSeed()
+    {
+        int rand = Random.Range(1, weightTotal);
+        int tmp = 0;
+        for (int i = 0; i < weight.Length; i++)
+        {
+            tmp += weight[i];
+            if (rand <= tmp)
+            {
+                return i;
+            }
+        }
+        return 0;
     }
 }

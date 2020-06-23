@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public HeldManager myHeld;//我的物品持有
     public Inventory AllItems;//全物品,用以计数
     public Inventory playerInventory;//取得玩家的背包
+    public Transaction transaction;
     public static Vector3 initialPosition = new Vector3(0, 1, 0);//场景切换后加载的初始位置
 
 
@@ -25,15 +26,13 @@ public class Player : MonoBehaviour
     void Awake()
     {
         gameObject.transform.position = initialPosition;//传送到切换场景后逻辑上应该在的位置
-
-
     }
 
     void Start()
     {
         gameSaveManager.LoadGame();//加载游戏数据
         myHeld.Load();//刷新物品的持有数
-        GetBall();
+        GetBallandBait();
     }
 
     void Update()
@@ -123,10 +122,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GetBall()
+    public void GetBallandBait()
     {
-        int a = 22;
-        for (a = 22; a < 29; a++)
+        for (int a = 22; a < 25; a++)
         {
             if (!playerInventory.itemList.Contains(AllItems.itemList[a]))//如果背包中没这个
             {
@@ -142,6 +140,8 @@ public class Player : MonoBehaviour
             }
             InventoryManager.RefreshItem();
         }
+
+        transaction.Buy(AllItems.itemList[transaction.FindItem("鱼饵")], 20, 0, false);
     }
 
 }

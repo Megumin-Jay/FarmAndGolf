@@ -411,6 +411,11 @@ PrefabInstance:
       propertyPath: mySetting
       value: 
       objectReference: {fileID: 1320942021}
+    - target: {fileID: 405029100884001866, guid: 9268e4ec737d3d143b6a532b64428356,
+        type: 3}
+      propertyPath: transaction
+      value: 
+      objectReference: {fileID: 647761760}
     - target: {fileID: 405029100884001860, guid: 9268e4ec737d3d143b6a532b64428356,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -430,7 +435,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 484374534}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 647761755}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc96c8a8b38489143a47b589ae46c445, type: 3}
@@ -646,6 +651,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &647761755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 405029100884001856, guid: 9268e4ec737d3d143b6a532b64428356,
+    type: 3}
+  m_PrefabInstance: {fileID: 484374534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &647761760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647761755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f096b308249f0cf4eb0cdf0ba9d350bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: {fileID: 11400000, guid: 236ed10a582ad9a4a95f5c7af36b590d, type: 2}
+  shopInventory: {fileID: 0}
+  allItems: {fileID: 11400000, guid: 721746c63a0306b438e6edb95d9d4da1, type: 2}
+  popUps: {fileID: 195040049}
 --- !u!4 &688288003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4219781368615546035, guid: a31dcdf8a88fa9147b55313f7677211d,

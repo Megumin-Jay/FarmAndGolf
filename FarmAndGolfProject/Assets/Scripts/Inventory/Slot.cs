@@ -12,6 +12,7 @@ public class Slot : MonoBehaviour
     public Text slotNum;//Item有多少个
     public string slotDescription;//物品的描述信息
     public string slotName;//物品属性里的名称
+    public string slotPrice;//物品价格
     public string objectName;//物品obj名称
 
     public GameObject itemInSlot;
@@ -19,7 +20,7 @@ public class Slot : MonoBehaviour
     //当被点击,传出自身的文本和图片
     public void ItemOnClicked()
     {
-        InventoryManager.UpdateItemInfo(slotName, slotDescription, slotImage.sprite);
+        InventoryManager.UpdateItemInfo(slotName, slotDescription, slotImage.sprite, slotPrice);
         //截取objName前4个字符检测是不是球(憨批方法但是真的方便orz)
         if (objectName.Length > 4 && objectName.Substring(0, 4) == "Ball")
         {
@@ -41,5 +42,10 @@ public class Slot : MonoBehaviour
         slotDescription = item.itemInfo;
         slotName = item.itemName;
         objectName = item.name;
+        if (item.saleable)
+            slotPrice = "¥" + item.price.ToString();
+        else
+            slotPrice = "不可出售";
+
     }
 }
