@@ -50,7 +50,8 @@ public class Fishing : MonoBehaviour
     //整个钓鱼过程中人物都应处在碰撞器中
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player")//检测碰撞物体是否为主角
+        //检测碰撞物体是否为主角以及是否还有鱼饵
+        if (other.tag == "Player" && player.AllItems.itemList[player.transaction.FindItem("鱼饵")].itemHeld > 0)
         {
             //按下互动键(暂设为K),开启钓鱼功能
             if (Input.GetKeyDown(KeyCode.K) && fishIsOn == false)
@@ -84,6 +85,11 @@ public class Fishing : MonoBehaviour
                     player.AutoMove(H, V);
                 }
             }
+        }
+        if (player.AllItems.itemList[player.transaction.FindItem("鱼饵")].itemHeld <= 0)
+        {
+            tips.Show();//显示提示栏
+            tips.UpdateTooltip("您的背包中没有鱼饵啦,请先购买些鱼饵再来钓鱼");
         }
     }
 
@@ -140,10 +146,8 @@ public class Fishing : MonoBehaviour
             fishIsOn = false;//退出钓鱼
             condition = new bool[2] { true, true };//重置单次函数的判断数组
             GetFish(seed);//将钓上的物品加入背包
-
             //消耗鱼饵
             player.transaction.Sell(player.AllItems.itemList[player.transaction.FindItem("鱼饵")], 1, 0, false);
-
             popUps.UpdateTooltip("恭喜您获得\"" + fishItems.itemList[seed].itemName + "\"!");
             popUps.Show();//显示"确认"弹窗
         }

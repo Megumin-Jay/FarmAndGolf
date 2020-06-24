@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lure
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: f85fddc72c30efc40afa596b4d41e848, type: 3}
-  itemHeld: 77
+  itemHeld: 20
   itemName: "\u9C7C\u9975"
   itemInfo: "\u5927\u9C7C\u5403\u5C0F\u9C7C"
   saleable: 1

@@ -421,7 +421,8 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2987321384874907968, guid: 9268e4ec737d3d143b6a532b64428356, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9268e4ec737d3d143b6a532b64428356, type: 3}
 --- !u!95 &484374535 stripped
 Animator:

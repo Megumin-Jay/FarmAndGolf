@@ -29,13 +29,20 @@ public class Transaction : MonoBehaviour
     //输入物品+数量+倍率,实现从"收到售出请求"到"金币入库"之间所有操作(阿,确实比buy好写多了orz
     public void Sell(Item item, int number, float coefficient, bool popUpsOn)
     {
-        item.itemHeld -= number;
-        InventoryManager.wealthValue += (int)coefficient * item.price * number;
-        InventoryManager.RefreshItem();
-        //考虑到消耗事件也可通过此函数完成,且不需要弹窗
-        if (popUpsOn)
+        if (item.itemHeld - number >= 0)
         {
-            ShowPopups("物品已售出!您获得了" + number.ToString() + "枚金币!");
+            item.itemHeld -= number;
+            if (item.itemHeld == 0)//held为时移除物品
+            {
+                playerInventory.itemList.Remove(item);
+            }
+            InventoryManager.wealthValue += (int)coefficient * item.price * number;
+            InventoryManager.RefreshItem();
+            //考虑到消耗事件也可通过此函数完成,且不需要弹窗
+            if (popUpsOn)
+            {
+                ShowPopups("物品已售出!您获得了" + number.ToString() + "枚金币!");
+            }
         }
     }
 
@@ -68,7 +75,7 @@ public class Transaction : MonoBehaviour
                 ShowPopups("\"" + item.itemName + "\"×" + number.ToString() + "已放入您的背包!");
             }
         }
-        else if (popUpsOn)
+        else if (popUpsOn)//赠送事件不需要弹窗
         {
             ShowPopups("哼哼,还是多攒些钱再来吧!");
         }

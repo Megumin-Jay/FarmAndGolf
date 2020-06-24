@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\u6D77\u8349"
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: 2c7df84dac5084149961a2da616d29eb, type: 3}
-  itemHeld: 1
+  itemHeld: 2
   itemName: "\u6D77\u8349"
   itemInfo: "\u6D77\u8349"
   saleable: 1
