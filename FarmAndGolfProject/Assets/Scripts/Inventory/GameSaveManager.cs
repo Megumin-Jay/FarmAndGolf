@@ -13,7 +13,7 @@ public class GameSaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-        Debug.Log(Application.persistentDataPath);//直接输出这个保存文件的文件夹的路径
+        Debug.Log("存档位置为:" + Application.persistentDataPath);//直接输出这个保存文件的文件夹的路径
         heldManager.Save();
 
         if (!Directory.Exists(Application.persistentDataPath + "/game_SaveData"))//如果没有文件夹,则生成一个

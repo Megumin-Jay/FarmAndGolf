@@ -36,7 +36,7 @@ public class Transaction : MonoBehaviour
             {
                 playerInventory.itemList.Remove(item);
             }
-            InventoryManager.wealthValue += (int)coefficient * item.price * number;
+            allItems.itemList[FindItem("金币")].itemHeld += (int)coefficient * item.price * number;
             InventoryManager.RefreshItem();
             //考虑到消耗事件也可通过此函数完成,且不需要弹窗
             if (popUpsOn)
@@ -50,7 +50,7 @@ public class Transaction : MonoBehaviour
     //输入物品+数量+倍率,实现从"收到买入请求"到"物品入库"之间所有操作    
     public void Buy(Item item, int number, float coefficient, bool popUpsOn)
     {
-        if (InventoryManager.wealthValue - (int)coefficient * item.price * number >= 0)
+        if (allItems.itemList[FindItem("金币")].itemHeld - (int)coefficient * item.price * number >= 0)
         {
             if (!playerInventory.itemList.Contains(item))//如果背包中没这个
             {
@@ -68,7 +68,7 @@ public class Transaction : MonoBehaviour
             {
                 item.itemHeld += number;//如果原本就有,则增加"这个物品"的数量
             }
-            InventoryManager.wealthValue -= (int)coefficient * item.price * number;
+            allItems.itemList[FindItem("金币")].itemHeld -= (int)coefficient * item.price * number;
             InventoryManager.RefreshItem();
             if (popUpsOn)
             {

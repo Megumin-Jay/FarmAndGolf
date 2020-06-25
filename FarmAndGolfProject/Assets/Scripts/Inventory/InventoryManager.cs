@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour
     public Text ball;//要使用的球
     public static string ballObjName = "Ball1";//球的名字,默认一号
     public static string ballName = "正经高尔夫球";//球的显示名称,默认一号
-    public static int wealthValue;//人物的财富值
+    public Item Coin;//人物的财富值
 
 
     void Awake()//单例
@@ -38,7 +38,7 @@ public class InventoryManager : MonoBehaviour
         instance.itemPrice.text = "";
         instance.itemName.text = "";
         instance.itemInformation.text = "";//这个背包的描述框是一直显示的,所以要保证没点击物品的时候描述为"空"
-        instance.playerWealth.text = wealthValue.ToString();
+        instance.playerWealth.text = Coin.itemHeld.ToString();
     }
 
     //更新描述框文本为 传入的这个文本

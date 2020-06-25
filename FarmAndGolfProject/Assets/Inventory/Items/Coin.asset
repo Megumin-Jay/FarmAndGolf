@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 714079d0d8e33074282ad865aa3bfc3a, type: 3}
-  m_Name: Lure
+  m_Name: Coin
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: f85fddc72c30efc40afa596b4d41e848, type: 3}
+  itemImage: {fileID: 21300000, guid: a5cb759799a6ded43bfc653132c59998, type: 3}
   itemHeld: 5
-  itemName: "\u9C7C\u9975"
-  itemInfo: "\u5927\u9C7C\u5403\u5C0F\u9C7C"
-  saleable: 1
-  price: 30
+  itemName: "\u91D1\u5E01"
+  itemInfo: "\u6B64\u7269\u54C1\u53EA\u51FA\u73B0\u5728AllItem\u91CC, \u65B9\u4FBF\u5B58\u50A8\u91D1\u5E01\u6570\u636E,
+    \u4E0D\u5E94\u51FA\u73B0\u5728\u4EFB\u4F55\u5176\u4ED6Inventory\u4E2D!!"
+  saleable: 0
+  price: 0
