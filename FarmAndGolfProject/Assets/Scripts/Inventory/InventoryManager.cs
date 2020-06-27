@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
         instance.itemInformation.text = ItemDescription;
         instance.itemName.text = ItemName;
         instance.itemImagePanel.sprite = ItemImage;
-        instance.itemPrice.text = ItemPrice;
+        instance.itemPrice.text = "¥" + ItemPrice;
     }
 
 

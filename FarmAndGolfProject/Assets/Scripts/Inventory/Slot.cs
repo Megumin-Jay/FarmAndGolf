@@ -21,6 +21,8 @@ public class Slot : MonoBehaviour
     public void ItemOnClicked()
     {
         InventoryManager.UpdateItemInfo(slotName, slotDescription, slotImage.sprite, slotPrice);
+        storeInventoryManager.UpdateItemInfo(slotName, slotDescription, slotImage.sprite, slotPrice);
+
         //截取objName前4个字符检测是不是球(憨批方法但是真的方便orz)
         if (objectName.Length > 4 && objectName.Substring(0, 4) == "Ball")
         {
@@ -43,9 +45,28 @@ public class Slot : MonoBehaviour
         slotName = item.itemName;
         objectName = item.name;
         if (item.saleable)
-            slotPrice = "¥" + item.price.ToString();
+            slotPrice = item.price.ToString();
         else
             slotPrice = "不可出售";
+    }
+
+    public void SetupStoreSlot(Item item)
+    {
+        if (item != null && item.saleable == true)
+        {
+            itemInSlot.SetActive(true);
+            slotImage.sprite = item.itemImage;
+            slotNum.text = item.itemHeld.ToString();
+            slotDescription = item.itemInfo;
+            slotName = item.itemName;
+            objectName = item.name;
+            slotPrice = item.price.ToString();
+        }
+        else
+        {
+            itemInSlot.SetActive(false);
+            return;
+        }
 
     }
 }

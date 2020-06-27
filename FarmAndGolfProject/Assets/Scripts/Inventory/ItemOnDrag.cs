@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 
 public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
-{   //要实现这个,还得挂载一个新组件:CanvasGroup
+{
+    //要实现这个,还得挂载一个新组件:CanvasGroup
     public Transform originalParent;
     public Inventory myBag;
     private int currentItemID;//当前物品ID
