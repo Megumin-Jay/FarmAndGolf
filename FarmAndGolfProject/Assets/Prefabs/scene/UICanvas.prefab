@@ -612,85 +612,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &1389639213065464117
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3954645114582456286}
-  - component: {fileID: 2854016413415617737}
-  - component: {fileID: 3736020211801908756}
-  m_Layer: 5
-  m_Name: tmp (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &3954645114582456286
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389639213065464117}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4192863903985336474}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200.01, y: -376.49997}
-  m_SizeDelta: {x: 368.1, y: 124.1}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &2854016413415617737
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389639213065464117}
-  m_CullTransparentMesh: 0
---- !u!114 &3736020211801908756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389639213065464117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: df652646022d5ee42aef6c850831d823, type: 3}
-    m_FontSize: 50
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 76
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "(\u7269\u54C1\u261D\u4EF6\u6570)"
 --- !u!1 &1529494811880861244
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,7 +868,7 @@ RectTransform:
   - {fileID: 764739771066873845}
   - {fileID: 4705317404232150584}
   - {fileID: 1643002101317000760}
-  - {fileID: 3954645114582456286}
+  - {fileID: 3664280307675101330}
   m_Father: {fileID: 3709591604135979264}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1240,6 +1161,7 @@ GameObject:
   - component: {fileID: 4415641784367283201}
   - component: {fileID: 2400983307693062168}
   - component: {fileID: 8070247060469537403}
+  - component: {fileID: 4401121969333421791}
   m_Layer: 5
   m_Name: more
   m_TagString: Untagged
@@ -1263,7 +1185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210, y: -282.89996}
+  m_AnchoredPosition: {x: 213, y: -284}
   m_SizeDelta: {x: 64.8, y: 63.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4415641784367283201
@@ -1342,9 +1264,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2400983307693062168}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4401121969333421791}
+        m_MethodName: NumberUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &4401121969333421791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551225538575741629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05acd764b0a9c148a4c7083ca9007b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNumber: 0
+  player: {fileID: 405029100884001866, guid: 9268e4ec737d3d143b6a532b64428356, type: 3}
+  item: {fileID: 0}
+  coefficient: 0
+  shopInventory: {fileID: 0}
+  priceText: {fileID: 745495523411480279}
+  numberText: {fileID: 8889211658867642233}
+  Coin: {fileID: 11400000, guid: d422b8c4b7a1e7346956b9c3de00096e, type: 2}
 --- !u!1 &2619738251678326600
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,6 +3318,85 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &3847702836452100529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3664280307675101330}
+  - component: {fileID: 818164991549576290}
+  - component: {fileID: 8889211658867642233}
+  m_Layer: 5
+  m_Name: itemNumber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3664280307675101330
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847702836452100529}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4192863903985336474}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 147.72, y: -320}
+  m_SizeDelta: {x: 46.65, y: 124.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &818164991549576290
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847702836452100529}
+  m_CullTransparentMesh: 0
+--- !u!114 &8889211658867642233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847702836452100529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: df652646022d5ee42aef6c850831d823, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 76
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 00
 --- !u!1 &4187734100256120623
 GameObject:
   m_ObjectHideFlags: 0
@@ -4283,6 +4315,7 @@ GameObject:
   - component: {fileID: 5421328817193669747}
   - component: {fileID: 2000395813661191599}
   - component: {fileID: 8290741884438329999}
+  - component: {fileID: 4445000002924088202}
   m_Layer: 5
   m_Name: less
   m_TagString: Untagged
@@ -4306,7 +4339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 92, y: -283}
+  m_AnchoredPosition: {x: 83, y: -282.9}
   m_SizeDelta: {x: 64.8, y: 63.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5421328817193669747
@@ -4385,9 +4418,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2000395813661191599}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4445000002924088202}
+        m_MethodName: NumberDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &4445000002924088202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6111530847397646859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05acd764b0a9c148a4c7083ca9007b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNumber: 0
+  player: {fileID: 405029100884001866, guid: 9268e4ec737d3d143b6a532b64428356, type: 3}
+  item: {fileID: 0}
+  coefficient: 0
+  shopInventory: {fileID: 0}
+  priceText: {fileID: 745495523411480279}
+  numberText: {fileID: 8889211658867642233}
+  Coin: {fileID: 11400000, guid: d422b8c4b7a1e7346956b9c3de00096e, type: 2}
 --- !u!1 &6330967101817299173
 GameObject:
   m_ObjectHideFlags: 0

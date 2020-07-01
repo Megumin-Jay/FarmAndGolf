@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public HeldManager myHeld;//我的物品持有
     public Inventory AllItems;//全物品,用以计数
     public Inventory playerInventory;//取得玩家的背包
-    public Transaction transaction;
+    public Transaction transaction;//交易
     public static Vector3 initialPosition = new Vector3(0, 1, 0);//场景切换后加载的初始位置
 
 

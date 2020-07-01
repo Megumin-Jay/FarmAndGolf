@@ -5,7 +5,6 @@ using UnityEngine;
 public class Transaction : MonoBehaviour
 {
     public Inventory playerInventory;//取得玩家背包
-    public Inventory shopInventory;//商店背包
     public Inventory allItems;//全库存
     public TipsUI popUps;//弹窗
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class storeInventoryManager : MonoBehaviour
 {
     //单例模式
-    static storeInventoryManager storeInstance;
+    public static storeInventoryManager storeInstance;
 
     public Inventory storeInventory;//商店背包,通过碰撞获取
     public InventoryManager playerInventoryManager;//玩家的库存管理器
