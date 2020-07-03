@@ -64,7 +64,6 @@ public class Fishing : MonoBehaviour
                 playerReached = false;
             }
 
-
             if (!fishIsOn)
             {
                 tips.Show();//显示提示栏

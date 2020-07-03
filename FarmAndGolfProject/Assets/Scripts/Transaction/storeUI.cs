@@ -10,8 +10,8 @@ public class storeUI : MonoBehaviour
     public Item item = null;//物品
     public float coefficient;//倍率
     public Inventory shopInventory;//商店背包
-    public Text priceText;
-    public Text numberText;
+    public Text priceText;//物品总价格文本
+    public Text numberText;//物品件数文本
     public Item Coin;//人物的财富值
     // static storeUI storeUIInstance;
 
@@ -145,4 +145,5 @@ public class storeUI : MonoBehaviour
             UpdateNumber();
         }
     }
+
 }

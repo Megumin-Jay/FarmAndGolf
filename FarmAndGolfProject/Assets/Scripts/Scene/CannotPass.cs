@@ -32,4 +32,5 @@ public class CannotPass : MonoBehaviour
             tips.Hide();//隐藏提示栏
         }
     }
+
 }

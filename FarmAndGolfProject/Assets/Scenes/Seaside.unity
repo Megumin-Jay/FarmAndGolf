@@ -193,6 +193,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea70ec5ce081784082df4a5cec3b9e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &268510586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3763810571822850026, guid: 45aa47410738a834a93070bed9dba633,
+    type: 3}
+  m_PrefabInstance: {fileID: 3709591604251576551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc9af70aa8f25a4c88a964ea812df20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &418853534
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +683,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 11400000, guid: 236ed10a582ad9a4a95f5c7af36b590d, type: 2}
-  shopInventory: {fileID: 0}
   allItems: {fileID: 11400000, guid: 721746c63a0306b438e6edb95d9d4da1, type: 2}
   popUps: {fileID: 195040049}
 --- !u!4 &688288003 stripped
@@ -1867,11 +1878,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1642558442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb222a0622dfaa49a60e2047f98c5ea, type: 3}
+  m_Script: {fileID: 11500000, guid: bb861f32d93c5064dba6aaae5f2aa480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tips: {fileID: 246014208}
-  tip: "\u65B0\u51A0\u75AB\u60C5\u671F\u95F4\u6682\u505C\u8425\u4E1A"
+  siy: {fileID: 268510586}
+  store: {fileID: 0}
 --- !u!61 &1642558445
 BoxCollider2D:
   m_ObjectHideFlags: 0

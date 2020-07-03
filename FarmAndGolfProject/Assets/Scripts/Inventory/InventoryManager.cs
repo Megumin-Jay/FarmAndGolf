@@ -38,7 +38,6 @@ public class InventoryManager : MonoBehaviour
         instance.itemPrice.text = "";
         instance.itemName.text = "";
         instance.itemInformation.text = "";//这个背包的描述框是一直显示的,所以要保证没点击物品的时候描述为"空"
-        instance.playerWealth.text = Coin.itemHeld.ToString();
     }
 
     //更新描述框文本为 传入的这个文本
@@ -55,6 +54,7 @@ public class InventoryManager : MonoBehaviour
     //数据层的背包当然不用担心,直接增加数量了
     public static void RefreshItem()
     {
+        instance.playerWealth.text = instance.Coin.itemHeld.ToString();
         //直接毁掉整个 视觉层 的背包!
         for (int i = 0; i < instance.slotGrid.transform.childCount; i++)
         {
