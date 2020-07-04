@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tips: {fileID: 246014208}
   siy: {fileID: 268510586}
-  store: {fileID: 0}
+  store: {fileID: 11400000, guid: 588e03724bf6e6045948d2665807c6d6, type: 2}
 --- !u!61 &1642558445
 BoxCollider2D:
   m_ObjectHideFlags: 0

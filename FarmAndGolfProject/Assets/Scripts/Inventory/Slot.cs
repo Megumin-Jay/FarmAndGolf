@@ -50,18 +50,36 @@ public class Slot : MonoBehaviour
             slotPrice = "不可出售";
     }
 
+    //针对商店的生成方法(根据模式不同做了不同处理)
     public void SetupStoreSlot(Item item)
     {
         if (item != null && item.saleable == true)
         {
-            itemInSlot.SetActive(true);
-            slotImage.sprite = item.itemImage;
-            slotNum.text = item.itemHeld.ToString();
-            slotDescription = item.itemInfo;
-            slotName = item.itemName;
-            objectName = item.name;
-            slotPrice = item.price.ToString();
+            if (storeInventoryManager.storeInstance.sellIsOn)
+            {
+                itemInSlot.SetActive(true);
+                slotImage.sprite = item.itemImage;
+                slotNum.text = item.itemHeld.ToString();
+                slotDescription = item.itemInfo;
+                slotName = item.itemName;
+                objectName = item.name;
+                slotPrice = item.price.ToString();
+            }
+            if (!storeInventoryManager.storeInstance.sellIsOn)
+            {
+                itemInSlot.SetActive(true);
+                slotImage.sprite = item.itemImage;
+                slotNum.text = item.itemHeld.ToString();
+                slotDescription = item.itemInfo;
+                slotName = item.itemName;
+                objectName = item.name;
+                slotPrice = item.price.ToString();
+                (itemInSlot.transform.Find("number").gameObject).SetActive(false);
+                Debug.Log((itemInSlot.transform.Find("number").gameObject).activeSelf);
+            }
+
         }
+
         else
         {
             itemInSlot.SetActive(false);

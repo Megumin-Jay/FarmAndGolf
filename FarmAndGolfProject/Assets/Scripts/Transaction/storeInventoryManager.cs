@@ -46,19 +46,6 @@ public class storeInventoryManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if (sellIsOn)
-        {
-            SellButton.SetActive(true);
-            BuyButton.SetActive(false);
-        }
-
-        if (!sellIsOn)
-        {
-            SellButton.SetActive(false);
-            BuyButton.SetActive(true);
-        }
-
-        RefreshItem();
         storeInstance.itemPrice.text = "";
         storeInstance.itemName.text = "";
         storeInstance.itemInformation.text = "";//这个背包的描述框是一直显示的,所以要保证没点击物品的时候描述为"空"
@@ -75,16 +62,23 @@ public class storeInventoryManager : MonoBehaviour
     public void OpenSellStore()
     {
         sellIsOn = true;
+        RefreshItem();
+        SellButton.SetActive(true);
+        BuyButton.SetActive(false);
+        Debug.Log("sell");
         storePanel.SetActive(true);
 
     }
 
     //以购买格式打开商店
-    public void OpenBuyStore(Inventory store)
+    public void OpenBuyStore()
     {
         sellIsOn = false;
+        RefreshItem();
+        SellButton.SetActive(false);
+        BuyButton.SetActive(true);
+        Debug.Log("buy");
         storePanel.SetActive(true);
-        storeInventory = store;
     }
     public static void RefreshItem()
     {
@@ -120,14 +114,14 @@ public class storeInventoryManager : MonoBehaviour
 
         }
 
-        else
+        if (!storeInstance.sellIsOn)
         {
             for (int i = 0; i < storeInstance.storeInventory.itemList.Count; i++)
             {
                 storeInstance.slots.Add(Instantiate(storeInstance.emptySlot));
                 storeInstance.slots[i].transform.SetParent(storeInstance.slotGrid.transform);//设置父物体
                 storeInstance.slots[i].GetComponent<Slot>().slotID = i;//同步ID
-                storeInstance.slots[i].GetComponent<Slot>().SetupSlot(storeInstance.storeInventory.itemList[i]);//同步图片等物品信息
+                storeInstance.slots[i].GetComponent<Slot>().SetupStoreSlot(storeInstance.storeInventory.itemList[i]);//同步图片等物品信息
             }
         }
 
@@ -159,7 +153,8 @@ public class storeInventoryManager : MonoBehaviour
         storeInstance.UpdateNumber();
     }
 
-    //之前一直没添加的对"购买数量"的限制,现在全部补上
+    //更新的使得价格和物品数量的number
+    //之前一直没添加的对"交易数量"的限制,现在全部补上
     public void UpdateNumber()
     {
         if (item != null)

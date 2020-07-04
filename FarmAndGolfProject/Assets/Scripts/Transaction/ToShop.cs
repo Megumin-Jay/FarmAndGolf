@@ -14,6 +14,7 @@ public class ToShop : MonoBehaviour
         if (other.tag == "Player")//检测碰撞物体是否为主角
         {
             siy.GotPlayer(other.GetComponent<Player>());
+            siy.storeInventory = store;
         }
     }
 
@@ -28,12 +29,17 @@ public class ToShop : MonoBehaviour
                 siy.OpenSellStore();
 
             }
+            if (Input.GetKeyDown(KeyCode.L) && shopIsOn == false)
+            {
+                shopIsOn = true;
+                siy.OpenBuyStore();
+            }
 
             if (!shopIsOn)
             {
                 tips.Show();//显示提示栏
                 other.GetComponent<Player>().KeepMove();
-                tips.UpdateTooltip("按下\"K\"键打开商店面板");
+                tips.UpdateTooltip("按下\"K\"键出售\n\"L\"键购买");
             }
 
             if (shopIsOn)
