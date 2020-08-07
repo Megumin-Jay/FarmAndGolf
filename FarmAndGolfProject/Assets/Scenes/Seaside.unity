@@ -1881,7 +1881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb861f32d93c5064dba6aaae5f2aa480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tips: {fileID: 246014208}
   siy: {fileID: 268510586}
   store: {fileID: 11400000, guid: 588e03724bf6e6045948d2665807c6d6, type: 2}
 --- !u!61 &1642558445

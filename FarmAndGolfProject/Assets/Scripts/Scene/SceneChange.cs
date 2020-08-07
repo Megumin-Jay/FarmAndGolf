@@ -28,7 +28,7 @@ public class SceneChange : MonoBehaviour
                 MusicPlay.Instance.ChangeMusic(1);
             //切换场景时，保存农场数据
             GameObject farm = GameObject.Find("Earth");
-            if (farm!=null)
+            if (farm != null)
             {
                 EarthDataSave earthDataSave = farm.GetComponent<EarthDataSave>();
                 earthDataSave.SaveDataXml();

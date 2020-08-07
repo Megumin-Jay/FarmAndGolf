@@ -21,13 +21,16 @@ public class Slot : MonoBehaviour
     public void ItemOnClicked()
     {
         InventoryManager.UpdateItemInfo(slotName, slotDescription, slotImage.sprite, slotPrice);
-        storeInventoryManager.UpdateItemInfo(slotName, slotDescription, slotImage.sprite, slotPrice);
-
         //截取objName前4个字符检测是不是球(憨批方法但是真的方便orz)
         if (objectName.Length > 4 && objectName.Substring(0, 4) == "Ball")
         {
             InventoryManager.getBallName(objectName, slotName);
         }
+    }
+
+    public void ItemOnClickedStore()
+    {
+        storeInventoryManager.UpdateItemInfo(slotName, slotDescription, slotImage.sprite, slotPrice);
     }
 
     //从数据层 生成物品 到视觉层 的方法

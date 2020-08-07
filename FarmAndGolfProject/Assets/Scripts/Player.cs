@@ -140,8 +140,8 @@ public class Player : MonoBehaviour
             }
             InventoryManager.RefreshItem();
         }
-
-        transaction.Buy(AllItems.itemList[transaction.FindItem("鱼饵")], 20, 0, false);
+        if (AllItems.itemList[transaction.FindItem("鱼饵")].itemHeld == 0)
+            transaction.Buy(AllItems.itemList[transaction.FindItem("鱼饵")], 20, 0, false);
     }
 
 }

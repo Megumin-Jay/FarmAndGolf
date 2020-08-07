@@ -15,6 +15,6 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: b1a6f98816a628548bce8e04b62e9350, type: 3}
   itemHeld: 1
   itemName: "\u6A59\u5B50\u7403"
-  itemInfo: Ball3
+  itemInfo: "\u8BF4\u4E86\u591A\u5C11\u904D\u8FD9\u4E2A\u4E0D\u80FD\u5403!!!"
   saleable: 1
   price: 100

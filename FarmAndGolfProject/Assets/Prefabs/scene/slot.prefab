@@ -242,6 +242,9 @@ MonoBehaviour:
   slotImage: {fileID: 228639734800765812}
   slotNum: {fileID: 4339523510902254465}
   slotDescription: 
+  slotName: 
+  slotPrice: 
+  objectName: 
   itemInSlot: {fileID: 2556008064620046917}
 --- !u!1 &5416713544788827422
 GameObject:

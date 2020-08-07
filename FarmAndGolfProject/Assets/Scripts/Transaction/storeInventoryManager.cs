@@ -65,7 +65,7 @@ public class storeInventoryManager : MonoBehaviour
         RefreshItem();
         SellButton.SetActive(true);
         BuyButton.SetActive(false);
-        Debug.Log("sell");
+        Debug.Log("sellMode");
         storePanel.SetActive(true);
 
     }
@@ -77,7 +77,7 @@ public class storeInventoryManager : MonoBehaviour
         RefreshItem();
         SellButton.SetActive(false);
         BuyButton.SetActive(true);
-        Debug.Log("buy");
+        Debug.Log("buyMode");
         storePanel.SetActive(true);
     }
     public static void RefreshItem()
